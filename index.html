@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Prevent theme flashing -->
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+    
+    <!-- SEO Metadata -->
+    <title>Amit Bora | Senior Backend Engineer</title>
+    <meta name="description" content="Personal portfolio of Amit Bora, a Senior Backend Engineer based in Noida / New Delhi, India. Expert in cloud-native microservices, secure payment processing systems, and AI-driven applications." />
+    <meta name="keywords" content="Amit Bora, Senior Backend Engineer, Backend Developer, Payment Systems, Azure Microservices, Python, PHP, Laravel, Django, FastAPI, LangGraph, OpenAI, Noida, New Delhi" />
+    <meta name="author" content="Amit Bora" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://amitbora.dev/" />
+    <meta property="og:title" content="Amit Bora | Senior Backend Engineer" />
+    <meta property="og:description" content="Senior Backend Engineer specializing in cloud-native microservices, secure payments, and AI automation. 6+ years of enterprise engineering experience." />
+    <meta property="og:image" content="/Amit.webp" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Amit Bora | Senior Backend Engineer" />
+    <meta property="twitter:description" content="Senior Backend Engineer specializing in cloud-native microservices, secure payments, and AI automation. 6+ years of enterprise engineering experience." />
+    <meta property="twitter:image" content="/Amit.webp" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" />
+    </noscript>
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased font-sans">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

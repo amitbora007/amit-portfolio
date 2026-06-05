@@ -93,7 +93,7 @@ SMTP_USER=your-authorized-smtp-email@gmail.com
 SMTP_PASS=your-smtp-api-token-or-app-password
 
 # Contact Form Target Receiver
-CONTACT_RECEIVER=amitbora007@gmail.com
+CONTACT_RECEIVER=xyz@gmail.com
 ```
 
 > [!NOTE]

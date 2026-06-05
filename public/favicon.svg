@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <!-- Vibrant steel blue gradient matching the portfolio's accent design -->
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A3C6E8" />
+      <stop offset="100%" stop-color="#5C93CD" />
+    </linearGradient>
+    <!-- Premium glassmorphic border gradient -->
+    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.45)" />
+      <stop offset="100%" stop-color="rgba(163, 198, 232, 0.15)" />
+    </linearGradient>
+  </defs>
+  <!-- Dark Squircle Glass Card Container -->
+  <rect x="1.5" y="1.5" width="29" height="29" rx="8.5" fill="#0A0A0C" stroke="url(#border-grad)" stroke-width="1.5" />
+  <!-- Elegant Brand Initials 'AB' set in the portfolio's Display Serif font -->
+  <text x="16.5" y="21.5" font-family="'Instrument Serif', 'Georgia', serif" font-size="16.5" font-style="italic" font-weight="bold" fill="url(#grad)" text-anchor="middle">AB</text>
+</svg>

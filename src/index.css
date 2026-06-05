@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+  --color-brand-950: #042f2e;
+
+  /* Warm parchment / amber-paper light mode palette */
+  --color-slate-50:  #ede8df;
+  --color-slate-100: #e4ddd3;
+  --color-slate-200: #d4cab8;
+  --color-slate-300: #bfb09e;
+  --color-slate-400: #a09080;
+  --color-slate-500: #84736a;
+  --color-slate-600: #6a5c50;
+  --color-slate-700: #504540;
+  --color-slate-800: #352f28;
+  --color-slate-900: #1c1815;
+  --color-slate-950: #12100e;
+  /* Warm cream — used by bg-white token */
+  --color-white: #f5f0e8;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Cabinet Grotesk', sans-serif;
+
+  --animate-grid-fade: grid-fade 10s ease-in-out infinite alternate;
+}
+
+@keyframes grid-fade {
+  0% { opacity: 0.15; }
+  100% { opacity: 0.35; }
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+    /* Warm parchment page base in light mode */
+    background-color: #ede8df;
+  }
+  .dark body {
+    background-color: transparent;
+  }
+
+  /* Force all bg-white elements to use warm cream in light mode */
+  :root:not(.dark) .bg-white,
+  :root:not(.dark) [class*='bg-white'] {
+    --tw-bg-opacity: 1;
+    background-color: #f0ebe1 !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-slate-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-800 rounded-full hover:bg-slate-400 dark:hover:bg-slate-700 transition-colors;
+}
+
+/* Systems Grid Background Layer */
+.technical-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+}
+
+.dark .technical-grid {
+  background-image: 
+    linear-gradient(to right, rgba(30, 41, 59, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 41, 59, 0.3) 1px, transparent 1px);
+}
+
+/* Custom Glassmorphism Cards */
+.glass-card {
+  @apply backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 shadow-sm;
+  background-color: rgba(240, 235, 225, 0.75);
+}
+.dark .glass-card {
+  background-color: rgba(28, 24, 21, 0.5);
+}
+
+.glass-nav {
+  @apply backdrop-blur-md;
+  background-color: rgba(237, 232, 223, 0.85);
+}
+.dark .glass-nav {
+  background-color: rgba(18, 16, 14, 0.85);
+}
+
+/* Hide default scrollbars for animations */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Blueprint Micro-Dot Grid */
+.blueprint-grid {
+  background-size: 16px 16px;
+  background-image: radial-gradient(rgba(20, 184, 166, 0.08) 1.2px, transparent 1.2px);
+}
+
+.dark .blueprint-grid {
+  background-image: radial-gradient(rgba(20, 184, 166, 0.06) 1.2px, transparent 1.2px);
+}
+
+/* Custom View Transitions circular ripple theme wipe styles */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+/* Systems Data Flows animation */
+@keyframes flow-right {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+@keyframes flow-down {
+  0% { top: -150%; }
+  100% { top: 150%; }
+}
+.animate-flow-right {
+  animation: flow-right 2.5s linear infinite;
+}
+.animate-flow-down {
+  animation: flow-down 2.5s linear infinite;
+}
