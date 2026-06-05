@@ -12,7 +12,7 @@ import {
   Link,
   Preview,
   Font,
-} from '@react-email/components';
+} from 'react-email';
 import { createElement as h } from 'react';
 
 // ─────────────────────────────────────────────

@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function AnimatedGrid() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const isMobile = useRef(typeof window !== 'undefined' && window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
   // Spring animations for fluid parallax — desktop only
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
@@ -13,8 +13,17 @@ export default function AnimatedGrid() {
   const bgY = useSpring(mouseY, { stiffness: 35, damping: 25 });
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
     // Skip mouse tracking entirely on mobile — no cursor, wasted CPU
-    if (isMobile.current) return;
+    if (isMobile) return;
 
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) - 0.5;
@@ -25,7 +34,7 @@ export default function AnimatedGrid() {
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isMobile]);
 
   const nodes = [
     { cx: '15%', cy: '25%', r: 2.5, delay: 0 },
@@ -38,7 +47,7 @@ export default function AnimatedGrid() {
   ];
 
   // On mobile: render a static, zero-cost version with no animations
-  if (isMobile.current) {
+  if (isMobile) {
     return (
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 select-none">
         <div className="absolute inset-0 technical-grid opacity-[0.15]" />
