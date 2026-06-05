@@ -23,39 +23,42 @@ export default function Navigation() {
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
+    let rafId = null;
+
     const handleScroll = () => {
-      // Highlight nav background on scroll
-      setScrolled(window.scrollY > 20);
+      // rAF throttle — runs at most once per frame, not on every scroll pixel
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        setScrolled(window.scrollY > 20);
 
-      const sections = navLinks.map(link => document.querySelector(link.href));
-      
-      let currentSection = 'hero';
-      const scrollPosition = window.scrollY;
+        const sections = navLinks.map(link => document.querySelector(link.href));
+        let currentSection = 'hero';
+        const scrollPosition = window.scrollY;
 
-      // If we are at the top, highlight hero
-      if (scrollPosition < 120) {
-        currentSection = 'hero';
-      } else {
-        // Find the section that occupies the viewport center
-        for (const section of sections) {
-          if (section) {
-            const rect = section.getBoundingClientRect();
-            // If the top of the section is above the middle of the screen
-            // and the bottom of the section is below the header (80px)
-            if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= 120) {
-              currentSection = section.id;
-              break;
+        if (scrollPosition < 120) {
+          currentSection = 'hero';
+        } else {
+          for (const section of sections) {
+            if (section) {
+              const rect = section.getBoundingClientRect();
+              if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= 120) {
+                currentSection = section.id;
+                break;
+              }
             }
           }
         }
-      }
-      setActiveSection(currentSection);
+        setActiveSection(currentSection);
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    // Trigger once on mount to set initial active section
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const handleNavClick = (e, href) => {

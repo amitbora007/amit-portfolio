@@ -57,6 +57,12 @@
     --tw-bg-opacity: 1;
     background-color: #f0ebe1 !important;
   }
+
+  /* content-visibility: skip off-screen section render work */
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
+  }
 }
 
 /* Custom Scrollbar */
@@ -89,19 +95,43 @@
 
 /* Custom Glassmorphism Cards */
 .glass-card {
-  @apply backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 shadow-sm;
+  @apply border border-slate-200/50 dark:border-slate-800/50 shadow-sm;
   background-color: rgba(240, 235, 225, 0.75);
+  /* backdrop-blur only on capable devices — expensive on mobile GPU */
+  @media (min-width: 768px) {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 .dark .glass-card {
   background-color: rgba(28, 24, 21, 0.5);
 }
 
 .glass-nav {
-  @apply backdrop-blur-md;
-  background-color: rgba(237, 232, 223, 0.85);
+  background-color: rgba(237, 232, 223, 0.95);
+  /* backdrop-blur only on tablet/desktop */
+  @media (min-width: 768px) {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(237, 232, 223, 0.85);
+  }
 }
 .dark .glass-nav {
-  background-color: rgba(18, 16, 14, 0.85);
+  background-color: rgba(18, 16, 14, 0.97);
+  @media (min-width: 768px) {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(18, 16, 14, 0.85);
+  }
+}
+
+/* Respect user motion preferences — disable all CSS animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Hide default scrollbars for animations */

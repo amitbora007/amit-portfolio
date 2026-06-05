@@ -24,8 +24,8 @@ const SectionFallback = () => (
 export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 selection:bg-brand-500 selection:text-white relative overflow-hidden">
-      {/* Dynamic Ambient Background Glow Elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      {/* Dynamic Ambient Background Glow — hidden on mobile (expensive GPU blur) */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none overflow-hidden z-0">
         {/* Light mode: warm amber/orange/rose glows for parchment feel */}
         {/* Dark mode: cool teal/indigo glows */}
         <div className="absolute top-[3%] left-[-15%] w-[60%] h-[30%] bg-amber-400/8 dark:bg-brand-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s' }} />
