@@ -302,11 +302,11 @@ export function ContactEmail({ name, email, subject, message }) {
         h(Section, { style: styles.footer },
           h(Text, { style: styles.footerText },
             'This notification was triggered by your portfolio contact form at ',
-            h(Link, { href: 'https://amitbora.dev', style: styles.footerLink }, 'amitbora.dev'),
+            h(Link, { href: 'https://amitbora.vercel.app', style: styles.footerLink }, 'amitbora.vercel.app'),
             '. Do not reply to this email — use the button above to reach the sender.'
           ),
           h(Text, { style: styles.footerMono },
-            '[SYSTEM] · amitbora-portfolio-v2 · contact-api/v1 · IST'
+            '[SYSTEM] · amitbora-portfolio · contact-api/v1 · IST'
           )
         )
       )

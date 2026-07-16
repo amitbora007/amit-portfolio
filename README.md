@@ -1,24 +1,37 @@
-# Amit Bora — Premium Portfolio Website & Mail API
+# Amit Bora — Systems Engineering Portfolio & Contact API
 
-A production-grade personal portfolio website for **Amit Bora (Senior Backend Engineer)** built using a modern, fast tech stack. It features a responsive React client styled with **Tailwind CSS v4** and animated with **Framer Motion**, backed by a secure **Node.js/Express** contact form endpoint.
+A high-fidelity, production-grade personal portfolio website showcasing **Amit Bora (Senior Backend/Systems Engineer)**. The project features a responsive React SPA styled with **Tailwind CSS v4** and animated with **Framer Motion**, backed by a secure **Vercel Serverless / Express** mail delivery API.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Architecture
 
 ### Frontend Client
-- **Framework**: [React.js](https://react.dev/) + [Vite](https://vite.dev/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (using the `@tailwindcss/vite` compiler)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Form validation**: [Zod](https://zod.dev/) + [React Hook Form](https://react-hook-form.com/)
+* **Framework**: [React.js](https://react.dev/) (v19.x) + [Vite](https://vite.dev/) (v8.x)
+* **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (using the `@tailwindcss/vite` compiler)
+* **Animations**: [Framer Motion](https://www.framer.com/motion/) (optimized via code-splitting)
+* **Icons**: [Lucide React](https://lucide.dev/) (tree-shaken)
+* **Form Logic**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
 
-### Contact Backend API
-- **Framework**: [Node.js](https://nodejs.org/) + [Express](https://expressjs.com/)
-- **Security**: [Helmet](https://helmetjs.github.io/) (security headers) + [CORS](https://github.com/expressjs/cors)
-- **Spam Protection**: [Express Rate Limit](https://github.com/express-rate-limit/express-rate-limit)
-- **Email Delivery**: [Nodemailer](https://nodemailer.com/) (supporting SMTP with a fallback debug mock mode)
-- **Data Validation**: [Zod](https://zod.dev/) (parsing and HTML sanitization)
+### Contact Backend API (Serverless & Express)
+* **Serverless Runtime**: [Vercel Serverless Functions](https://vercel.com/docs/functions/serverless-functions) (Node.js runtime)
+* **Standalone Server**: [Node.js](https://nodejs.org/) + [Express](https://expressjs.com/) (backup/fallback deployment)
+* **Email Template Engine**: [React Email](https://react.email/) (compiles JSX to email layouts)
+* **Email Delivery**: [Nodemailer](https://nodemailer.com/) (SMTP with mock testing fallback)
+* **Input Sanitization**: HTML tag escape sanitizer
+
+---
+
+## 💎 Premium Features
+
+* **Interactive Project Diagrams**: Each case study contains dynamic SVG system architecture layouts with keyboard-focusable nodes (`tabIndex={0}`) and hover/focus descriptive tooltips.
+* **Performance Benchmarks**: Embedded vector charts showing transactional latency improvements, vector cache efficiency, and serverless execution speeds.
+* **Diagnostic Console Sandbox**: A retro, draggable, and interactive command console supporting operations like `help`, `ping`, `sysinfo`, `skills`, `projects`, and `pipeline` (simulating machine learning SHAP output). 
+  * *Global Shortcut*: Toggle the shell instantly using the backtick (`` ` ``) key or `Ctrl + \`` (disabled inside text input boxes).
+  * *Q&A Search Engine*: Features an `ask <q>` query utility that lets users directly query questions about Amit's stack, experience, projects, credentials, education, or contact details, matching them instantly in real-time.
+* **Accolades & Endorsements Carousel**: A responsive, 2-column sliding grid containing Amit's star performer accolades and verified manager recommendations (equipped with autosliding and click-to-zoom modal viewers).
+* **Compiler Validation Outlets**: The contact form features a live validator that renders input constraints and sanitization results in real-time as mock compiler terminal logs.
+* **Ambient Mesh & Telemetry**: Dynamic background mesh grid animations, counts-up on scroll, and telemetry status cards (`● NOMINAL`) with hidden system attributes that reveal on hover.
 
 ---
 
@@ -26,158 +39,105 @@ A production-grade personal portfolio website for **Amit Bora (Senior Backend En
 
 ```text
 amit-portfolio/
-├── package.json         # Combined project manifests (Frontend/Backend scripts)
-├── vite.config.js       # Vite configuration with Tailwind plugin & API proxy
-├── index.html           # Main entry document (SEO meta tags, Google Fonts)
-├── .env.example         # Template for required environment variables
-├── src/                 # React Application Code
-│   ├── main.jsx         # App mounting point
-│   ├── index.css        # Tailwind directives, theme variables (@theme), and global scrollbars
-│   ├── App.jsx          # Root component rendering all sections
+├── package.json           # Combined project dependencies & run scripts
+├── vite.config.js         # Vite configuration with Tailwind integration & core code-splitting
+├── index.html             # HTML entry document (asynchronous Google Fonts preloading)
+├── vercel.json            # Vercel deployment, clean URL rewrites, and headers routing
+├── api/
+│   └── contact.js         # Production Serverless API handler (POST /api/contact)
+├── src/                   # React Application Source
+│   ├── main.jsx           # App mounting point
+│   ├── index.css          # Tailwind imports, custom animations, and theme variables
+│   ├── App.jsx            # Core page layout lazy-loading sections below the fold
 │   ├── data/
-│   │   └── portfolioData.js # Source of truth for portfolio contents & metrics
+│   │   └── portfolioData.js # Source of truth for career descriptions & certification IDs
 │   ├── components/
-│   │   ├── Navigation.jsx   # Sticky header with responsive burger menu & theme toggles
-│   │   ├── ThemeToggle.jsx  # Dark/light mode switcher with localStorage persistence
-│   │   ├── TrustCard.jsx    # Hero section credential badges
-│   │   ├── ProjectCard.jsx  # Interactive case study card with CSS system diagrams & expandable notes
-│   │   └── AnimatedGrid.jsx # Technical SVG-based background mesh grid animation
+│   │   ├── Navigation.jsx   # Sticky header with spring scroll progress bar
+│   │   ├── ThemeToggle.jsx  # Dark/light selector using View Transitions clip-path sweep
+│   │   ├── DiagnosticConsole.jsx # Draggable shell console and keyboard event handlers
+│   │   ├── ProjectCard.jsx  # Interactive case study card with a11y focus outline support
+│   │   ├── TrustCard.jsx    # Telemetry credentials cards
+│   │   └── AnimatedGrid.jsx # Background animated coordinate node grid
 │   └── sections/
-│       ├── Hero.jsx         # Large positioning statement and primary CTAs
-│       ├── About.jsx        # Professional narrative and "What I Focus On" grid
-│       ├── ImpactMetrics.jsx# Tasfetul metrics grid showing optimized outcomes
-│       ├── Experience.jsx   # Progression timeline showcasing Successive career growth
-│       ├── Projects.jsx     # Lists featured project case studies
-│       ├── Skills.jsx       # Grid categorized developer capabilities tag matrix
-│       ├── Credentials.jsx  # Two-column grid for AWS/MongoDB certs and IEEE research papers
-│       └── Contact.jsx      # Outreach form with Zod schema validation & API integration
-└── server/              # Express API Server Code
-    ├── index.js         # Core server setups (CORS, Helmet, Rate Limits, Routing)
+│       ├── Hero.jsx         # Positioning statements and primary call-to-actions
+│       ├── About.jsx        # Narrative profile and operator online indicators
+│       ├── ImpactMetrics.jsx# Incrementing production metric counters & sparklines
+│       ├── Experience.jsx   # Vertical timeline tracked by scrolling progress indicators
+│       ├── Achievements.jsx # Q3 Star Performer sliding award certificate carousel
+│       ├── Recommendations.jsx # Side-by-side sliding manager recommendations
+│       ├── Skills.jsx       # Category-grouped tags with highlight dependency mappings
+│       ├── Credentials.jsx  # Credentials and academic publications links
+│       └── Contact.jsx      # Live-validating outreach terminal form
+└── server/                # Backup Standalone Express Backend
+    ├── index.js           # Core server entry (CORS, Helmet, Rate Limiter)
     ├── routes/
-    │   └── contact.js   # POST /api/contact router and SMTP trigger
-    ├── middleware/
-    │   └── validate.js  # Zod validation schema and HTML input sanitization rules
+    │   └── contact.js     # Mail dispatch route
+    ├── emails/
+    │   └── ContactEmail.js # React Email compiled email layout
     └── utils/
-        └── mailer.js    # Nodemailer transport configs (supporting SMTP credentials)
+        └── mailer.js      # Transporter transport creation helper
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Local Installation & Setup
 
-### 1. Prerequisites
-- [Node.js](https://nodejs.org/) (v18.x or higher)
-- [npm](https://www.npmjs.com/) (v9.x or higher)
-
-### 2. Installation
-Clone the repository and install the dependencies from the root directory:
+### 1. Installation
+Install core dependencies from the root directory:
 ```bash
 npm install
 ```
 
-### 3. Environment Variables Configuration
+### 2. Configure Environment Variables
 Duplicate the `.env.example` file to `.env`:
 ```bash
 cp .env.example .env
 ```
-Open `.env` and fill out your SMTP mail configurations:
+Fill out your SMTP configuration parameters:
 ```ini
-# Application Configurations
 PORT=5000
 FRONTEND_URL=http://localhost:5173
 
-# SMTP Server Credentials (e.g., Resend, Gmail App Password, Mailgun, SendGrid)
+# SMTP Server Configurations
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=your-authorized-smtp-email@gmail.com
-SMTP_PASS=your-smtp-api-token-or-app-password
+SMTP_USER=authorized-sender@gmail.com
+SMTP_PASS=smtp-app-password
 
-# Contact Form Target Receiver
-CONTACT_RECEIVER=xyz@gmail.com
+# Target Destination
+CONTACT_RECEIVER=recipient@company.com
 ```
+*Note: If SMTP credentials are left blank, the API falls back to **Mock Mail Mode**, outputting emails directly to the local dev terminal.*
 
-> [!NOTE]
-> **Local Mock Mode**: If `SMTP_HOST`, `SMTP_USER`, or `SMTP_PASS` are left empty, the server will fall back to **Mock Mail Mode**. Submissions will process successfully (HTTP 250) and output the structured message details directly to the server terminal output for easy debugging without SMTP setup.
+### 3. Run Development Server
+To launch both the Vite client server and the backup Express backend simultaneously, run:
 
----
-
-## 🏃 Running the Application
-
-### Development Mode (Concurrent)
-To test both the React frontend (with hot-reloading) and the Express backend (with nodemon auto-restart) locally, open two terminals and run:
-
-**Terminal 1 (Backend API):**
 ```bash
+# Terminal 1: Standalone API Server
 npm run server:dev
-```
-*Launches API server on `http://localhost:5000`.*
 
-**Terminal 2 (Frontend Client):**
-```bash
+# Terminal 2: Client Dev Server
 npm run dev
 ```
-*Launches development client on `http://localhost:5173` (requests to `/api/...` are proxied to the backend).*
 
 ---
 
-## 🛡️ API Endpoints
+## 🛡️ API Specification
 
 ### `POST /api/contact`
-Submits a contact form message.
+Receives and processes contact form submissions.
 
-**Rate Limit**: 5 requests per 15 minutes per IP address.
+* **Rate Limit**: 5 requests per 15 minutes per IP.
+* **Validation Schema (Zod)**:
+  * `name`: 2–100 chars (automatically escapes HTML characters to protect against XSS).
+  * `email`: Valid email syntax.
+  * `subject`: 3–150 chars.
+  * `message`: 10–2000 chars.
 
-**Request Payload:**
+**Success Response (200 OK):**
 ```json
 {
-  "name": "Jane Doe",
-  "email": "jane@company.com",
-  "subject": "System Optimization Project",
-  "message": "We need help migrating our legacy PHP APIs to serverless Azure Functions..."
+  "success": true,
+  "message": "Your message has been sent successfully."
 }
 ```
-
-**Zod Validation Constraints:**
-- `name`: Must be between 2 and 100 characters.
-- `email`: Must be a valid email string.
-- `subject`: Must be between 3 and 150 characters.
-- `message`: Must be between 10 and 2000 characters.
-*(Input fields are automatically sanitized of HTML tags to prevent XSS).*
-
-**Response Payloads:**
-
-- **Success (SMTP Delivered - 200 OK):**
-  ```json
-  {
-    "success": true,
-    "message": "Your message has been sent successfully."
-  }
-  ```
-
-- **Success (Mock Mail Mode - 250 OK):**
-  ```json
-  {
-    "success": true,
-    "message": "Message processed locally in debug/mock mode.",
-    "warning": "Mail not delivered via SMTP (missing credentials)."
-  }
-  ```
-
-- **Bad Request / Validation Failure (400):**
-  ```json
-  {
-    "success": false,
-    "error": "Validation failed.",
-    "details": {
-      "email": "Please enter a valid email address."
-    }
-  }
-  ```
-
-- **Rate Limit Triggered (429):**
-  ```json
-  {
-    "success": false,
-    "error": "Too many contact requests from this IP. Please try again after 15 minutes."
-  }
-  ```

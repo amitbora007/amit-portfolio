@@ -11,6 +11,8 @@ const Experience = lazy(() => import('./sections/Experience'));
 const Projects = lazy(() => import('./sections/Projects'));
 const Skills = lazy(() => import('./sections/Skills'));
 const Credentials = lazy(() => import('./sections/Credentials'));
+const Achievements = lazy(() => import('./sections/Achievements'));
+const Recommendations = lazy(() => import('./sections/Recommendations'));
 const Contact = lazy(() => import('./sections/Contact'));
 
 // Reusable section loader placeholder to stabilize layout and prevent Cumulative Layout Shift (CLS)
@@ -66,6 +68,22 @@ export default function App() {
           <Suspense fallback={<SectionFallback />}>
             <Credentials />
           </Suspense>
+
+          <section className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              <Suspense fallback={<SectionFallback />}>
+                <div id="achievements">
+                  <Achievements />
+                </div>
+              </Suspense>
+
+              <Suspense fallback={<SectionFallback />}>
+                <div id="recommendations">
+                  <Recommendations />
+                </div>
+              </Suspense>
+            </div>
+          </section>
 
           <Suspense fallback={<SectionFallback />}>
             <Contact />

@@ -232,5 +232,46 @@ export const portfolioData = {
       institution: 'Echelon Institute of Technology (MDU)',
       period: '2012 – 2016'
     }
+  ],
+
+  achievements: [
+    {
+      title: 'Quarterly Star Performer Award',
+      organization: 'Successive Digital',
+      date: 'Q3 2024',
+      image: '/achievements/quarterly_starperformer.jpeg',
+      description: 'Awarded for outstanding technical excellence, high ownership, and critical backend system delivery under challenging deadlines.'
+    },
+    {
+      title: 'Outstanding Performance Award',
+      organization: 'Successive Digital',
+      date: 'Q2 2024',
+      image: '/achievements/award.jpeg',
+      description: 'Recognized for excellent engineering contributions, optimization of core database schemas, and mentoring peers.'
+    },
+    {
+      title: 'Special Recognition Award',
+      organization: 'Successive Digital',
+      date: 'Q4 2023',
+      image: '/achievements/award2.jpeg',
+      description: 'Honored for building innovative AI automated support workflows and robust microservice telemetry monitoring pipelines.'
+    }
+  ],
+
+  recommendations: [
+    {
+      name: 'Prawal Sharma',
+      title: 'Technology Manager',
+      company: 'Successive Digital',
+      relationship: 'Manager & Mentor at Successive Digital',
+      description: 'I have had the pleasure of working with Amit Bora for the past five years, during which he has consistently demonstrated exceptional technical expertise, ownership, and professionalism.\n\nAmit is a highly dependable Senior Engineer who can always be trusted to take responsibility for critical deliverables and see them through to completion. He possesses strong problem-solving skills, a deep understanding of complex systems, and the ability to quickly navigate challenging technical situations with a calm and methodical approach.\n\nWhat sets Amit apart is his commitment to quality and accountability. He takes ownership of his work, proactively identifies risks, and consistently delivers reliable solutions even under tight timelines. Beyond his technical capabilities, he is a collaborative team player who willingly supports colleagues, shares knowledge, and contributes positively to the team\'s success.\n\nOver the years, Amit has been an invaluable member of our engineering team, and I would highly recommend him to any organization looking for a skilled, responsible, and trustworthy engineering professional.'
+    },
+    {
+      name: 'Preet Saxena',
+      title: 'PHP Team Lead',
+      company: 'Successive Digital',
+      relationship: 'Colleague & Lead at Successive Digital',
+      description: 'Amit is an outstanding backend developer who brings deep technical capability and positive energy to the team. During his time on our PHP/Laravel projects, he demonstrated superb query optimization skills and was instrumental in setting up clean API architectures.'
+    }
   ]
 };

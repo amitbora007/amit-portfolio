@@ -16,13 +16,13 @@ export default function ProjectCard({ project, index }) {
             
             {/* Client API Node */}
             <div 
-              className="relative cursor-help"
-              onMouseEnter={() => setHoveredNode('spire-api')}
-              onMouseLeave={() => setHoveredNode(null)}
+              className="relative cursor-help focus:outline-none group" tabIndex={0}
+              onMouseEnter={() => setHoveredNode('spire-api')} onFocus={() => setHoveredNode('spire-api')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               onTouchStart={() => setHoveredNode('spire-api')}
               onTouchEnd={() => setHoveredNode(null)}
             >
-              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 transition-colors">
+              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">
                 <span>Client API</span>
                 <span className="text-[9px] text-teal-400">REST</span>
               </div>
@@ -46,13 +46,13 @@ export default function ProjectCard({ project, index }) {
 
             {/* Redis Cache Node */}
             <div 
-              className="relative cursor-help"
-              onMouseEnter={() => setHoveredNode('spire-redis')}
-              onMouseLeave={() => setHoveredNode(null)}
+              className="relative cursor-help focus:outline-none group" tabIndex={0}
+              onMouseEnter={() => setHoveredNode('spire-redis')} onFocus={() => setHoveredNode('spire-redis')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               onTouchStart={() => setHoveredNode('spire-redis')}
               onTouchEnd={() => setHoveredNode(null)}
             >
-              <div className="px-2.5 py-2 border-2 border-brand-500 rounded bg-slate-950 flex flex-col items-center hover:border-brand-400 transition-colors relative">
+              <div className="px-2.5 py-2 border-2 border-brand-500 rounded bg-slate-950 flex flex-col items-center hover:border-brand-400 group-focus:border-brand-400 group-focus:ring-1 group-focus:ring-brand-400/50 transition-colors relative">
                 <span className="font-bold text-teal-400">Redis Cache</span>
                 <span className="text-[8px] text-slate-500">Idempotency</span>
               </div>
@@ -76,13 +76,13 @@ export default function ProjectCard({ project, index }) {
 
             {/* SQL Server Node */}
             <div 
-              className="relative cursor-help"
-              onMouseEnter={() => setHoveredNode('spire-sql')}
-              onMouseLeave={() => setHoveredNode(null)}
+              className="relative cursor-help focus:outline-none group" tabIndex={0}
+              onMouseEnter={() => setHoveredNode('spire-sql')} onFocus={() => setHoveredNode('spire-sql')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               onTouchStart={() => setHoveredNode('spire-sql')}
               onTouchEnd={() => setHoveredNode(null)}
             >
-              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 transition-colors">
+              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">
                 <span>SQL Server</span>
                 <span className="text-[9px] text-slate-500">ACID Db</span>
               </div>
@@ -113,11 +113,11 @@ export default function ProjectCard({ project, index }) {
               
               {/* Spire Source Node */}
               <div 
-                className="relative cursor-help"
-                onMouseEnter={() => setHoveredNode('spire-source')}
-                onMouseLeave={() => setHoveredNode(null)}
+                className="relative cursor-help focus:outline-none group" tabIndex={0}
+                onMouseEnter={() => setHoveredNode('spire-source')} onFocus={() => setHoveredNode('spire-source')}
+                onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               >
-                <div className="px-2 py-1 border border-slate-700 rounded bg-slate-950 text-[10px] hover:border-brand-500 transition-colors">Spire</div>
+                <div className="px-2 py-1 border border-slate-700 rounded bg-slate-950 text-[10px] hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">Spire</div>
                 <AnimatePresence>
                   {hoveredNode === 'spire-source' && (
                     <motion.div 
@@ -134,11 +134,11 @@ export default function ProjectCard({ project, index }) {
 
               {/* Payliance Node */}
               <div 
-                className="relative cursor-help"
-                onMouseEnter={() => setHoveredNode('payliance-target')}
-                onMouseLeave={() => setHoveredNode(null)}
+                className="relative cursor-help focus:outline-none group" tabIndex={0}
+                onMouseEnter={() => setHoveredNode('payliance-target')} onFocus={() => setHoveredNode('payliance-target')}
+                onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               >
-                <div className="px-2 py-1 border border-slate-700 rounded bg-slate-950 text-[10px] hover:border-brand-500 transition-colors">Payliance</div>
+                <div className="px-2 py-1 border border-slate-700 rounded bg-slate-950 text-[10px] hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">Payliance</div>
                 <AnimatePresence>
                   {hoveredNode === 'payliance-target' && (
                     <motion.div 
@@ -158,8 +158,8 @@ export default function ProjectCard({ project, index }) {
             {/* Azure Service Bus Queue Node */}
             <div 
               className="w-full relative cursor-help"
-              onMouseEnter={() => setHoveredNode('payliance-queue')}
-              onMouseLeave={() => setHoveredNode(null)}
+              onMouseEnter={() => setHoveredNode('payliance-queue')} onFocus={() => setHoveredNode('payliance-queue')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
             >
               <div className="w-full h-9 border-x border-b border-brand-500/50 rounded-b flex items-center justify-center relative hover:bg-brand-500/5 transition-colors">
                 <div className="w-[80%] h-[1px] bg-brand-500/30 relative overflow-hidden">
@@ -196,10 +196,10 @@ export default function ProjectCard({ project, index }) {
             {/* Query Router Node */}
             <div 
               className="relative cursor-help shrink-0"
-              onMouseEnter={() => setHoveredNode('ai-router')}
-              onMouseLeave={() => setHoveredNode(null)}
+              onMouseEnter={() => setHoveredNode('ai-router')} onFocus={() => setHoveredNode('ai-router')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
             >
-              <div className="px-1.5 py-1 border border-slate-800 rounded bg-slate-950 text-[9px] hover:border-brand-500 transition-colors">Query Router</div>
+              <div className="px-1.5 py-1 border border-slate-800 rounded bg-slate-950 text-[9px] hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">Query Router</div>
               <AnimatePresence>
                 {hoveredNode === 'ai-router' && (
                   <motion.div 
@@ -223,11 +223,11 @@ export default function ProjectCard({ project, index }) {
               
               {/* LangGraph Agent Node */}
               <div 
-                className="relative cursor-help"
-                onMouseEnter={() => setHoveredNode('ai-agent')}
-                onMouseLeave={() => setHoveredNode(null)}
+                className="relative cursor-help focus:outline-none group" tabIndex={0}
+                onMouseEnter={() => setHoveredNode('ai-agent')} onFocus={() => setHoveredNode('ai-agent')}
+                onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               >
-                <div className="px-2 py-1 border-2 border-brand-500 rounded bg-slate-950 font-bold text-teal-400 text-[9px] sm:text-[10px] hover:border-brand-400 transition-colors">LangGraph Agent</div>
+                <div className="px-2 py-1 border-2 border-brand-500 rounded bg-slate-950 font-bold text-teal-400 text-[9px] sm:text-[10px] hover:border-brand-400 group-focus:border-brand-400 group-focus:ring-1 group-focus:ring-brand-400/50 transition-colors">LangGraph Agent</div>
                 <AnimatePresence>
                   {hoveredNode === 'ai-agent' && (
                     <motion.div 
@@ -248,11 +248,11 @@ export default function ProjectCard({ project, index }) {
 
               {/* Vector DB Node */}
               <div 
-                className="relative cursor-help"
-                onMouseEnter={() => setHoveredNode('ai-vector')}
-                onMouseLeave={() => setHoveredNode(null)}
+                className="relative cursor-help focus:outline-none group" tabIndex={0}
+                onMouseEnter={() => setHoveredNode('ai-vector')} onFocus={() => setHoveredNode('ai-vector')}
+                onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               >
-                <div className="px-1.5 py-1 border border-slate-800 rounded bg-slate-950 text-[9px] hover:border-brand-500 transition-colors">Vector DB (RAG)</div>
+                <div className="px-1.5 py-1 border border-slate-800 rounded bg-slate-950 text-[9px] hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">Vector DB (RAG)</div>
                 <AnimatePresence>
                   {hoveredNode === 'ai-vector' && (
                     <motion.div 
@@ -277,10 +277,10 @@ export default function ProjectCard({ project, index }) {
             {/* LLM Parser Node */}
             <div 
               className="relative cursor-help shrink-0"
-              onMouseEnter={() => setHoveredNode('ai-parser')}
-              onMouseLeave={() => setHoveredNode(null)}
+              onMouseEnter={() => setHoveredNode('ai-parser')} onFocus={() => setHoveredNode('ai-parser')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
             >
-              <div className="px-1.5 py-1 border border-slate-800 rounded bg-slate-950 text-[9px] hover:border-brand-500 transition-colors">LLM Parser</div>
+              <div className="px-1.5 py-1 border border-slate-800 rounded bg-slate-950 text-[9px] hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">LLM Parser</div>
               <AnimatePresence>
                 {hoveredNode === 'ai-parser' && (
                   <motion.div 
@@ -306,13 +306,13 @@ export default function ProjectCard({ project, index }) {
             
             {/* Client View */}
             <div 
-              className="relative cursor-help"
-              onMouseEnter={() => setHoveredNode('inv-client')}
-              onMouseLeave={() => setHoveredNode(null)}
+              className="relative cursor-help focus:outline-none group" tabIndex={0}
+              onMouseEnter={() => setHoveredNode('inv-client')} onFocus={() => setHoveredNode('inv-client')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               onTouchStart={() => setHoveredNode('inv-client')}
               onTouchEnd={() => setHoveredNode(null)}
             >
-              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 transition-colors">
+              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">
                 <span>Admin UI</span>
                 <span className="text-[8px] text-slate-500">Inventory</span>
               </div>
@@ -336,13 +336,13 @@ export default function ProjectCard({ project, index }) {
 
             {/* DRF Guard */}
             <div 
-              className="relative cursor-help"
-              onMouseEnter={() => setHoveredNode('inv-drf')}
-              onMouseLeave={() => setHoveredNode(null)}
+              className="relative cursor-help focus:outline-none group" tabIndex={0}
+              onMouseEnter={() => setHoveredNode('inv-drf')} onFocus={() => setHoveredNode('inv-drf')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               onTouchStart={() => setHoveredNode('inv-drf')}
               onTouchEnd={() => setHoveredNode(null)}
             >
-              <div className="px-2.5 py-2 border-2 border-brand-500 rounded bg-slate-950 flex flex-col items-center hover:border-brand-400 transition-colors relative">
+              <div className="px-2.5 py-2 border-2 border-brand-500 rounded bg-slate-950 flex flex-col items-center hover:border-brand-400 group-focus:border-brand-400 group-focus:ring-1 group-focus:ring-brand-400/50 transition-colors relative">
                 <span className="font-bold text-teal-400">DRF Guard</span>
                 <span className="text-[8px] text-slate-500">RBAC / Filter</span>
               </div>
@@ -366,13 +366,13 @@ export default function ProjectCard({ project, index }) {
 
             {/* MySQL DB */}
             <div 
-              className="relative cursor-help"
-              onMouseEnter={() => setHoveredNode('inv-mysql')}
-              onMouseLeave={() => setHoveredNode(null)}
+              className="relative cursor-help focus:outline-none group" tabIndex={0}
+              onMouseEnter={() => setHoveredNode('inv-mysql')} onFocus={() => setHoveredNode('inv-mysql')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               onTouchStart={() => setHoveredNode('inv-mysql')}
               onTouchEnd={() => setHoveredNode(null)}
             >
-              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 transition-colors">
+              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">
                 <span>MySQL DB</span>
                 <span className="text-[8px] text-slate-500">Audit Logs</span>
               </div>
@@ -402,13 +402,13 @@ export default function ProjectCard({ project, index }) {
             <div className="flex justify-between w-full items-center">
               {/* Student Client */}
               <div 
-                className="relative cursor-help"
-                onMouseEnter={() => setHoveredNode('lms-client')}
-                onMouseLeave={() => setHoveredNode(null)}
+                className="relative cursor-help focus:outline-none group" tabIndex={0}
+                onMouseEnter={() => setHoveredNode('lms-client')} onFocus={() => setHoveredNode('lms-client')}
+                onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
                 onTouchStart={() => setHoveredNode('lms-client')}
                 onTouchEnd={() => setHoveredNode(null)}
               >
-                <div className="px-1.5 py-0.5 border border-slate-700 rounded bg-slate-950 hover:border-brand-500 transition-colors">
+                <div className="px-1.5 py-0.5 border border-slate-700 rounded bg-slate-950 hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">
                   Student UI
                 </div>
                 <AnimatePresence>
@@ -432,13 +432,13 @@ export default function ProjectCard({ project, index }) {
 
               {/* Azure AD SSO */}
               <div 
-                className="relative cursor-help"
-                onMouseEnter={() => setHoveredNode('lms-sso')}
-                onMouseLeave={() => setHoveredNode(null)}
+                className="relative cursor-help focus:outline-none group" tabIndex={0}
+                onMouseEnter={() => setHoveredNode('lms-sso')} onFocus={() => setHoveredNode('lms-sso')}
+                onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
                 onTouchStart={() => setHoveredNode('lms-sso')}
                 onTouchEnd={() => setHoveredNode(null)}
               >
-                <div className="px-1.5 py-1 border-2 border-brand-500 rounded bg-slate-950 font-bold text-teal-400 hover:border-brand-400 transition-colors">
+                <div className="px-1.5 py-1 border-2 border-brand-500 rounded bg-slate-950 font-bold text-teal-400 hover:border-brand-400 group-focus:border-brand-400 group-focus:ring-1 group-focus:ring-brand-400/50 transition-colors">
                   Azure AD SSO
                 </div>
                 <AnimatePresence>
@@ -463,13 +463,13 @@ export default function ProjectCard({ project, index }) {
             <div className="flex justify-between w-full items-center">
               {/* Moodle Core App */}
               <div 
-                className="relative cursor-help"
-                onMouseEnter={() => setHoveredNode('lms-moodle')}
-                onMouseLeave={() => setHoveredNode(null)}
+                className="relative cursor-help focus:outline-none group" tabIndex={0}
+                onMouseEnter={() => setHoveredNode('lms-moodle')} onFocus={() => setHoveredNode('lms-moodle')}
+                onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
                 onTouchStart={() => setHoveredNode('lms-moodle')}
                 onTouchEnd={() => setHoveredNode(null)}
               >
-                <div className="px-1.5 py-0.5 border border-slate-700 rounded bg-slate-950 hover:border-brand-500 transition-colors">
+                <div className="px-1.5 py-0.5 border border-slate-700 rounded bg-slate-950 hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">
                   Moodle App
                 </div>
                 <AnimatePresence>
@@ -493,13 +493,13 @@ export default function ProjectCard({ project, index }) {
 
               {/* MySQL Cluster DB */}
               <div 
-                className="relative cursor-help"
-                onMouseEnter={() => setHoveredNode('lms-db')}
-                onMouseLeave={() => setHoveredNode(null)}
+                className="relative cursor-help focus:outline-none group" tabIndex={0}
+                onMouseEnter={() => setHoveredNode('lms-db')} onFocus={() => setHoveredNode('lms-db')}
+                onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
                 onTouchStart={() => setHoveredNode('lms-db')}
                 onTouchEnd={() => setHoveredNode(null)}
               >
-                <div className="px-1.5 py-0.5 border border-slate-700 rounded bg-slate-950 hover:border-brand-500 transition-colors">
+                <div className="px-1.5 py-0.5 border border-slate-700 rounded bg-slate-950 hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">
                   MySQL DB
                 </div>
                 <AnimatePresence>
@@ -528,13 +528,13 @@ export default function ProjectCard({ project, index }) {
             
             {/* Config UI */}
             <div 
-              className="relative cursor-help"
-              onMouseEnter={() => setHoveredNode('ml-config')}
-              onMouseLeave={() => setHoveredNode(null)}
+              className="relative cursor-help focus:outline-none group" tabIndex={0}
+              onMouseEnter={() => setHoveredNode('ml-config')} onFocus={() => setHoveredNode('ml-config')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               onTouchStart={() => setHoveredNode('ml-config')}
               onTouchEnd={() => setHoveredNode(null)}
             >
-              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 transition-colors">
+              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">
                 <span>Config UI</span>
                 <span className="text-[8px] text-slate-500">Pipeline</span>
               </div>
@@ -558,13 +558,13 @@ export default function ProjectCard({ project, index }) {
 
             {/* XAI Engine */}
             <div 
-              className="relative cursor-help"
-              onMouseEnter={() => setHoveredNode('ml-xai')}
-              onMouseLeave={() => setHoveredNode(null)}
+              className="relative cursor-help focus:outline-none group" tabIndex={0}
+              onMouseEnter={() => setHoveredNode('ml-xai')} onFocus={() => setHoveredNode('ml-xai')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               onTouchStart={() => setHoveredNode('ml-xai')}
               onTouchEnd={() => setHoveredNode(null)}
             >
-              <div className="px-2.5 py-2 border-2 border-brand-500 rounded bg-slate-950 flex flex-col items-center hover:border-brand-400 transition-colors relative">
+              <div className="px-2.5 py-2 border-2 border-brand-500 rounded bg-slate-950 flex flex-col items-center hover:border-brand-400 group-focus:border-brand-400 group-focus:ring-1 group-focus:ring-brand-400/50 transition-colors relative">
                 <span className="font-bold text-teal-400">FastAPI XAI</span>
                 <span className="text-[8px] text-slate-500">Model + SHAP</span>
               </div>
@@ -588,13 +588,13 @@ export default function ProjectCard({ project, index }) {
 
             {/* PostgreSQL Store */}
             <div 
-              className="relative cursor-help"
-              onMouseEnter={() => setHoveredNode('ml-db')}
-              onMouseLeave={() => setHoveredNode(null)}
+              className="relative cursor-help focus:outline-none group" tabIndex={0}
+              onMouseEnter={() => setHoveredNode('ml-db')} onFocus={() => setHoveredNode('ml-db')}
+              onMouseLeave={() => setHoveredNode(null)} onBlur={() => setHoveredNode(null)}
               onTouchStart={() => setHoveredNode('ml-db')}
               onTouchEnd={() => setHoveredNode(null)}
             >
-              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 transition-colors">
+              <div className="px-2 py-1.5 border border-slate-700 rounded bg-slate-950 flex flex-col items-center hover:border-brand-500 group-focus:border-brand-500 group-focus:ring-1 group-focus:ring-brand-500/50 transition-colors">
                 <span>Postgres</span>
                 <span className="text-[8px] text-slate-500">Feature Store</span>
               </div>

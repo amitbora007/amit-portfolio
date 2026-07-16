@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, X, Minimize2, ShieldAlert } from 'lucide-react';
+import { portfolioData } from '../data/portfolioData';
 
 const banner = [
   { text: '----------------------------------------', type: 'sys' },
@@ -8,8 +9,87 @@ const banner = [
   { text: '         STATUS: OPERATIONAL (OK)       ', type: 'sys' },
   { text: '----------------------------------------', type: 'sys' },
   { text: 'Type "help" to query system directories.', type: 'sys' },
+  { text: 'Type "ask <question>" to search portfolio cache.', type: 'sys' },
   { text: '', type: 'output' }
 ];
+
+const queryKnowledgeBase = (query) => {
+  const q = query.toLowerCase();
+  
+  // 1. Tech Stack / Skills
+  if (q.includes('skill') || q.includes('stack') || q.includes('technology') || q.includes('languages') || q.includes('code') || q.includes('framework')) {
+    const list = portfolioData.skills.map(s => `  * ${s.category}: ${s.items.join(', ')}`).join('\n');
+    return `[KNOWLEDGE_BASE_HIT] Amit's Technical Capabilities:\n${list}`;
+  }
+  
+  // 2. Experience / Work
+  if (q.includes('experience') || q.includes('work') || q.includes('job') || q.includes('company') || q.includes('career') || q.includes('employer') || q.includes('history')) {
+    const list = portfolioData.experience.map(e => `  * ${e.role} at ${e.company} (${e.period})\n    ${e.description}`).join('\n\n');
+    return `[KNOWLEDGE_BASE_HIT] Career Milestones:\n${list}`;
+  }
+
+  // 3. Specific Project queries
+  if (q.includes('spire') || (q.includes('payment') && !q.includes('azure'))) {
+    const p = portfolioData.projects.find(proj => proj.title.toLowerCase().includes('payment') && !proj.title.toLowerCase().includes('azure'));
+    return `[KNOWLEDGE_BASE_HIT] Spire Payment Systems:\n  Context: ${p.context}\n  Stack: ${p.stack.join(', ')}\n  Impact: ${p.metrics}\n  Arch Notes: ${p.architectureNotes}`;
+  }
+  if (q.includes('microservice') || q.includes('azure') || q.includes('bus')) {
+    const p = portfolioData.projects.find(proj => proj.title.toLowerCase().includes('microservices'));
+    return `[KNOWLEDGE_BASE_HIT] Azure Service Bus Integration:\n  Context: ${p.context}\n  Stack: ${p.stack.join(', ')}\n  Impact: ${p.metrics}\n  Arch Notes: ${p.architectureNotes}`;
+  }
+  if (q.includes('chat') || q.includes('kagen') || q.includes('rag') || q.includes('langgraph')) {
+    const p = portfolioData.projects.find(proj => proj.title.toLowerCase().includes('support'));
+    return `[KNOWLEDGE_BASE_HIT] GenAI Support Engine:\n  Context: ${p.context}\n  Stack: ${p.stack.join(', ')}\n  Impact: ${p.metrics}\n  Arch Notes: ${p.architectureNotes}`;
+  }
+  if (q.includes('inventory') || q.includes('django') || q.includes('rbac')) {
+    const p = portfolioData.projects.find(proj => proj.title.toLowerCase().includes('inventory'));
+    return `[KNOWLEDGE_BASE_HIT] CCFIS Inventory Management:\n  Context: ${p.context}\n  Stack: ${p.stack.join(', ')}\n  Impact: ${p.metrics}\n  Arch Notes: ${p.architectureNotes}`;
+  }
+  if (q.includes('moodle') || q.includes('lms') || q.includes('learning')) {
+    const p = portfolioData.projects.find(proj => proj.title.toLowerCase().includes('learning'));
+    return `[KNOWLEDGE_BASE_HIT] CCFIS Learning Management System:\n  Context: ${p.context}\n  Stack: ${p.stack.join(', ')}\n  Impact: ${p.metrics}\n  Arch Notes: ${p.architectureNotes}`;
+  }
+  if (q.includes('analytics') || q.includes('pipeline') || q.includes('prediction') || q.includes('predictive') || q.includes('shap')) {
+    const p = portfolioData.projects.find(proj => proj.title.toLowerCase().includes('analytics'));
+    return `[KNOWLEDGE_BASE_HIT] Predictive Pipeline Failure Predictor:\n  Context: ${p.context}\n  Stack: ${p.stack.join(', ')}\n  Impact: ${p.metrics}\n  Arch Notes: ${p.architectureNotes}`;
+  }
+
+  // 4. Projects Overview
+  if (q.includes('project') || q.includes('portfolio') || q.includes('build')) {
+    const list = portfolioData.projects.map(p => `  * ${p.title} (${p.stack.join(', ')})`).join('\n');
+    return `[KNOWLEDGE_BASE_HIT] Case Studies Index:\n${list}\n(Type "ask spire" or "ask RAG chatbot" for engineering details)`;
+  }
+  
+  // 5. Certifications
+  if (q.includes('cert') || q.includes('credentials') || q.includes('aws') || q.includes('mongodb') || q.includes('scrum') || q.includes('associate')) {
+    const list = portfolioData.credentials.certifications.map(c => `  * ${c.name} (${c.issuer}, ${c.year})`).join('\n');
+    return `[KNOWLEDGE_BASE_HIT] Verified Credentials:\n${list}`;
+  }
+
+  // 6. Publications / Papers
+  if (q.includes('publication') || q.includes('paper') || q.includes('ieee') || q.includes('spoof') || q.includes('summarization') || q.includes('research')) {
+    const list = portfolioData.credentials.publications.map(p => `  * "${p.title}" (${p.publisher}, ${p.year})`).join('\n');
+    return `[KNOWLEDGE_BASE_HIT] IEEE Academic Papers:\n${list}`;
+  }
+
+  // 7. Education
+  if (q.includes('education') || q.includes('university') || q.includes('college') || q.includes('degree') || q.includes('study') || q.includes('m.tech') || q.includes('b.tech') || q.includes('school')) {
+    const list = portfolioData.education.map(edu => `  * ${edu.degree}\n    ${edu.institution} (${edu.period})`).join('\n\n');
+    return `[KNOWLEDGE_BASE_HIT] Academic Record:\n${list}`;
+  }
+
+  // 8. Contact Info
+  if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('social') || q.includes('linkedin') || q.includes('github') || q.includes('address') || q.includes('phone') || q.includes('hire')) {
+    return `[KNOWLEDGE_BASE_HIT] Outreach Channels:\n  Email: amitbora007@gmail.com\n  GitHub: github.com/amitbora007\n  LinkedIn: linkedin.com/in/amitbora007\n(Use the contact form at the bottom of the page to message directly!)`;
+  }
+
+  // 9. General narrative / Who are you
+  if (q.includes('who are you') || q.includes('about') || q.includes('amit') || q.includes('summary') || q.includes('bio') || q.includes('profile')) {
+    return `[KNOWLEDGE_BASE_HIT] About Amit Bora:\n  ${portfolioData.personalInfo.summary}\n\nNarrative Focus:\n  "Complexity is the enemy of reliability. Amit specializes in designing high-isolation backend architectures, secure payment integrations, and AI analytics pipelines."`;
+  }
+
+  return null;
+};
 
 export default function DiagnosticConsole() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +111,26 @@ export default function DiagnosticConsole() {
       inputRef.current.focus();
     }
   }, [isOpen]);
+
+  // Listen for custom 'open-console' event
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener('open-console', handleOpen);
+    return () => window.removeEventListener('open-console', handleOpen);
+  }, []);
+
+  // Listen for global backtick keypress to toggle console
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const isInputActive = ['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName) || document.activeElement?.isContentEditable;
+      if ((e.ctrlKey && e.key === '`') || (e.key === '`' && !isInputActive)) {
+        e.preventDefault();
+        setIsOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const handleCommand = (e) => {
     if (e.key !== 'Enter') return;
@@ -54,6 +154,7 @@ export default function DiagnosticConsole() {
           { text: '  projects - Output payment and AI system summaries', type: 'output' },
           { text: '  pipeline - Simulate XAI machine learning training loop', type: 'output' },
           { text: '  hack     - Execute system decryption diagnostic test', type: 'output' },
+          { text: '  ask <q>  - Search portfolio parameters (e.g. "ask stack")', type: 'output' },
           { text: '  clear    - Flush diagnostic console logs', type: 'output' },
           { text: '  exit     - Collapse terminal diagnostic session', type: 'output' }
         );
@@ -131,6 +232,29 @@ export default function DiagnosticConsole() {
           { text: '  SYSTEM INTEGRITY: COMPROMISED (Easter Egg Verified! 🚀)', type: 'sys' }
         );
         break;
+      case 'ask': {
+        const question = trimmedInput.substring(4).trim();
+        if (!question) {
+          newHistory.push({ text: 'Usage: ask <your question about Amit Bora>', type: 'error' });
+        } else {
+          const kbAnswer = queryKnowledgeBase(question);
+          if (kbAnswer) {
+            newHistory.push(
+              { text: 'Searching portfolio index cache...', type: 'sys' },
+              ...kbAnswer.split('\n').map(line => ({
+                text: line,
+                type: line.startsWith('[KNOWLEDGE_BASE_HIT]') ? 'sys' : 'output'
+              }))
+            );
+          } else {
+            newHistory.push({ 
+              text: `No exact match found in portfolio index cache. Try querying keywords like "experience", "stack", "projects", "certifications", "education", or "contact".`, 
+              type: 'error' 
+            });
+          }
+        }
+        break;
+      }
       case 'clear':
         setHistory(banner);
         setInput('');
@@ -139,11 +263,24 @@ export default function DiagnosticConsole() {
         setIsOpen(false);
         setInput('');
         return;
-      default:
-        newHistory.push({ 
-          text: `system: command not found: "${mainCmd}". Type "help" to review valid routines.`, 
-          type: 'error' 
-        });
+      default: {
+        // Try querying the local knowledge base as a direct question fallback
+        const kbAnswer = queryKnowledgeBase(trimmedInput);
+        if (kbAnswer) {
+          newHistory.push(
+            { text: 'Searching portfolio index cache...', type: 'sys' },
+            ...kbAnswer.split('\n').map(line => ({
+              text: line,
+              type: line.startsWith('[KNOWLEDGE_BASE_HIT]') ? 'sys' : 'output'
+            }))
+          );
+        } else {
+          newHistory.push({ 
+            text: `system: command not recognized. Type "help" to review valid routines, or try asking keywords like "stack", "experience", "projects", "education", or "contact".`, 
+            type: 'error' 
+          });
+        }
+      }
     }
 
     setHistory(newHistory);
