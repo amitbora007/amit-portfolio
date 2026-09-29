@@ -79,7 +79,7 @@ export default function Recommendations() {
       </div>
 
       {/* Carousel Slider Container */}
-      <div 
+      <div
         className="relative w-full"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -106,9 +106,17 @@ export default function Recommendations() {
               <div className="space-y-4 flex-1 overflow-auto pr-2 custom-scrollbar">
                 {/* Meta details */}
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-brand-500/10 dark:bg-brand-400/10 border border-brand-500/20 dark:border-brand-400/20 flex items-center justify-center text-brand-600 dark:text-brand-400 shrink-0">
-                    <User className="h-4.5 w-4.5" />
-                  </div>
+                  {currentItem.image ? (
+                    <img
+                      src={currentItem.image}
+                      alt={currentItem.name}
+                      className="w-10 h-10 rounded-full object-cover border border-brand-500/20 dark:border-brand-400/20 shrink-0 shadow-sm"
+                    />
+                  ) : (
+                    <div className="w-9 h-9 rounded-full bg-brand-500/10 dark:bg-brand-400/10 border border-brand-500/20 dark:border-brand-400/20 flex items-center justify-center text-brand-600 dark:text-brand-400 shrink-0">
+                      <User className="h-4.5 w-4.5" />
+                    </div>
+                  )}
                   <div className="min-w-0">
                     <h4 className="font-display font-extrabold text-sm text-slate-800 dark:text-slate-100 tracking-tight flex items-center gap-1 truncate">
                       {currentItem.name}
@@ -164,8 +172,8 @@ export default function Recommendations() {
                   setActiveSlide(idx);
                 }}
                 className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
-                  activeSlide === idx 
-                    ? 'w-5 bg-brand-500 dark:bg-brand-400' 
+                  activeSlide === idx
+                    ? 'w-5 bg-brand-500 dark:bg-brand-400'
                     : 'w-1.5 bg-slate-300 dark:bg-slate-800 hover:bg-slate-400 dark:hover:bg-slate-700'
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}

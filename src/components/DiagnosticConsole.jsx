@@ -15,13 +15,13 @@ const banner = [
 
 const queryKnowledgeBase = (query) => {
   const q = query.toLowerCase();
-  
+
   // 1. Tech Stack / Skills
   if (q.includes('skill') || q.includes('stack') || q.includes('technology') || q.includes('languages') || q.includes('code') || q.includes('framework')) {
     const list = portfolioData.skills.map(s => `  * ${s.category}: ${s.items.join(', ')}`).join('\n');
     return `[KNOWLEDGE_BASE_HIT] Amit's Technical Capabilities:\n${list}`;
   }
-  
+
   // 2. Experience / Work
   if (q.includes('experience') || q.includes('work') || q.includes('job') || q.includes('company') || q.includes('career') || q.includes('employer') || q.includes('history')) {
     const list = portfolioData.experience.map(e => `  * ${e.role} at ${e.company} (${e.period})\n    ${e.description}`).join('\n\n');
@@ -59,7 +59,7 @@ const queryKnowledgeBase = (query) => {
     const list = portfolioData.projects.map(p => `  * ${p.title} (${p.stack.join(', ')})`).join('\n');
     return `[KNOWLEDGE_BASE_HIT] Case Studies Index:\n${list}\n(Type "ask spire" or "ask RAG chatbot" for engineering details)`;
   }
-  
+
   // 5. Certifications
   if (q.includes('cert') || q.includes('credentials') || q.includes('aws') || q.includes('mongodb') || q.includes('scrum') || q.includes('associate')) {
     const list = portfolioData.credentials.certifications.map(c => `  * ${c.name} (${c.issuer}, ${c.year})`).join('\n');
@@ -83,7 +83,13 @@ const queryKnowledgeBase = (query) => {
     return `[KNOWLEDGE_BASE_HIT] Outreach Channels:\n  Email: amitbora007@gmail.com\n  GitHub: github.com/amitbora007\n  LinkedIn: linkedin.com/in/amitbora007\n(Use the contact form at the bottom of the page to message directly!)`;
   }
 
-  // 9. General narrative / Who are you
+  // 9. Recommendations / Endorsements
+  if (q.includes('recommend') || q.includes('endorse') || q.includes('feedback') || q.includes('testimonial') || q.includes('reference')) {
+    const list = portfolioData.recommendations.map(r => `  * ${r.name} (${r.title} at ${r.company}): "${r.description.slice(0, 100)}..."`).join('\n\n');
+    return `[KNOWLEDGE_BASE_HIT] Professional Endorsements:\n${list}`;
+  }
+
+  // 10. General narrative / Who are you
   if (q.includes('who are you') || q.includes('about') || q.includes('amit') || q.includes('summary') || q.includes('bio') || q.includes('profile')) {
     return `[KNOWLEDGE_BASE_HIT] About Amit Bora:\n  ${portfolioData.personalInfo.summary}\n\nNarrative Focus:\n  "Complexity is the enemy of reliability. Amit specializes in designing high-isolation backend architectures, secure payment integrations, and AI analytics pipelines."`;
   }
@@ -134,7 +140,7 @@ export default function DiagnosticConsole() {
 
   const handleCommand = (e) => {
     if (e.key !== 'Enter') return;
-    
+
     const trimmedInput = input.trim();
     if (!trimmedInput) return;
 
@@ -247,9 +253,9 @@ export default function DiagnosticConsole() {
               }))
             );
           } else {
-            newHistory.push({ 
+            newHistory.push({
               text: `No exact match found in portfolio index cache. Try querying keywords like "experience", "stack", "projects", "certifications", "education", or "contact".`, 
-              type: 'error' 
+              type: 'error'
             });
           }
         }
@@ -275,9 +281,9 @@ export default function DiagnosticConsole() {
             }))
           );
         } else {
-          newHistory.push({ 
+          newHistory.push({
             text: `system: command not recognized. Type "help" to review valid routines, or try asking keywords like "stack", "experience", "projects", "education", or "contact".`, 
-            type: 'error' 
+            type: 'error'
           });
         }
       }
@@ -324,14 +330,14 @@ export default function DiagnosticConsole() {
                 <span>DIAGNOSTIC_CONSOLE: system.sh</span>
               </div>
               <div className="flex items-center gap-1.5 cursor-pointer">
-                <button 
+                <button
                   onClick={() => setIsOpen(false)}
                   className="p-1 hover:bg-slate-800 rounded text-slate-500 hover:text-slate-300 transition-colors focus:outline-none"
                   aria-label="Minimize Console"
                 >
                   <Minimize2 className="h-3 w-3" />
                 </button>
-                <button 
+                <button
                   onClick={() => setIsOpen(false)}
                   className="p-1 hover:bg-red-500/10 hover:text-red-400 rounded text-slate-500 transition-colors focus:outline-none"
                   aria-label="Close Console"
@@ -342,14 +348,14 @@ export default function DiagnosticConsole() {
             </div>
 
             {/* Console Scrollback Buffer */}
-            <div 
+            <div
               ref={scrollRef}
               className="flex-1 p-4 overflow-y-auto space-y-1.5 cursor-text text-left select-text"
               onClick={() => inputRef.current?.focus()}
             >
               {history.map((line, idx) => {
                 let colorClass = 'text-slate-300';
-                
+
                 if (line.type === 'input') {
                   colorClass = 'text-white font-semibold';
                 } else if (line.type === 'sys') {

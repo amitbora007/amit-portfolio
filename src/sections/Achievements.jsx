@@ -89,7 +89,7 @@ export default function Achievements() {
       </div>
 
       {/* Carousel Slider Container */}
-      <div 
+      <div
         className="relative w-full"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -140,12 +140,12 @@ export default function Achievements() {
 
               {/* Certificate Image Frame (Columns 8-12) */}
               <div className="sm:col-span-5 flex justify-center">
-                <div 
+                <div
                   onClick={() => setSelectedImg(currentItem)}
                   className="w-full max-w-[180px] aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 cursor-pointer bg-slate-900 group/thumb relative shadow-sm"
                 >
-                  <img 
-                    src={currentItem.image} 
+                  <img
+                    src={currentItem.image}
                     alt={`${currentItem.title} Certificate`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover/thumb:scale-105 opacity-85 group-hover/thumb:opacity-100"
                     loading="lazy"
@@ -187,8 +187,8 @@ export default function Achievements() {
                 setActiveSlide(idx);
               }}
               className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
-                activeSlide === idx 
-                  ? 'w-5 bg-brand-500 dark:bg-brand-400' 
+                activeSlide === idx
+                  ? 'w-5 bg-brand-500 dark:bg-brand-400'
                   : 'w-1.5 bg-slate-300 dark:bg-slate-800 hover:bg-slate-400 dark:hover:bg-slate-700'
               }`}
               aria-label={`Go to slide ${idx + 1}`}

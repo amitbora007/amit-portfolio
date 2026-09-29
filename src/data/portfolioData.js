@@ -113,6 +113,14 @@ export const portfolioData = {
 
   projects: [
     {
+      title: 'Enterprise AI Analytics — Operational Intelligence',
+      context: 'Collaborative machine learning model preventing data pipeline failures before execution.',
+      stack: ['Python', 'Scikit-learn', 'SHAP (Explainable AI)', 'PostgreSQL', 'FastAPI'],
+      whatIBuilt: 'Co-trained a Predictive model on historical execution patterns (schedules, metadata) for the Project. Integrated a SHAP explainability layer to output diagnostic logs and risk warnings during pipeline creation.',
+      metrics: 'Flags 92% of preventable configuration and scheduling failures before first run.',
+      architectureNotes: 'Structured FastAPI routes to serve predictions. Built a feature-store pipeline in PostgreSQL to aggregate execution signals. Used SHAP to compile diagnostic logs, converting model coefficients into actionable configuration tips.'
+    },
+    {
       title: 'Payment Processing System',
       context: 'Secure EFT and ACH payment platform processing high-volume transactions.',
       stack: ['PHP', 'Laravel', 'Redis', 'SQL Server', 'Azure AD'],
@@ -151,14 +159,6 @@ export const portfolioData = {
       whatIBuilt: 'Integrated Moodle core system with enterprise Azure AD authentication, optimizing session caching and asset loading for huge scale.',
       metrics: 'Supported 200K concurrent learners, reduced login/access tickets by 50%, and boosted completion rates by 40%.',
       architectureNotes: 'Optimized high-traffic login routes by offloading session validation to Azure AD token verification on the client, minimizing backend database reads during concurrent usage spikes.'
-    },
-    {
-      title: 'Enterprise AI Analytics — Operational Intelligence',
-      context: 'Collaborative machine learning model preventing data pipeline failures before execution.',
-      stack: ['Python', 'Scikit-learn', 'SHAP (Explainable AI)', 'PostgreSQL', 'FastAPI'],
-      whatIBuilt: 'Co-trained a Predictive model on historical execution patterns (schedules, metadata) for the Project. Integrated a SHAP explainability layer to output diagnostic logs and risk warnings during pipeline creation.',
-      metrics: 'Flags 92% of preventable configuration and scheduling failures before first run.',
-      architectureNotes: 'Structured FastAPI routes to serve predictions. Built a feature-store pipeline in PostgreSQL to aggregate execution signals. Used SHAP to compile diagnostic logs, converting model coefficients into actionable configuration tips.'
     }
   ],
 
@@ -264,14 +264,24 @@ export const portfolioData = {
       title: 'Technology Manager',
       company: 'Successive Digital',
       relationship: 'Manager & Mentor at Successive Digital',
+      image: '/recommendation/ps.png',
       description: 'I have had the pleasure of working with Amit Bora for the past five years, during which he has consistently demonstrated exceptional technical expertise, ownership, and professionalism.\n\nAmit is a highly dependable Senior Engineer who can always be trusted to take responsibility for critical deliverables and see them through to completion. He possesses strong problem-solving skills, a deep understanding of complex systems, and the ability to quickly navigate challenging technical situations with a calm and methodical approach.\n\nWhat sets Amit apart is his commitment to quality and accountability. He takes ownership of his work, proactively identifies risks, and consistently delivers reliable solutions even under tight timelines. Beyond his technical capabilities, he is a collaborative team player who willingly supports colleagues, shares knowledge, and contributes positively to the team\'s success.\n\nOver the years, Amit has been an invaluable member of our engineering team, and I would highly recommend him to any organization looking for a skilled, responsible, and trustworthy engineering professional.'
     },
     {
-      name: 'Preet Saxena',
-      title: 'PHP Team Lead',
+      name: 'Himanshu Gupta',
+      title: 'Security & Compliance Specialist',
+      company: 'Deutsche Telekom Digital Labs',
+      relationship: 'Colleague at Cyborg Cyber Forensic',
+      image: '/recommendation/hgupta.png',
+      description: 'I worked alongside Amit during our time at Cyborg Cyber Forensic. We sat on different teams, but our work intersected often enough for me to see how he operates — methodical, detail-oriented, and genuinely curious about the problem rather than just closing the ticket.\n\nWhat stood out most was how easy he made collaboration across team boundaries. He explained his side of the problem clearly to people who didn’t live in it every day, and he was quick to flag risks rather than let them surface later. That kind of transparency saves everyone a lot of time.'
+    },
+    {
+      name: 'Himanshu Gola',
+      title: 'Associate Engineer',
       company: 'Successive Digital',
-      relationship: 'Colleague & Lead at Successive Digital',
-      description: 'Amit is an outstanding backend developer who brings deep technical capability and positive energy to the team. During his time on our PHP/Laravel projects, he demonstrated superb query optimization skills and was instrumental in setting up clean API architectures.'
+      relationship: 'Reported to Amit directly at Successive Digital',
+      image: '/recommendation/hg.png',
+      description: "I had the opportunity to work under Amit's guidance, and I truly appreciate his leadership and support throughout my time on the project. Amit is a great manager who provides clear direction, encourages ownership, and creates a positive and collaborative work environment. His ability to manage technical and project-related challenges while supporting the team is commendable. I have learned a lot from his guidance and appreciate the trust and opportunities he provided me. It has been a great experience working with Amit, and I would highly recommend him as an exceptional leader and manager."
     }
   ]
 };
