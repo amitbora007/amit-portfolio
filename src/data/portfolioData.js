@@ -41,7 +41,7 @@ export const portfolioData = {
   metrics: [
     { value: '40%', label: 'Partner Integration Efficiency', desc: 'Accelerated third-party onboarding pipelines through structured API designs.' },
     { value: '33%', label: 'API Latency Reduction', desc: 'Optimized database queries, indexes, and caching strategies for critical endpoints.' },
-    { value: '200+', label: 'TPS Throughput', desc: 'Architected high-throughput payment architectures using Redis caching and SQL Server.' },
+    { value: '100+', label: 'TPS Throughput', desc: 'Architected high-throughput payment architectures using Redis caching and SQL Server.' },
     { value: '70%+', label: 'Support Queries Automated', desc: 'Implemented retrieval-augmented generation and AI agents for agentless resolution.' },
     { value: '50K+', label: 'Concurrent Students', desc: 'Scaled Learning Management System integrated with Azure AD authentication.' }
   ],
@@ -53,7 +53,7 @@ export const portfolioData = {
       roles: [
         {
           title: 'Specialist Engineer',
-          period: 'Aug 2023 – Present',
+          period: 'Aug 2023 - Present',
           highlights: [
             'Architected microservices-based payment systems using PHP/Python with Azure Functions, Service Bus, and Key Vault.',
             'Integrated Generative AI into customer service workflows, increasing partner onboarding throughput by 40% and overall client satisfaction by 80%.',
@@ -63,7 +63,7 @@ export const portfolioData = {
         },
         {
           title: 'Senior Associate Engineer',
-          period: 'Jun 2021 – Aug 2023',
+          period: 'Jun 2021 - Aug 2023',
           highlights: [
             'Developed and maintained backend modules using PHP and SQL Server for scalable web applications.',
             'Improved application performance by optimizing database queries and refining caching logic.',
@@ -72,7 +72,7 @@ export const portfolioData = {
         },
         {
           title: 'Associate Engineer',
-          period: 'Jan 2021 – Jun 2021',
+          period: 'Jan 2021 - Jun 2021',
           highlights: [
             'Developed backend features using PHP and JavaScript, contributing to core features of enterprise applications.',
             'Assisted in debugging, resolving production incidents, and improving system stability under high load.'
@@ -86,7 +86,7 @@ export const portfolioData = {
       roles: [
         {
           title: 'Analyst',
-          period: 'Feb 2019 – Dec 2020',
+          period: 'Feb 2019 - Dec 2020',
           highlights: [
             'Developed Django + DRF-based role-based dashboard applications and secure internal data analysis tools.',
             'Reduced manual intervention in ticket queues and inventory audits by 50%.',
@@ -102,7 +102,7 @@ export const portfolioData = {
       roles: [
         {
           title: 'Python Intern',
-          period: 'Dec 2018 – Jan 2019',
+          period: 'Dec 2018 - Jan 2019',
           highlights: [
             'Developed Python code snippets and backend logical structures for educational content on the platform.'
           ]
@@ -224,13 +224,13 @@ export const portfolioData = {
     {
       degree: 'Master of Technology (M.Tech), Computer Science & Engineering',
       institution: 'Amity University',
-      period: '2017 – 2019',
+      period: '2017 - 2019',
       notes: 'Focused on video summarization, computer vision, and machine learning. Corporate Resource Centre member.'
     },
     {
       degree: 'Bachelor of Technology (B.Tech), Computer Science & Engineering',
       institution: 'Echelon Institute of Technology (MDU)',
-      period: '2012 – 2016'
+      period: '2012 - 2016'
     }
   ],
 

@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import contactRouter from './routes/contact.js';
+import chatRouter from './routes/chat.js';
 
 // Load environment variables
 dotenv.config();
@@ -17,7 +18,7 @@ app.use(helmet());
 // 2. CORS configuration (allow requests from frontend dev port or production URL)
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-  methods: ['POST'],
+  methods: ['POST', 'GET'],
   allowedHeaders: ['Content-Type'],
 }));
 
@@ -38,6 +39,7 @@ const contactLimiter = rateLimit({
 
 // 5. API Routes
 app.use('/api/contact', contactLimiter, contactRouter);
+app.use('/api/chat', chatRouter);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

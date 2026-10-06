@@ -26,9 +26,9 @@ A high-fidelity, production-grade personal portfolio website showcasing **Amit B
 
 * **Interactive Project Diagrams**: Each case study contains dynamic SVG system architecture layouts with keyboard-focusable nodes (`tabIndex={0}`) and hover/focus descriptive tooltips.
 * **Performance Benchmarks**: Embedded vector charts showing transactional latency improvements, vector cache efficiency, and serverless execution speeds.
-* **Diagnostic Console Sandbox**: A retro, draggable, and interactive command console supporting operations like `help`, `ping`, `sysinfo`, `skills`, `projects`, and `pipeline` (simulating machine learning SHAP output). 
+* **Diagnostic Console Sandbox**: A retro, draggable, and interactive command console supporting operations like `help`, `skills`, `projects`, and `pipeline` (simulating machine learning SHAP output).
   * *Global Shortcut*: Toggle the shell instantly using the backtick (`` ` ``) key or `Ctrl + \`` (disabled inside text input boxes).
-  * *Q&A Search Engine*: Features an `ask <q>` query utility that lets users directly query questions about Amit's stack, experience, projects, credentials, education, or contact details, matching them instantly in real-time.
+  * *AI Chat Assistant*: Integrated LLM inference endpoint (`/api/chat`) supporting Google Gemini API and OpenAI API with multi-turn conversation memory, live typing feedback, and local knowledge base fallback. Visitors can ask any question directly in natural language!
 * **Accolades & Endorsements Carousel**: A responsive, 2-column sliding grid containing Amit's star performer accolades and verified manager recommendations (equipped with autosliding and click-to-zoom modal viewers).
 * **Compiler Validation Outlets**: The contact form features a live validator that renders input constraints and sanitization results in real-time as mock compiler terminal logs.
 * **Ambient Mesh & Telemetry**: Dynamic background mesh grid animations, counts-up on scroll, and telemetry status cards (`● NOMINAL`) with hidden system attributes that reveal on hover.
