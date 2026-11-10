@@ -83,20 +83,35 @@ export default function App() {
           </ErrorBoundary>
 
           <section id="achievements" className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <ErrorBoundary sectionName="Achievements">
-                <Suspense fallback={<SectionFallback />}>
-                  <Achievements />
-                </Suspense>
-              </ErrorBoundary>
+            <div className="max-w-7xl mx-auto">
+              {/* Section Header */}
+              <div className="flex flex-col items-center text-center gap-4 mb-16">
+                <div className="text-xs uppercase tracking-widest text-brand-600 dark:text-brand-400 font-bold">
+                  ACHIEVEMENTS
+                </div>
+                <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
+                  Recognition & Recommendations
+                </h2>
+                <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
+                  Honors received for technical leadership, operational impact, and verified endorsements from engineering managers.
+                </p>
+              </div>
 
-              <ErrorBoundary sectionName="Recommendations">
-                <Suspense fallback={<SectionFallback />}>
-                  <div id="recommendations">
-                    <Recommendations />
-                  </div>
-                </Suspense>
-              </ErrorBoundary>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <ErrorBoundary sectionName="Achievements">
+                  <Suspense fallback={<SectionFallback />}>
+                    <Achievements />
+                  </Suspense>
+                </ErrorBoundary>
+
+                <ErrorBoundary sectionName="Recommendations">
+                  <Suspense fallback={<SectionFallback />}>
+                    <div id="recommendations">
+                      <Recommendations />
+                    </div>
+                  </Suspense>
+                </ErrorBoundary>
+              </div>
             </div>
           </section>
 
