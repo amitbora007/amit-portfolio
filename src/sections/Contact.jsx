@@ -145,15 +145,40 @@ export default function Contact() {
     return <span className="text-amber-500 font-bold">INVALID_SCHEMA_BINDINGS</span>;
   };
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(personalInfo.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopyEmail = async () => {
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(personalInfo.email);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } else {
+        throw new Error('Clipboard API unavailable');
+      }
+    } catch {
+      // Fallback for non-secure / restricted environments
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = personalInfo.email;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err) {
+        console.warn('Fallback copy failed:', err);
+      }
+    }
   };
 
   const onSubmit = async (data) => {
     setSubmitStatus('loading');
     setErrorMessage('');
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s network timeout
 
     try {
       const response = await fetch('/api/contact', {
@@ -162,9 +187,17 @@ export default function Contact() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
+        signal: controller.signal,
       });
 
-      const result = await response.json();
+      clearTimeout(timeoutId);
+
+      let result = {};
+      try {
+        result = await response.json();
+      } catch {
+        result = { error: `Server returned unexpected response (status ${response.status})` };
+      }
 
       if (response.ok) {
         setSubmitStatus('success');
@@ -174,9 +207,14 @@ export default function Contact() {
         setErrorMessage(result.error || 'Failed to send message. Please try again.');
       }
     } catch (err) {
+      clearTimeout(timeoutId);
       console.error('Contact submission error:', err);
       setSubmitStatus('error');
-      setErrorMessage('Network error. Please check if the server is running.');
+      if (err.name === 'AbortError') {
+        setErrorMessage('Request timed out. Please check your internet connection or email directly.');
+      } else {
+        setErrorMessage('Network error. Please check your connection or contact directly via email.');
+      }
     }
   };
 
@@ -223,8 +261,9 @@ export default function Contact() {
                   </div>
                   <button
                     onClick={handleCopyEmail}
-                    className="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-900 rounded text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors shrink-0"
+                    className="min-w-[36px] min-h-[36px] flex items-center justify-center p-2 hover:bg-slate-200 dark:hover:bg-slate-900 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                     title="Copy Email"
+                    aria-label="Copy email address"
                   >
                     {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
                   </button>
@@ -319,12 +358,15 @@ export default function Contact() {
                     {...register('name')}
                     placeholder="Jane Doe"
                     disabled={submitStatus === 'loading'}
+                    maxLength={100}
+                    aria-invalid={errors.name ? 'true' : 'false'}
+                    aria-describedby={errors.name ? 'name-error' : undefined}
                     className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:shadow-[0_0_12px_rgba(20,184,166,0.15)] transition-all dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-700 ${
                       errors.name ? 'border-rose-450 dark:border-rose-900' : 'border-slate-200 dark:border-slate-800'
                     }`}
                   />
                   {errors.name && (
-                    <span className="text-[11px] text-rose-500 font-medium">{errors.name.message}</span>
+                    <span id="name-error" className="text-[11px] text-rose-500 font-medium">{errors.name.message}</span>
                   )}
                 </div>
 
@@ -339,12 +381,15 @@ export default function Contact() {
                     {...register('email')}
                     placeholder="jane@company.com"
                     disabled={submitStatus === 'loading'}
+                    maxLength={100}
+                    aria-invalid={errors.email ? 'true' : 'false'}
+                    aria-describedby={errors.email ? 'email-error' : undefined}
                     className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:shadow-[0_0_12px_rgba(20,184,166,0.15)] transition-all dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-700 ${
                       errors.email ? 'border-rose-450 dark:border-rose-900' : 'border-slate-200 dark:border-slate-800'
                     }`}
                   />
                   {errors.email && (
-                    <span className="text-[11px] text-rose-500 font-medium">{errors.email.message}</span>
+                    <span id="email-error" className="text-[11px] text-rose-500 font-medium">{errors.email.message}</span>
                   )}
                 </div>
 
@@ -359,12 +404,15 @@ export default function Contact() {
                     {...register('subject')}
                     placeholder="Project architecture / Recruitment inquiry"
                     disabled={submitStatus === 'loading'}
+                    maxLength={150}
+                    aria-invalid={errors.subject ? 'true' : 'false'}
+                    aria-describedby={errors.subject ? 'subject-error' : undefined}
                     className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:shadow-[0_0_12px_rgba(20,184,166,0.15)] transition-all dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-700 ${
                       errors.subject ? 'border-rose-450 dark:border-rose-900' : 'border-slate-200 dark:border-slate-800'
                     }`}
                   />
                   {errors.subject && (
-                    <span className="text-[11px] text-rose-500 font-medium">{errors.subject.message}</span>
+                    <span id="subject-error" className="text-[11px] text-rose-500 font-medium">{errors.subject.message}</span>
                   )}
                 </div>
 
@@ -379,12 +427,15 @@ export default function Contact() {
                     {...register('message')}
                     placeholder="Briefly describe your proposal or technical requirement..."
                     disabled={submitStatus === 'loading'}
+                    maxLength={2000}
+                    aria-invalid={errors.message ? 'true' : 'false'}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
                     className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:shadow-[0_0_12px_rgba(20,184,166,0.15)] transition-all dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-700 resize-none ${
                       errors.message ? 'border-rose-450 dark:border-rose-900' : 'border-slate-200 dark:border-slate-800'
                     }`}
                   />
                   {errors.message && (
-                    <span className="text-[11px] text-rose-500 font-medium">{errors.message.message}</span>
+                    <span id="message-error" className="text-[11px] text-rose-500 font-medium">{errors.message.message}</span>
                   )}
                 </div>
 

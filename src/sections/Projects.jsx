@@ -23,13 +23,19 @@ export default function Projects() {
 
         {/* Projects Stack */}
         <div className="flex flex-col gap-10">
-          {projects.map((project, idx) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              index={idx}
-            />
-          ))}
+          {projects && projects.length > 0 ? (
+            projects.map((project, idx) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={idx}
+              />
+            ))
+          ) : (
+            <div className="p-8 text-center text-slate-500 font-mono text-xs border border-dashed border-slate-300 dark:border-slate-800 rounded-xl">
+              NO_CASE_STUDIES_AVAILABLE
+            </div>
+          )}
         </div>
 
       </div>

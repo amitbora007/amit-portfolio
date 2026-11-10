@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import Hero from './sections/Hero';
 import Footer from './sections/Footer';
 import DiagnosticConsole from './components/DiagnosticConsole';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Lazy load sections below the fold
 const About = lazy(() => import('./sections/About'));
@@ -41,53 +42,71 @@ export default function App() {
         {/* Sticky header navigation */}
         <Navigation />
 
-        {/* Core sections */}
+        {/* Core sections with defensive error boundaries */}
         <main>
           <Hero />
           
-          <Suspense fallback={<SectionFallback />}>
-            <About />
-          </Suspense>
+          <ErrorBoundary sectionName="About">
+            <Suspense fallback={<SectionFallback />}>
+              <About />
+            </Suspense>
+          </ErrorBoundary>
 
-          <Suspense fallback={<SectionFallback />}>
-            <ImpactMetrics />
-          </Suspense>
+          <ErrorBoundary sectionName="Impact Metrics">
+            <Suspense fallback={<SectionFallback />}>
+              <ImpactMetrics />
+            </Suspense>
+          </ErrorBoundary>
 
-          <Suspense fallback={<SectionFallback />}>
-            <Experience />
-          </Suspense>
+          <ErrorBoundary sectionName="Experience">
+            <Suspense fallback={<SectionFallback />}>
+              <Experience />
+            </Suspense>
+          </ErrorBoundary>
 
-          <Suspense fallback={<SectionFallback />}>
-            <Projects />
-          </Suspense>
+          <ErrorBoundary sectionName="Projects">
+            <Suspense fallback={<SectionFallback />}>
+              <Projects />
+            </Suspense>
+          </ErrorBoundary>
 
-          <Suspense fallback={<SectionFallback />}>
-            <Skills />
-          </Suspense>
+          <ErrorBoundary sectionName="Skills">
+            <Suspense fallback={<SectionFallback />}>
+              <Skills />
+            </Suspense>
+          </ErrorBoundary>
 
-          <Suspense fallback={<SectionFallback />}>
-            <Credentials />
-          </Suspense>
+          <ErrorBoundary sectionName="Credentials">
+            <Suspense fallback={<SectionFallback />}>
+              <Credentials />
+            </Suspense>
+          </ErrorBoundary>
 
           <section className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <Suspense fallback={<SectionFallback />}>
-                <div id="achievements">
-                  <Achievements />
-                </div>
-              </Suspense>
+              <ErrorBoundary sectionName="Achievements">
+                <Suspense fallback={<SectionFallback />}>
+                  <div id="achievements">
+                    <Achievements />
+                  </div>
+                </Suspense>
+              </ErrorBoundary>
 
-              <Suspense fallback={<SectionFallback />}>
-                <div id="recommendations">
-                  <Recommendations />
-                </div>
-              </Suspense>
+              <ErrorBoundary sectionName="Recommendations">
+                <Suspense fallback={<SectionFallback />}>
+                  <div id="recommendations">
+                    <Recommendations />
+                  </div>
+                </Suspense>
+              </ErrorBoundary>
             </div>
           </section>
 
-          <Suspense fallback={<SectionFallback />}>
-            <Contact />
-          </Suspense>
+          <ErrorBoundary sectionName="Contact">
+            <Suspense fallback={<SectionFallback />}>
+              <Contact />
+            </Suspense>
+          </ErrorBoundary>
         </main>
 
         {/* Global footer */}

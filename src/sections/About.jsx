@@ -47,6 +47,9 @@ export default function About() {
                   width={300}
                   height={400}
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.opacity = '0';
+                  }}
                   className="w-full h-full object-cover filter grayscale contrast-115 brightness-95 opacity-85 dark:opacity-70 group-hover:filter-none group-hover:opacity-100 transition-all duration-500"
                 />
                 

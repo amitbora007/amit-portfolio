@@ -44,7 +44,7 @@ export default function Experience() {
             className="absolute left-0 top-3 bottom-3 w-[1.5px] bg-gradient-to-b from-brand-600 to-teal-400 dark:from-brand-500 dark:to-teal-350 origin-top shadow-[0_0_8px_rgba(20,184,166,0.6)]"
           />
 
-          {experience.map((company) => (
+          {(experience || []).map((company) => (
             <div key={company.company} className="relative pl-8 sm:pl-10">
 
               {/* Timeline dot / briefcase icon */}

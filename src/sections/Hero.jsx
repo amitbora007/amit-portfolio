@@ -47,7 +47,7 @@ export default function Hero() {
           className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-slate-800 dark:text-slate-100 tracking-tight leading-[1.08] max-w-4xl mb-6"
         >
           I build secure, scalable{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 to-teal-500 dark:from-brand-400 dark:to-teal-300">
+          <span className="text-brand-600 dark:text-brand-400 font-extrabold">
             backend systems
           </span>{' '}
           for payments and AI-enabled workflows.
@@ -73,7 +73,7 @@ export default function Hero() {
           <a
             href="#projects"
             onClick={(e) => scrollToSection(e, '#projects')}
-            className="group flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-white bg-brand-700 dark:bg-brand-600 border border-brand-700 dark:border-brand-600 rounded px-7 py-3.5 hover:bg-brand-800 dark:hover:bg-brand-500 active:scale-[0.98] transition-all duration-300 shadow-sm focus:ring-2 focus:ring-brand-500"
+            className="group flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-white bg-brand-700 dark:bg-brand-600 border border-brand-700 dark:border-brand-600 rounded px-7 py-3.5 hover:bg-brand-800 dark:hover:bg-brand-500 active:scale-[0.98] transition-all duration-300 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           >
             View Projects
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -81,7 +81,7 @@ export default function Hero() {
           <a
             href="#contact"
             onClick={(e) => scrollToSection(e, '#contact')}
-            className="group flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-800 rounded px-7 py-3.5 hover:bg-slate-200 dark:hover:bg-slate-900 active:scale-[0.98] transition-all duration-300 focus:ring-2 focus:ring-brand-500"
+            className="group flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-800 rounded px-7 py-3.5 hover:bg-slate-200 dark:hover:bg-slate-900 active:scale-[0.98] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           >
             <Mail className="h-4 w-4 group-hover:-translate-y-0.5 group-hover:scale-105 transition-transform duration-300" />
             Contact Me

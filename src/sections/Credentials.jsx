@@ -102,7 +102,7 @@ export default function Credentials() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {credentials.certifications.map((cert) => (
+                {(credentials?.certifications || []).map((cert) => (
                   <div
                     key={cert.name}
                     className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-lg flex items-center gap-3.5 hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:-translate-y-1 hover:shadow-md hover:shadow-brand-500/5 transition-all duration-300 h-full relative group overflow-hidden"
@@ -147,7 +147,7 @@ export default function Credentials() {
               </div>
 
               <div className="space-y-4">
-                {education.map((edu) => (
+                {(education || []).map((edu) => (
                   <div
                     key={edu.degree}
                     className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:-translate-y-1 hover:shadow-md hover:shadow-brand-500/5 transition-all duration-300 rounded-lg flex flex-col gap-2 relative group overflow-hidden"
@@ -189,7 +189,7 @@ export default function Credentials() {
             </div>
 
             <div className="space-y-4">
-              {credentials.publications.map((pub, idx) => (
+              {(credentials?.publications || []).map((pub, idx) => (
                 <motion.div
                   key={pub.title}
                   initial={{ opacity: 0, y: 10 }}

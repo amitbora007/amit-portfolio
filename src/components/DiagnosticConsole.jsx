@@ -145,6 +145,9 @@ export default function DiagnosticConsole() {
   const handleAiQuery = async (queryText, currentHistory) => {
     setIsAiLoading(true);
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 9000); // 9s defensive timeout for AI inference
+
     // Build chat history for multi-turn context
     const conversationHistory = currentHistory
       .filter(h => h.type === 'input' || h.type === 'ai')
@@ -161,12 +164,21 @@ export default function DiagnosticConsole() {
         body: JSON.stringify({
           message: queryText,
           history: conversationHistory
-        })
+        }),
+        signal: controller.signal
       });
 
+      clearTimeout(timeoutId);
+
       if (response.ok) {
-        const data = await response.json();
-        if (data.success && data.reply) {
+        let data = null;
+        try {
+          data = await response.json();
+        } catch {
+          data = null;
+        }
+
+        if (data && data.success && data.reply) {
           setIsAiLoading(false);
           setHistory(prev => [
             ...prev.filter(line => !line.isThinking),
@@ -176,6 +188,7 @@ export default function DiagnosticConsole() {
         }
       }
     } catch (err) {
+      clearTimeout(timeoutId);
       console.warn('AI Chat API fallback trigger:', err);
     }
 
@@ -365,29 +378,29 @@ export default function DiagnosticConsole() {
             dragConstraints={{ left: -1000, right: 20, top: -1000, bottom: 20 }}
             dragElastic={0.05}
             dragMomentum={false}
-            className="fixed bottom-22 right-6 z-50 w-[350px] sm:w-[440px] h-[360px] bg-slate-950/95 dark:bg-slate-950/98 border border-slate-800 rounded-lg shadow-2xl flex flex-col font-mono text-xs overflow-hidden cursor-move backdrop-blur-md select-none"
+            className="fixed bottom-20 sm:bottom-22 right-3 sm:right-6 z-50 w-[calc(100vw-1.5rem)] sm:w-[440px] max-w-[440px] h-[360px] bg-slate-950/95 dark:bg-slate-950/98 border border-slate-800 rounded-lg shadow-2xl flex flex-col font-mono text-xs overflow-hidden cursor-move backdrop-blur-md select-none"
           >
             {/* Console Window Header Bar */}
-            <div className="bg-slate-900 border-b border-slate-800 px-4 py-2.5 flex items-center justify-between select-none">
+            <div className="bg-slate-900 border-b border-slate-800 px-3 sm:px-4 py-2 flex items-center justify-between select-none">
               <div className="flex items-center gap-2 text-slate-400 font-bold text-[10px] tracking-wide">
                 <Bot className="h-3.5 w-3.5 text-brand-400" />
                 <span>AI_PORTFOLIO_AGENT: chat.sh</span>
                 <span className="px-1.5 py-0.5 rounded text-[8px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-sans">AI ACTIVE</span>
               </div>
-              <div className="flex items-center gap-1.5 cursor-pointer">
+              <div className="flex items-center gap-1 cursor-pointer">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1 hover:bg-slate-800 rounded text-slate-500 hover:text-slate-300 transition-colors focus:outline-none"
+                  className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center hover:bg-slate-800 rounded text-slate-400 hover:text-slate-200 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-500"
                   aria-label="Minimize Console"
                 >
-                  <Minimize2 className="h-3 w-3" />
+                  <Minimize2 className="h-3.5 w-3.5" />
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1 hover:bg-red-500/10 hover:text-red-400 rounded text-slate-500 transition-colors focus:outline-none"
+                  className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center hover:bg-red-500/10 hover:text-red-400 rounded text-slate-400 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-500"
                   aria-label="Close Console"
                 >
-                  <X className="h-3 w-3" />
+                  <X className="h-3.5 w-3.5" />
                 </button>
               </div>
             </div>

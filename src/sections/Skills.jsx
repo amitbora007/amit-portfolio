@@ -125,14 +125,19 @@ export default function Skills() {
                     }
 
                     return (
-                      <span
+                      <button
                         key={skill}
+                        type="button"
+                        onClick={() => setHoveredSkill(hoveredSkill === skill ? null : skill)}
                         onMouseEnter={() => setHoveredSkill(skill)}
                         onMouseLeave={() => setHoveredSkill(null)}
-                        className={`text-xs font-mono tracking-wide rounded-md px-3 py-1.5 transition-all duration-300 cursor-help select-none border ${tagClass}`}
+                        onFocus={() => setHoveredSkill(skill)}
+                        onBlur={() => setHoveredSkill(null)}
+                        aria-pressed={isActive}
+                        className={`text-xs font-mono tracking-wide rounded-md px-3 py-1.5 min-h-[32px] sm:min-h-[28px] inline-flex items-center justify-center transition-all duration-300 select-none border focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${tagClass}`}
                       >
                         {skill}
-                      </span>
+                      </button>
                     );
                   })}
                 </div>

@@ -168,7 +168,7 @@ export default function ProjectCard({ project, index }) {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-0.5 bg-slate-950 border border-brand-400 rounded text-[8px] text-brand-400 font-bold whitespace-nowrap">
                   Azure Service Bus Queue
                 </div>
-                <div className="absolute left-[30%] top-1/3 w-1.5 h-1.5 bg-brand-400 rounded-full animate-bounce" />
+                <div className="absolute left-[30%] top-1/3 w-1.5 h-1.5 bg-brand-400 rounded-full animate-pulse shadow-[0_0_6px_rgba(20,184,166,0.8)]" />
               </div>
               <AnimatePresence>
                 {hoveredNode === 'payliance-queue' && (
@@ -661,7 +661,7 @@ export default function ProjectCard({ project, index }) {
 
           {/* Tech Stack */}
           <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.stack.map((tech) => (
+            {(project.stack || []).map((tech) => (
               <span
                 key={tech}
                 className="text-[11px] font-mono font-medium tracking-wide bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-800/80 rounded px-2.5 py-0.5"
@@ -692,7 +692,8 @@ export default function ProjectCard({ project, index }) {
         <div className="border-t border-slate-100 dark:border-slate-950 pt-4 mt-2">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors uppercase tracking-wider focus:outline-none"
+            className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors uppercase tracking-wider focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded min-h-[36px] py-1.5 px-2 -ml-2"
+            aria-expanded={isOpen}
           >
             {isOpen ? (
               <>

@@ -70,7 +70,26 @@ export default function Achievements() {
     }),
   };
 
-  const currentItem = achievements[activeSlide];
+  if (!achievements || achievements.length === 0) {
+    return (
+      <div className="w-full space-y-8">
+        <div className="flex flex-col gap-2">
+          <div className="text-[10px] uppercase tracking-widest text-brand-600 dark:text-brand-400 font-extrabold flex items-center gap-1">
+            <Sparkles className="h-3 w-3 animate-pulse" />
+            ACCOLADES
+          </div>
+          <h3 className="font-display font-extrabold text-2xl text-slate-800 dark:text-slate-100 tracking-tight">
+            Recognition & Awards
+          </h3>
+        </div>
+        <div className="p-8 text-center text-slate-500 font-mono text-xs border border-dashed border-slate-300 dark:border-slate-800 rounded-xl">
+          NO_ACHIEVEMENT_RECORDS_AVAILABLE
+        </div>
+      </div>
+    );
+  }
+
+  const currentItem = achievements[activeSlide] || achievements[0];
 
   return (
     <div className="w-full space-y-8">
@@ -149,6 +168,9 @@ export default function Achievements() {
                     alt={`${currentItem.title} Certificate`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover/thumb:scale-105 opacity-85 group-hover/thumb:opacity-100"
                     loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
                   />
                   {/* Hover Zoom Overlay */}
                   <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1 text-white text-[9px] font-mono">
@@ -164,35 +186,42 @@ export default function Achievements() {
         {/* Navigation Arrows */}
         <button
           onClick={handlePrev}
-          className="absolute left-[-15px] top-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 dark:hover:text-slate-950 flex items-center justify-center text-slate-500 dark:text-slate-400 shadow-md transition-all duration-300 z-30 focus:outline-none focus:ring-1 focus:ring-brand-500"
+          className="absolute left-[-15px] sm:left-[-18px] top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 dark:hover:text-slate-950 flex items-center justify-center text-slate-500 dark:text-slate-400 shadow-md transition-all duration-300 z-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="h-4.5 w-4.5" />
+          <ChevronLeft className="h-5 w-5" />
         </button>
         <button
           onClick={handleNext}
-          className="absolute right-[-15px] top-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 dark:hover:text-slate-950 flex items-center justify-center text-slate-500 dark:text-slate-400 shadow-md transition-all duration-300 z-30 focus:outline-none focus:ring-1 focus:ring-brand-500"
+          className="absolute right-[-15px] sm:right-[-18px] top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 dark:hover:text-slate-950 flex items-center justify-center text-slate-500 dark:text-slate-400 shadow-md transition-all duration-300 z-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           aria-label="Next slide"
         >
-          <ChevronRight className="h-4.5 w-4.5" />
+          <ChevronRight className="h-5 w-5" />
         </button>
 
         {/* Progress Indicators (Dots) */}
-        <div className="flex justify-center items-center gap-2 mt-4">
+        <div className="flex justify-center items-center gap-1 mt-4" role="tablist" aria-label="Achievement slides">
           {achievements.map((_, idx) => (
             <button
               key={idx}
+              type="button"
+              role="tab"
+              aria-selected={activeSlide === idx}
               onClick={() => {
                 setDirection(idx > activeSlide ? 1 : -1);
                 setActiveSlide(idx);
               }}
-              className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
-                activeSlide === idx
-                  ? 'w-5 bg-brand-500 dark:bg-brand-400'
-                  : 'w-1.5 bg-slate-300 dark:bg-slate-800 hover:bg-slate-400 dark:hover:bg-slate-700'
-              }`}
+              className="min-w-[36px] min-h-[36px] sm:min-w-[40px] sm:min-h-[40px] p-2 flex items-center justify-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               aria-label={`Go to slide ${idx + 1}`}
-            />
+            >
+              <span
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  activeSlide === idx
+                    ? 'w-5 bg-brand-500 dark:bg-brand-400'
+                    : 'w-1.5 bg-slate-300 dark:bg-slate-800 hover:bg-slate-400 dark:hover:bg-slate-700'
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>
@@ -225,7 +254,7 @@ export default function Achievements() {
                 </div>
                 <button
                   onClick={() => setSelectedImg(null)}
-                  className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors focus:ring-1 focus:ring-brand-500"
+                  className="min-w-[36px] min-h-[36px] rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                   aria-label="Close image viewer"
                 >
                   <X className="h-4.5 w-4.5" />

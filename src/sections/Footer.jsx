@@ -40,12 +40,12 @@ export default function Footer() {
         </div>
 
         {/* Social Icons Right */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <a
             href={personalInfo.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 rounded text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-all duration-300"
+            className="w-9 h-9 flex items-center justify-center border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 rounded text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 transition-all duration-300"
             aria-label="LinkedIn"
           >
             <Linkedin className="h-4.5 w-4.5" />
@@ -54,14 +54,14 @@ export default function Footer() {
             href={personalInfo.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 border border-slate-200 dark:border-slate-800 hover:border-slate-800 dark:hover:border-slate-300 rounded text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-all duration-300"
+            className="w-9 h-9 flex items-center justify-center border border-slate-200 dark:border-slate-800 hover:border-slate-800 dark:hover:border-slate-300 rounded text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 transition-all duration-300"
             aria-label="GitHub"
           >
             <Github className="h-4.5 w-4.5" />
           </a>
           <a
             href={`mailto:${personalInfo.email}`}
-            className="p-2 border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 rounded text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-all duration-300"
+            className="w-9 h-9 flex items-center justify-center border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 rounded text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 transition-all duration-300"
             aria-label="Email"
           >
             <Mail className="h-4.5 w-4.5" />
