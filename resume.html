@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amit Bora - Senior Backend Engineer Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 10.5mm 13mm 10.5mm 13mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 9.1pt;
+      line-height: 1.37;
+      color: #1f2937;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: #0f766e;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 2px solid #0f766e;
+      padding-bottom: 6px;
+      margin-bottom: 9px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 21pt;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #111827;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0f766e;
+      margin-bottom: 4px;
+      letter-spacing: 0.4px;
+    }
+
+    .contact-info {
+      font-size: 8.3pt;
+      color: #4b5563;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .contact-info span {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .contact-info span:not(:last-child)::after {
+      content: "•";
+      margin-left: 8px;
+      color: #9ca3af;
+    }
+
+    /* Section Headings */
+    section {
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      font-size: 9.6pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: #0f766e;
+      border-bottom: 1px solid #d1d5db;
+      padding-bottom: 1.5px;
+      margin-bottom: 5px;
+    }
+
+    /* Summary */
+    .summary-text {
+      font-size: 8.9pt;
+      color: #374151;
+      text-align: justify;
+      line-height: 1.4;
+    }
+
+    /* Skills Grid */
+    .skills-group {
+      margin-bottom: 3px;
+      font-size: 8.7pt;
+      line-height: 1.35;
+    }
+
+    .skills-category {
+      font-weight: 700;
+      color: #111827;
+      min-width: 148px;
+      display: inline-block;
+    }
+
+    .skills-list {
+      color: #374151;
+    }
+
+    /* Work Experience & Projects */
+    .entry {
+      margin-bottom: 7px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .entry-title {
+      font-size: 9.4pt;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .entry-company {
+      font-weight: 600;
+      color: #0f766e;
+    }
+
+    .entry-dates {
+      font-size: 8.3pt;
+      font-weight: 600;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+
+    .entry-location {
+      font-size: 8.3pt;
+      font-style: italic;
+      color: #6b7280;
+    }
+
+    .entry-subhead {
+      display: flex;
+      justify-content: space-between;
+      font-size: 8.4pt;
+      margin-bottom: 2px;
+    }
+
+    .entry-tech {
+      font-size: 8pt;
+      font-style: italic;
+      color: #4b5563;
+      margin-bottom: 2px;
+    }
+
+    .entry-tech strong {
+      font-style: normal;
+      color: #111827;
+    }
+
+    ul.bullets {
+      list-style-type: disc;
+      margin-left: 15px;
+      margin-top: 1px;
+    }
+
+    ul.bullets li {
+      font-size: 8.8pt;
+      color: #374151;
+      margin-bottom: 1.8px;
+      line-height: 1.34;
+      text-align: justify;
+    }
+
+    ul.bullets li strong {
+      color: #111827;
+    }
+
+    /* Publications, Certs, Education */
+    .compact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5px;
+    }
+
+    .compact-item {
+      font-size: 8.7pt;
+      line-height: 1.32;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .compact-item .item-title {
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .compact-item .item-meta {
+      font-size: 8.2pt;
+      color: #4b5563;
+    }
+
+    /* Print settings */
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+      .section-title {
+        color: #0f766e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a {
+        color: #0f766e !important;
+      }
+      header {
+        border-bottom-color: #0f766e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header>
+      <h1>Amit Bora</h1>
+      <div class="title">Senior Backend Engineer | Cloud-Native Microservices | Payment Systems | Practical AI</div>
+      <div class="contact-info">
+        <span>New Delhi, India</span>
+        <span><a href="tel:+918527520048">+91 8527520048</a></span>
+        <span><a href="mailto:amitbora007@gmail.com">amitbora007@gmail.com</a></span>
+        <span><a href="https://amitbora.vercel.app">Portfolio: amitbora.vercel.app</a></span>
+        <span><a href="https://www.linkedin.com/in/amitbora2">LinkedIn: in/amitbora2</a></span>
+        <span><a href="https://github.com/amitbora007">GitHub: amitbora007</a></span>
+        <span><a href="https://www.credly.com/users/amit.bora">Credly: amit.bora</a></span>
+      </div>
+    </header>
+
+    <!-- PROFESSIONAL SUMMARY -->
+    <section>
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="summary-text">
+        Senior Backend Engineer with <strong>7+ years of experience</strong> architecting, scaling, and securing enterprise microservices, high-throughput payment gateways, and production Generative AI integrations. Proven track record leading backend engineering at Successive Digital, optimizing API performance by <strong>33%–40%</strong>, sustaining <strong>200+ TPS</strong> workloads, and lowering MTTR by 40% on Azure and AWS cloud infrastructures. Certified AWS Developer and MongoDB Associate Developer with 3 published IEEE research papers in machine learning and computer vision. Strong proponent of clean architecture, transactional idempotency, and resilient distributed systems.
+      </p>
+    </section>
+
+    <!-- TECHNICAL SKILLS -->
+    <section>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-group">
+        <span class="skills-category">Backend &amp; Languages:</span>
+        <span class="skills-list">Python (3.x), PHP (7/8), JavaScript (ES6+), TypeScript, SQL, Bash, Object-Oriented Programming (OOP)</span>
+      </div>
+      <div class="skills-group">
+        <span class="skills-category">Frameworks &amp; APIs:</span>
+        <span class="skills-list">FastAPI, Django, Django REST Framework (DRF), Laravel, Restler, Node.js (Express), RESTful API Design</span>
+      </div>
+      <div class="skills-group">
+        <span class="skills-category">Cloud &amp; Infrastructure:</span>
+        <span class="skills-list">Azure (Functions, Service Bus Queues, Key Vault, Azure AD / Entra ID, App Insights), AWS (EC2, S3, RDS, Lambda), Docker</span>
+      </div>
+      <div class="skills-group">
+        <span class="skills-category">Databases &amp; Caching:</span>
+        <span class="skills-list">Microsoft SQL Server, MySQL, PostgreSQL, MongoDB, Redis (In-Memory Caching &amp; Idempotency), Vector DBs</span>
+      </div>
+      <div class="skills-group">
+        <span class="skills-category">AI &amp; Machine Learning:</span>
+        <span class="skills-list">LangGraph (Multi-Agent State Graphs), OpenAI APIs, RAG Pipelines, Scikit-learn, OpenCV, SHAP (Explainable AI)</span>
+      </div>
+      <div class="skills-group">
+        <span class="skills-category">Architecture &amp; Practices:</span>
+        <span class="skills-list">Microservices, Event-Driven Architecture, Asynchronous Messaging, ACID Compliance, RBAC / OAuth2, CI/CD, Agile/Scrum</span>
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <section>
+      <h2 class="section-title">Work Experience</h2>
+
+      <!-- Successive Digital: Specialist Engineer -->
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Specialist Engineer</span> — <span class="entry-company">Successive Digital</span>
+          </div>
+          <span class="entry-dates">Aug 2023 – Present</span>
+        </div>
+        <div class="entry-subhead">
+          <span class="entry-location">Noida, India</span>
+          <span class="entry-tech"><strong>Core Tech:</strong> Python, PHP, Azure Functions, Azure Service Bus, Key Vault, LangGraph, OpenAI APIs, SQL Server</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Cloud Microservices Architecture:</strong> Architected serverless, event-driven payment processing pipelines across Azure Functions, Service Bus Queues, and Key Vault, ensuring 99.95% operational availability and secure token handling.</li>
+          <li><strong>Generative AI Integration:</strong> Spearheaded integration of multi-agent GenAI customer service agents (LangGraph, OpenAI APIs, MongoDB Vector Search), autonomously resolving <strong>70%+ of support queries</strong> and reducing average response times by 10 minutes.</li>
+          <li><strong>Partner Onboarding Acceleration:</strong> Streamlined external partner integration APIs and developer onboarding contracts, increasing third-party onboarding throughput by <strong>40%</strong> and elevating client satisfaction scores to 80%.</li>
+          <li><strong>Predictive Failure Analytics:</strong> Built a proactive machine learning diagnostic service using FastAPI and Scikit-learn to analyze historical telemetry signals, predicting and flagging <strong>92% of configuration and pipeline failures</strong> before execution.</li>
+          <li><strong>Technical Leadership &amp; Governance:</strong> Spearhead technical architecture reviews, API security hardening, code reviews, and structured documentation across cross-functional engineering pods.</li>
+        </ul>
+      </div>
+
+      <!-- Successive Digital: Senior Associate Engineer -->
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Senior Associate Engineer</span> — <span class="entry-company">Successive Digital</span>
+          </div>
+          <span class="entry-dates">Jun 2021 – Aug 2023</span>
+        </div>
+        <div class="entry-subhead">
+          <span class="entry-location">Noida, India</span>
+          <span class="entry-tech"><strong>Core Tech:</strong> PHP (Laravel, Restler), SQL Server, Redis, Azure Active Directory, Application Insights, Git</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Payment Gateway Optimization:</strong> Engineered secure RESTful APIs for EFT and ACH transactional processing with Redis caching and SQL Server, achieving <strong>200+ TPS throughput</strong> with strict double-entry ledger ACID integrity.</li>
+          <li><strong>Latency &amp; Cache Tuning:</strong> Refined SQL execution plans, database indexes, and Redis key idempotency structures, driving a <strong>33%–40% latency reduction</strong> on critical high-traffic transaction endpoints.</li>
+          <li><strong>Observability &amp; Incident Reduction:</strong> Automated telemetry logging and alert routing via Azure Application Insights and dead-letter queues, cutting Mean Time to Resolution (MTTR) by <strong>40%</strong> and saving 14 operational hours per week.</li>
+          <li><strong>Enterprise Identity:</strong> Integrated tokenized Azure Active Directory (Azure AD) enterprise authentication, eliminating credential vulnerabilities and reducing authentication failures by 50%.</li>
+        </ul>
+      </div>
+
+      <!-- Successive Digital: Associate Engineer -->
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Associate Engineer</span> — <span class="entry-company">Successive Digital</span>
+          </div>
+          <span class="entry-dates">Jan 2021 – Jun 2021</span>
+        </div>
+        <div class="entry-subhead">
+          <span class="entry-location">Noida, India</span>
+          <span class="entry-tech"><strong>Core Tech:</strong> PHP, JavaScript, MySQL, REST APIs, Git</span>
+        </div>
+        <ul class="bullets">
+          <li>Engineered backend business logic modules and reusable RESTful endpoints using PHP and MySQL for high-availability web applications.</li>
+          <li>Investigated and resolved priority production tickets, implemented unit tests, and improved core system stability under peak user loads.</li>
+        </ul>
+      </div>
+
+      <!-- Cyborg Cyber Forensics: Analyst -->
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Analyst (Backend &amp; Security Systems)</span> — <span class="entry-company">Cyborg Cyber Forensics and Information Security (CCFIS)</span>
+          </div>
+          <span class="entry-dates">Feb 2019 – Dec 2020</span>
+        </div>
+        <div class="entry-subhead">
+          <span class="entry-location">Noida, India</span>
+          <span class="entry-tech"><strong>Core Tech:</strong> Python (Django, DRF), MySQL, Azure AD, OpenCV, Moodle, Bootstrap</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Internal Systems &amp; Inventory:</strong> Developed Django REST Framework (DRF) backend services and RBAC dashboards for internal operations, inventory audits, and helpdesk management, reducing manual intervention by <strong>50%</strong>.</li>
+          <li><strong>Enterprise LMS Architecture:</strong> Built and scaled an enterprise-wide Learning Management System (LMS) using Moodle and Azure AD authentication, supporting <strong>200,000+ concurrent learners</strong> with zero downtime.</li>
+          <li><strong>Computer Vision Proof of Concept:</strong> Researched and prototyped a facial recognition attendance verification POC using Python, OpenCV, and dlib, improving identification throughput by 40%.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- KEY PROJECTS -->
+    <section>
+      <h2 class="section-title">Key Engineering Projects</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Enterprise AI Analytics — Operational Intelligence Platform</span>
+          <span class="entry-dates">FastAPI, Python, Scikit-learn, SHAP, PostgreSQL, Docker</span>
+        </div>
+        <ul class="bullets">
+          <li>Co-developed a predictive machine learning service that flags <strong>92% of preventable pipeline execution and scheduling failures</strong> prior to run. Integrated SHAP explainability parser to output diagnostic logs and risk tips for platform operators.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Spire — High-Throughput Payment Processing Engine</span>
+          <span class="entry-dates">PHP, Laravel, Redis, SQL Server, Azure AD, REST APIs</span>
+        </div>
+        <ul class="bullets">
+          <li>Designed transactional EFT/ACH payment gateway handling <strong>200+ TPS</strong>. Implemented Redis idempotency checks and SQL connection pooling, reducing transaction read latency from 280ms to 45ms (84% reduction) with strict ACID guarantees.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">GenAI Customer Support &amp; Semantic Caching System (KagenAI)</span>
+          <span class="entry-dates">Python, LangGraph, OpenAI APIs, MongoDB Vector Search</span>
+        </div>
+        <ul class="bullets">
+          <li>Architected multi-agent state graph pipeline with semantic vector query caching. Automated <strong>70%+ of customer support volume</strong> and saved 97% on token expenses via semantic matching on historical resolutions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS & HONORS -->
+    <section>
+      <h2 class="section-title">Certifications &amp; Honors</h2>
+      <div class="compact-grid">
+        <div class="compact-item">
+          • <span class="item-title">AWS Certified Developer – Associate</span> — Amazon Web Services (AWS) | Oct 2023 – Oct 2026 (License: 71JSNNK2XBBE1MK6)
+        </div>
+        <div class="compact-item">
+          • <span class="item-title">MongoDB Certified Developer, Associate</span> — MongoDB | Jan 2023 (License: MDBrvz2rvo387)
+        </div>
+        <div class="compact-item">
+          • <span class="item-title">CTS: AI in Action</span> — Google Cloud (GC) | 2026
+        </div>
+        <div class="compact-item">
+          • <span class="item-title">Building AI Apps with MongoDB on AWS</span> — MongoDB + AWS | 2025
+        </div>
+        <div class="compact-item">
+          • <span class="item-title">Certified Agile Leadership Essentials (CAL-E)</span> — Scrum Alliance | 2023
+        </div>
+        <div class="compact-item">
+          • <span class="item-title">Machine Learning with Python</span> — IBM | 2023
+        </div>
+        <div class="compact-item">
+          • <span class="item-title">Quarterly Star Performer Award (Q3 2024)</span> &amp; <span class="item-title">Outstanding Performance Award (Q2 2024)</span> — Successive Digital
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section>
+      <h2 class="section-title">IEEE Conference Publications</h2>
+      <div class="compact-grid">
+        <div class="compact-item">
+          • <strong>Meta-BRISQUE: Cost Efficient Image Spoofing Detection for Realtime Face Applications</strong> — <em>IEEE Conference (2020)</em>. DOI: 10.1109/ICCMC48092.2020.9197918
+        </div>
+        <div class="compact-item">
+          • <strong>An EMD-Based Approach for Saliency Detection in Multimedia Data</strong> — <em>IEEE Conference (2020)</em>. DOI: 10.1109/ICCMC48092.2020.9058073
+        </div>
+        <div class="compact-item">
+          • <strong>A Review on Video Summarization Approaches: Recent Advances and Directions</strong> — <em>IEEE Conference (2019)</em>. DOI: 10.1109/ICETET-SIP-1946815.2019.8748574
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <h2 class="section-title">Education</h2>
+      <div class="compact-grid">
+        <div class="compact-item">
+          <div class="entry-header">
+            <div>
+              <span class="item-title">Master of Technology (M.Tech) in Computer Science &amp; Engineering</span> — Amity University
+            </div>
+            <span class="entry-dates">2017 – 2019</span>
+          </div>
+          <div class="item-meta">Focus: Video Summarization, Computer Vision &amp; Machine Learning | Corporate Resource Centre Member | Noida, India</div>
+        </div>
+        <div class="compact-item" style="margin-top: 3px;">
+          <div class="entry-header">
+            <div>
+              <span class="item-title">Bachelor of Technology (B.Tech) in Computer Science &amp; Engineering</span> — Echelon Institute of Technology (MDU)
+            </div>
+            <span class="entry-dates">2012 – 2016</span>
+          </div>
+          <div class="item-meta">Faridabad / New Delhi, India</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
