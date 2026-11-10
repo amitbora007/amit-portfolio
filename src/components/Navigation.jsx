@@ -67,8 +67,12 @@ export default function Navigation() {
     setMobileMenuOpen(false);
     const targetElement = document.querySelector(href);
     if (targetElement) {
+      const navOffset = 80;
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navOffset;
+
       window.scrollTo({
-        top: targetElement.offsetTop - 80, // Offset for sticky nav
+        top: offsetPosition,
         behavior: 'smooth',
       });
     }

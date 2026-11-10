@@ -82,13 +82,11 @@ export default function App() {
             </Suspense>
           </ErrorBoundary>
 
-          <section className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
+          <section id="achievements" className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               <ErrorBoundary sectionName="Achievements">
                 <Suspense fallback={<SectionFallback />}>
-                  <div id="achievements">
-                    <Achievements />
-                  </div>
+                  <Achievements />
                 </Suspense>
               </ErrorBoundary>
 
