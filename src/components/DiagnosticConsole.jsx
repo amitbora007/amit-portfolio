@@ -94,7 +94,7 @@ const queryKnowledgeBase = (query) => {
 
   // 10. General narrative / Who are you
   if (q.includes('who are you') || q.includes('about') || q.includes('amit') || q.includes('summary') || q.includes('bio') || q.includes('profile')) {
-    return `[KNOWLEDGE_BASE_HIT] About Amit Bora:\n  ${portfolioData.personalInfo.summary}\n\nNarrative Focus:\n  "Complexity is the enemy of reliability. Amit specializes in designing high-isolation backend architectures, secure payment integrations, and AI analytics pipelines."`;
+    return `[KNOWLEDGE_BASE_HIT] About Amit Bora:\n  ${portfolioData.personalInfo.summary}\n\nNarrative Focus:\n  "Complexity is the enemy of reliability. Amit specializes in designing resilient fullstack architectures, reactive user interfaces, secure payment integrations, and AI pipelines."`;
   }
 
   return null;
@@ -207,7 +207,7 @@ export default function DiagnosticConsole() {
       setHistory(prev => [
         ...prev.filter(line => !line.isThinking),
         {
-          text: `[AI_AGENT] Hello! I am Amit's AI Portfolio Assistant. Feel free to ask about Amit's backend experience, payment systems, AI RAG projects, or contact options!`,
+          text: `[AI_AGENT] Hello! I am Amit's AI Portfolio Assistant. Feel free to ask about Amit's fullstack engineering experience, React & microservices stack, payment systems, AI RAG projects, or contact options!`,
           type: 'ai'
         }
       ]);

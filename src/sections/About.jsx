@@ -21,14 +21,14 @@ export default function About() {
               ABOUT AMIT BORA
             </div>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
-              Engineering reliable backends with a systems-first mindset.
+              Engineering resilient fullstack applications with an architectural, systems-first approach.
             </h2>
             <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
               {about.narrative}
             </p>
             <div className="p-4 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 text-xs font-mono text-slate-500 dark:text-slate-400">
               <span className="text-brand-600 dark:text-brand-400 font-bold block mb-1">SYSTEMS FOCUS</span>
-              "Complexity is the enemy of reliability. I design systems with high isolation boundaries, explicit interface contracts, and trace diagnostics to assure rapid failure containment."
+              "Complexity is the enemy of reliability. I design fullstack architectures with clear interface boundaries, type-safe contracts, and end-to-end telemetry to assure rapid failure containment."
             </div>
           </div>
 

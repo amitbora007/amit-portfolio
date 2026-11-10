@@ -1,35 +1,35 @@
 export const portfolioData = {
   personalInfo: {
     name: 'Amit Bora',
-    title: 'Senior Backend Engineer',
+    title: 'Fullstack Engineer',
     location: 'New Delhi, India',
     email: 'amitbora007@gmail.com',
     linkedin: 'https://www.linkedin.com/in/amitbora2',
     github: 'https://github.com/amitbora007',
-    summary: 'Senior Backend Engineer with 7+ years of experience specializing in cloud-native microservices, secure REST APIs, scalable systems, payment processing, and AI-driven applications. I build enterprise-grade systems on AWS and Azure with a strong focus on reliability, security, performance, and maintainability. Passionate about clean architecture, performance tuning, and solving complex engineering challenges.'
+    summary: 'Fullstack Engineer with 7+ years of experience architecting end-to-end web applications, resilient cloud-native microservices, high-throughput payment gateways, and practical GenAI integrations. Experienced in delivering responsive, accessible frontends using React and modern JavaScript/TypeScript while anchoring high-availability backends across AWS and Azure. Passionate about clean architecture, performance tuning, and solving complex product challenges.'
   },
 
   trustIndicators: [
     { label: 'Experience', value: '7+ Years' },
-    { label: 'Focus', value: 'Payment Systems' },
-    { label: 'Cloud', value: 'Azure Microservices' },
+    { label: 'Fullstack Stack', value: 'React & Microservices' },
+    { label: 'Cloud & APIs', value: 'AWS, Azure & Payment APIs' },
     { label: 'AI Integration', value: 'Practical GenAI' }
   ],
 
   about: {
-    narrative: 'I am a backend-focused senior engineer specializing in designing and scaling secure payment gateways, distributed microservices, and AI-enabled software systems. My career is defined by transforming business requirements into high-throughput, low-latency API architectures that deliver measurable business impact. I focus heavily on systems thinking: designing for modularity, maintaining clear documentation, auditing security protocols, and ensuring robust monitoring and quick Mean Time to Resolution (MTTR).',
+    narrative: 'I am a senior fullstack engineer specializing in building responsive, product-focused web interfaces backed by resilient payment gateways, distributed microservices, and AI-enabled software systems. My career is defined by transforming complex business requirements into high-throughput, low-latency architectures with intuitive, accessible user experiences. I focus heavily on systems thinking: modular interface design, type-safe API contracts, auditing security protocols, and ensuring rapid Mean Time to Resolution (MTTR).',
     focusPoints: [
       {
-        title: 'Scalable Backend Systems',
-        description: 'Designing modular, high-throughput REST and event-driven APIs using PHP (Laravel) and Python (Django, FastAPI). Heavy emphasis on query optimization, caching strategies, and clean code.'
+        title: 'Fullstack Web Applications',
+        description: 'Crafting responsive, accessible user interfaces using React.js, Tailwind CSS, Bootstrap, MUI, and JavaScript/TypeScript with clean state management and type-safe API bindings.'
+      },
+      {
+        title: 'Scalable Backend & APIs',
+        description: 'Designing modular, high-throughput REST and GraphQL APIs using Python (FastAPI, Django) and PHP (Laravel). Heavy emphasis on query optimization, caching strategies, and clean code.'
       },
       {
         title: 'Payment Infrastructure',
         description: 'Building secure EFT and ACH payment platforms. Integrating compliance standards, tokenized authentication, and handling multi-tenant transactional workflows with transaction integrity.'
-      },
-      {
-        title: 'Cloud & Microservices',
-        description: 'Architecting serverless and queue-based microservices on AWS and Azure. Utilizing Azure Functions, Service Bus Queues, Key Vault, and Application Insights for reliable distributed processing.'
       },
       {
         title: 'AI-Enabled Applications',
@@ -57,25 +57,25 @@ export const portfolioData = {
           highlights: [
             'Architected microservices-based payment systems using PHP/Python with Azure Functions, Service Bus, and Key Vault.',
             'Integrated Generative AI into customer service workflows, increasing partner onboarding throughput by 40% and overall client satisfaction by 80%.',
-            'Collaborated in AI-driven predictive analytics solutions to identify pipeline failures using historical signals, enabling proactive system monitoring.',
-            'Led architecture reviews, mentoring, code reviews, and structured documentation across cross-functional teams.'
+            'Collaborated in AI-driven predictive analytics solutions with interactive diagnostic dashboards to identify pipeline failures, enabling proactive system monitoring.',
+            'Led architecture reviews, mentoring, code reviews, and structured documentation across cross-functional engineering pods.'
           ]
         },
         {
           title: 'Senior Associate Engineer',
           period: 'Jun 2021 - Aug 2023',
           highlights: [
-            'Developed and maintained backend modules using PHP and SQL Server for scalable web applications.',
-            'Improved application performance by optimizing database queries and refining caching logic.',
-            'Built reusable APIs and services, reducing development cycles and improving system consistency across services.'
+            'Delivered core fullstack modules, reusable RESTful endpoints, and database schemas with Redis caching for scalable web platforms.',
+            'Improved application performance by optimizing SQL queries, indexes, and front-to-back latency on high-traffic endpoints.',
+            'Built reusable APIs and merchant integration interfaces, reducing onboarding cycles and ensuring transactional integrity.'
           ]
         },
         {
           title: 'Associate Engineer',
           period: 'Jan 2021 - Jun 2021',
           highlights: [
-            'Developed backend features using PHP and JavaScript, contributing to core features of enterprise applications.',
-            'Assisted in debugging, resolving production incidents, and improving system stability under high load.'
+            'Built end-to-end features using PHP, JavaScript, and MySQL, implementing UI components and backend business logic for enterprise applications.',
+            'Assisted in debugging, resolving production incidents, writing automated tests, and improving system stability under high load.'
           ]
         }
       ]
@@ -88,9 +88,8 @@ export const portfolioData = {
           title: 'Analyst',
           period: 'Feb 2019 - Dec 2020',
           highlights: [
-            'Developed Django + DRF-based role-based dashboard applications and secure internal data analysis tools.',
-            'Reduced manual intervention in ticket queues and inventory audits by 50%.',
-            'Implemented custom Learning Management System (LMS) utilizing Moodle and Azure AD, scaling to support 50K+ students.',
+            'Developed fullstack role-based dashboards (Django, DRF, Bootstrap) and secure internal data analysis tools, reducing manual intervention by 50%.',
+            'Implemented custom Learning Management System (LMS) utilizing Moodle and Azure AD, scaling to support 50K+ concurrent learners with optimized asset delivery.',
             'Built a Face Recognition-based Attendance Proof of Concept (POC) using Python, OpenCV, and dlib.'
           ]
         }
@@ -114,49 +113,49 @@ export const portfolioData = {
   projects: [
     {
       title: 'Enterprise AI Analytics — Operational Intelligence',
-      context: 'Collaborative machine learning model preventing data pipeline failures before execution.',
-      stack: ['Python', 'Scikit-learn', 'SHAP (Explainable AI)', 'PostgreSQL', 'FastAPI'],
-      whatIBuilt: 'Co-trained a Predictive model on historical execution patterns (schedules, metadata) for the Project. Integrated a SHAP explainability layer to output diagnostic logs and risk warnings during pipeline creation.',
+      context: 'Fullstack machine learning system predicting and preventing data pipeline failures before execution.',
+      stack: ['FastAPI', 'Python', 'React.js', 'Scikit-learn', 'SHAP (Explainable AI)', 'PostgreSQL', 'Docker'],
+      whatIBuilt: 'Built an end-to-end predictive diagnostic application featuring a reactive operator dashboard and ML inference service. Co-trained a model on historical pipeline runs and integrated SHAP explainability to display real-time configuration tips and risk warnings.',
       metrics: 'Flags 92% of preventable configuration and scheduling failures before first run.',
       architectureNotes: 'Structured FastAPI routes to serve predictions. Built a feature-store pipeline in PostgreSQL to aggregate execution signals. Used SHAP to compile diagnostic logs, converting model coefficients into actionable configuration tips.'
     },
     {
       title: 'Payment Processing System',
-      context: 'Secure EFT and ACH payment platform processing high-volume transactions.',
-      stack: ['PHP', 'Laravel', 'Redis', 'SQL Server', 'Azure AD'],
-      whatIBuilt: 'Designed secure transactional REST APIs with Redis caching layers and SQL Server backend. Integrated tokenized Azure AD authentication for enterprise clients.',
+      context: 'Secure EFT and ACH payment platform processing high-volume transactions with merchant admin interfaces.',
+      stack: ['PHP', 'Laravel', 'React.js', 'Redis', 'SQL Server', 'Azure AD'],
+      whatIBuilt: 'Designed secure transactional REST APIs paired with merchant management interfaces. Engineered secure EFT/ACH transaction pipelines with Redis caching layers, idempotency verification, and tokenized Azure AD authentication.',
       metrics: 'Reduced latency by 40% and achieved a processing throughput of 200+ TPS.',
       architectureNotes: 'Leveraged Redis for transactional idempotency checks and caching of active merchant sessions, reducing load on SQL Server. Utilized connection pooling and query splitting to maintain ACID compliance under high load.'
     },
     {
       title: 'Microservices Based Payment Processing Integration',
-      context: 'Re-architecturing and implementing microservices connecting Main platform and third party systems.',
-      stack: ['Azure Functions', 'Azure Service Bus', 'Azure Key Vault', 'Application Insights'],
-      whatIBuilt: 'Architected a queue-based asynchronous integration using Azure Functions and Service Bus. Safeguarded credentials with Azure Key Vault and added trace telemetry.',
+      context: 'Re-architecturing and implementing microservices connecting main platform, web portals, and third-party systems.',
+      stack: ['Azure Functions', 'Azure Service Bus', 'Azure Key Vault', 'Application Insights', 'REST APIs'],
+      whatIBuilt: 'Architected a queue-based asynchronous integration using Azure Functions and Service Bus. Safeguarded credentials with Azure Key Vault, implemented dead-letter re-routing, and added trace telemetry.',
       metrics: 'Reduced operational overhead by 14 hours/week and improved Mean Time to Resolution (MTTR) by 40%.',
       architectureNotes: 'Implemented dead-letter queues on Azure Service Bus to gracefully handle integration failures, trigger alert notifications, and support message replay mechanism once systems recover.'
     },
     {
       title: 'GenAI Based Customer Support System',
-      context: 'Intelligent support platform automating ticket resolution and workflows.',
-      stack: ['Python', 'OpenAI APIs', 'LangGraph', 'MongoDB Vector DB'],
-      whatIBuilt: 'Developed multi-agent retrieval-augmented generation (RAG) graphs using LangGraph. Built a vector-search database using MongoDB for caching semantic query matches.',
+      context: 'Intelligent fullstack support platform automating ticket resolution with interactive agent interface.',
+      stack: ['Python', 'OpenAI APIs', 'LangGraph', 'React.js', 'MongoDB Vector DB'],
+      whatIBuilt: 'Developed multi-agent retrieval-augmented generation (RAG) graphs with a real-time conversational chat frontend. Built a vector-search database using MongoDB for caching semantic query matches to preserve API tokens.',
       metrics: 'Automated 70%+ of customer support queries and reduced average response time by 10 minutes.',
       architectureNotes: 'Designed agent pathways with state persistence so multi-turn conversations maintain context. Built semantic search checks on input prompts to immediately serve cached historical responses, preserving API tokens.'
     },
     {
       title: 'Inventory Management System',
-      context: 'Role-based control panel and reporting dashboard.',
-      stack: ['Python', 'Django', 'Django REST Framework', 'MySQL'],
-      whatIBuilt: 'Developed a secure role-based dashboard for hardware inventory audits, license tracking, and automated procurement flags.',
+      context: 'Role-based fullstack control panel and reporting dashboard.',
+      stack: ['Python', 'Django', 'Django REST Framework', 'Bootstrap / UI', 'MySQL'],
+      whatIBuilt: 'Developed a secure role-based dashboard for hardware inventory audits, license tracking, and automated procurement flags with dynamic data tables and export workflows.',
       metrics: 'Reduced manual logging effort by 40% and improved inventory reporting accuracy by 80%.',
       architectureNotes: 'Constructed custom middleware to intercept queries and enforce field-level data permissions based on active security clearance levels.'
     },
     {
       title: 'Learning Management System',
-      context: 'Enterprise training platform for scaling student education.',
-      stack: ['Moodle', 'PHP', 'Azure AD', 'MySQL'],
-      whatIBuilt: 'Integrated Moodle core system with enterprise Azure AD authentication, optimizing session caching and asset loading for huge scale.',
+      context: 'Enterprise training platform for scaling student education with responsive web interface.',
+      stack: ['Moodle', 'PHP', 'JavaScript', 'Azure AD', 'MySQL'],
+      whatIBuilt: 'Integrated Moodle core system with enterprise Azure AD authentication, optimizing frontend asset delivery, session caching, and asset loading for massive concurrent scale.',
       metrics: 'Supported 200K concurrent learners, reduced login/access tickets by 50%, and boosted completion rates by 40%.',
       architectureNotes: 'Optimized high-traffic login routes by offloading session validation to Azure AD token verification on the client, minimizing backend database reads during concurrent usage spikes.'
     }
@@ -164,24 +163,24 @@ export const portfolioData = {
 
   skills: [
     {
-      category: 'Backend Engineering',
-      items: ['PHP (Laravel, Restler)', 'Python (Django, FastAPI, DRF)', 'Node.js (Express)', 'RESTful APIs', 'System Architecture', 'Microservices', 'Event-Driven Systems']
+      category: 'Frontend Engineering',
+      items: ['React.js', 'JavaScript (ES6+)', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'MUI (Material-UI)', 'State Management', 'Responsive UI/UX', 'REST & GraphQL Integration']
+    },
+    {
+      category: 'Backend & APIs',
+      items: ['FastAPI', 'Python (Django, DRF)', 'PHP (Laravel, Restler)', 'Node.js (Express)', 'RESTful API Design', 'GraphQL APIs', 'Microservices', 'Event-Driven Systems']
     },
     {
       category: 'Cloud & Infrastructure',
-      items: ['AWS (EC2, S3, RDS)', 'Azure Functions', 'Azure Service Bus', 'Azure Key Vault', 'Azure Active Directory', 'Docker', 'Vercel', 'Render', 'Netlify']
+      items: ['AWS (EC2, S3, RDS, Lambda)', 'Azure Functions', 'Azure Service Bus', 'Azure Key Vault', 'Azure Active Directory', 'Docker', 'CI/CD Pipelines', 'GCP', 'Vercel']
     },
     {
       category: 'Databases & Caching',
-      items: ['SQL Server', 'MySQL', 'MongoDB', 'Redis Caching', 'Vector Databases', 'Query Optimization', 'Data Modeling']
+      items: ['PostgreSQL', 'SQL Server', 'MySQL', 'MongoDB', 'Redis Caching & Idempotency', 'Vector Databases', 'Query Optimization', 'Data Modeling']
     },
     {
       category: 'AI & Intelligent Systems',
-      items: ['OpenAI APIs', 'LangGraph (Multi-Agent)', 'RAG Pipelines', 'Scikit-learn', 'OpenCV (Computer Vision)', 'Copilot', 'Antigravity', 'Opencode-cli', 'Gemini-cli']
-    },
-    {
-      category: 'Frontend & Integrations',
-      items: ['React.js', 'Tailwind CSS', 'JavaScript (ES6+)', 'Power BI Reporting', 'Git / GitHub']
+      items: ['OpenAI APIs', 'LangGraph (Multi-Agent)', 'RAG Pipelines', 'Scikit-learn', 'OpenCV (Computer Vision)', 'SHAP (Explainable AI)', 'Copilot', 'Antigravity']
     }
   ],
 

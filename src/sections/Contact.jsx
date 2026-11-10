@@ -231,7 +231,7 @@ export default function Contact() {
             Connect & Collaborate
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
-            Interested in scaling your backend infrastructure, implementing payment systems, or integrating practical AI pipelines? Let's discuss.
+            Interested in building modern fullstack applications, scaling cloud services, or integrating practical AI pipelines? Let's discuss.
           </p>
         </div>
 
@@ -276,7 +276,7 @@ export default function Contact() {
                     <div>
                       <span className="font-sans font-bold text-slate-700 dark:text-slate-300">Live Availability Status</span>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed mt-0.5">
-                        Open to select senior backend engineer roles, payment migrations, and system scaling contracts.
+                        Open to select Fullstack Engineer roles, payment integrations, and system scaling contracts.
                       </p>
                     </div>
                   </div>
@@ -336,7 +336,7 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                
+
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-rose-50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/50 rounded-lg text-rose-700 dark:text-rose-400 text-xs sm:text-sm flex gap-3 items-start">
                     <AlertTriangle className="h-5 w-5 shrink-0" />
@@ -464,11 +464,11 @@ export default function Contact() {
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
                     <span className="text-[8px] text-slate-600 tracking-wider uppercase font-bold">LIVE_VAL</span>
                   </div>
-                  
+
                   <div className="text-slate-500 font-bold border-b border-slate-900 pb-1.5 mb-2">
                     amit-bora@compiler:~$ validate --schema=contact
                   </div>
-                  
+
                   <div className="flex items-start gap-1">
                     <span className="text-brand-500 font-bold shrink-0">[INIT]</span>
                     <span className="text-slate-500">loaded zod schema contract bindings</span>
@@ -489,7 +489,7 @@ export default function Contact() {
                   <div className="flex items-start gap-1">
                     {getMessageStatus()}
                   </div>
-                  
+
                   <div className="border-t border-slate-900 pt-1.5 mt-2 flex justify-between font-bold text-slate-500">
                     <span>[SYSTEM] Status:</span>
                     {getSystemStatus()}

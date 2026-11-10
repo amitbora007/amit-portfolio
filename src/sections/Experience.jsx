@@ -30,7 +30,7 @@ export default function Experience() {
             Professional Experience
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
-            A progression of building, securing, and scaling distributed backend architectures for enterprise operations.
+            A progression of designing, building, and delivering scalable fullstack solutions and cloud-native systems for enterprise operations.
           </p>
         </div>
 

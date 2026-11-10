@@ -3,7 +3,11 @@ import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
 const colorStyles = {
-  'Backend Engineering': {
+  'Frontend Engineering': {
+    cardBorder: 'border-l-[5px] border-l-sky-500 dark:border-l-sky-400',
+    headerDot: 'bg-sky-500',
+  },
+  'Backend & APIs': {
     cardBorder: 'border-l-[5px] border-l-brand-600 dark:border-l-brand-500',
     headerDot: 'bg-brand-500',
   },
@@ -18,51 +22,57 @@ const colorStyles = {
   'AI & Intelligent Systems': {
     cardBorder: 'border-l-[5px] border-l-indigo-500 dark:border-l-indigo-500',
     headerDot: 'bg-indigo-500',
-  },
-  'Frontend & Integrations': {
-    cardBorder: 'border-l-[5px] border-l-slate-400 dark:border-l-slate-600',
-    headerDot: 'bg-slate-400 dark:bg-slate-600',
   }
 };
 
 const skillConnections = {
-  // Languages & Frameworks
-  'PHP (Laravel, Restler)': ['SQL Server', 'MySQL', 'Redis Caching', 'RESTful APIs', 'System Architecture', 'Microservices', 'Azure Functions', 'Azure Service Bus'],
-  'Python (Django, FastAPI, DRF)': ['MySQL', 'MongoDB', 'Redis Caching', 'RESTful APIs', 'System Architecture', 'Microservices', 'Docker', 'OpenAI APIs', 'LangGraph (Multi-Agent)', 'RAG Pipelines', 'Vector Databases'],
-  'Node.js (Express)': ['MongoDB', 'RESTful APIs', 'Docker', 'System Architecture'],
+  // Frontend
+  'React.js': ['JavaScript (ES6+)', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'MUI (Material-UI)', 'RESTful API Design', 'GraphQL APIs', 'FastAPI', 'State Management'],
+  'TypeScript': ['React.js', 'JavaScript (ES6+)', 'Node.js (Express)', 'RESTful API Design', 'GraphQL APIs'],
+  'JavaScript (ES6+)': ['React.js', 'TypeScript', 'Tailwind CSS', 'Node.js (Express)'],
+  'Tailwind CSS': ['React.js', 'Responsive UI/UX'],
+  'Bootstrap': ['React.js', 'Python (Django, DRF)', 'Responsive UI/UX'],
+  'MUI (Material-UI)': ['React.js', 'TypeScript', 'Responsive UI/UX'],
+  'State Management': ['React.js', 'TypeScript', 'RESTful API Design'],
+  'Responsive UI/UX': ['React.js', 'Tailwind CSS', 'Bootstrap'],
+  'REST & GraphQL Integration': ['React.js', 'FastAPI', 'GraphQL APIs', 'RESTful API Design'],
+
+  // Backend & APIs
+  'FastAPI': ['Python (Django, DRF)', 'PostgreSQL', 'Docker', 'OpenAI APIs', 'React.js', 'RESTful API Design'],
+  'Python (Django, DRF)': ['FastAPI', 'PostgreSQL', 'MySQL', 'MongoDB', 'Docker', 'OpenAI APIs', 'LangGraph (Multi-Agent)', 'RAG Pipelines', 'Vector Databases'],
+  'PHP (Laravel, Restler)': ['SQL Server', 'MySQL', 'Redis Caching & Idempotency', 'RESTful API Design', 'Azure Functions', 'Azure Service Bus'],
+  'Node.js (Express)': ['MongoDB', 'TypeScript', 'Docker', 'RESTful API Design', 'React.js'],
+  'RESTful API Design': ['FastAPI', 'PHP (Laravel, Restler)', 'Python (Django, DRF)', 'React.js', 'Microservices'],
+  'GraphQL APIs': ['React.js', 'TypeScript', 'Node.js (Express)', 'FastAPI', 'Microservices'],
+  'Microservices': ['Azure Functions', 'Azure Service Bus', 'Docker', 'FastAPI', 'PHP (Laravel, Restler)'],
+  'Event-Driven Systems': ['Azure Service Bus', 'Azure Functions', 'Redis Caching & Idempotency', 'Microservices'],
 
   // Cloud
-  'Azure Functions': ['PHP (Laravel, Restler)', 'Python (Django, FastAPI, DRF)', 'Azure Service Bus', 'Azure Key Vault', 'Azure Active Directory', 'Microservices'],
-  'Azure Service Bus': ['PHP (Laravel, Restler)', 'Python (Django, FastAPI, DRF)', 'Azure Functions', 'Microservices', 'Event-Driven Systems'],
-  'Azure Key Vault': ['Azure Functions', 'Azure Service Bus', 'System Architecture'],
-  'Azure Active Directory': ['React.js', 'System Architecture', 'RESTful APIs'],
-  'AWS (EC2, S3, RDS)': ['SQL Server', 'MySQL', 'MongoDB', 'Docker', 'CI/CD Pipelines'],
+  'Azure Functions': ['PHP (Laravel, Restler)', 'FastAPI', 'Azure Service Bus', 'Azure Key Vault', 'Azure Active Directory', 'Microservices'],
+  'Azure Service Bus': ['Azure Functions', 'Microservices', 'Event-Driven Systems'],
+  'Azure Key Vault': ['Azure Functions', 'Azure Service Bus'],
+  'Azure Active Directory': ['React.js', 'RESTful API Design'],
+  'AWS (EC2, S3, RDS, Lambda)': ['SQL Server', 'MySQL', 'MongoDB', 'Docker', 'CI/CD Pipelines'],
+  'Docker': ['AWS (EC2, S3, RDS, Lambda)', 'CI/CD Pipelines', 'FastAPI', 'Node.js (Express)'],
+  'CI/CD Pipelines': ['Docker', 'AWS (EC2, S3, RDS, Lambda)', 'Vercel'],
+  'GCP': ['Docker', 'CI/CD Pipelines'],
+  'Vercel': ['React.js', 'CI/CD Pipelines'],
 
   // Databases
-  'SQL Server': ['PHP (Laravel, Restler)', 'AWS (EC2, S3, RDS)', 'Query Optimization', 'Data Modeling'],
-  'MySQL': ['PHP (Laravel, Restler)', 'Python (Django, FastAPI, DRF)', 'AWS (EC2, S3, RDS)', 'Query Optimization', 'Data Modeling'],
-  'MongoDB': ['Python (Django, FastAPI, DRF)', 'Node.js (Express)', 'Vector Databases', 'OpenAI APIs', 'Data Modeling'],
-  'Redis Caching': ['PHP (Laravel, Restler)', 'Python (Django, FastAPI, DRF)', 'RESTful APIs', 'System Architecture', 'Microservices'],
-  'Vector Databases': ['Python (Django, FastAPI, DRF)', 'MongoDB', 'OpenAI APIs', 'LangGraph (Multi-Agent)', 'RAG Pipelines'],
+  'PostgreSQL': ['FastAPI', 'Python (Django, DRF)', 'Data Modeling', 'Query Optimization'],
+  'SQL Server': ['PHP (Laravel, Restler)', 'AWS (EC2, S3, RDS, Lambda)', 'Query Optimization', 'Data Modeling'],
+  'MySQL': ['PHP (Laravel, Restler)', 'Python (Django, DRF)', 'AWS (EC2, S3, RDS, Lambda)', 'Query Optimization', 'Data Modeling'],
+  'MongoDB': ['Python (Django, DRF)', 'Node.js (Express)', 'Vector Databases', 'OpenAI APIs', 'Data Modeling'],
+  'Redis Caching & Idempotency': ['PHP (Laravel, Restler)', 'FastAPI', 'RESTful API Design', 'Microservices'],
+  'Vector Databases': ['Python (Django, DRF)', 'MongoDB', 'OpenAI APIs', 'LangGraph (Multi-Agent)', 'RAG Pipelines'],
 
   // AI
-  'OpenAI APIs': ['Python (Django, FastAPI, DRF)', 'LangGraph (Multi-Agent)', 'RAG Pipelines', 'Vector Databases', 'MongoDB'],
-  'LangGraph (Multi-Agent)': ['Python (Django, FastAPI, DRF)', 'OpenAI APIs', 'RAG Pipelines', 'Vector Databases'],
-  'RAG Pipelines': ['Python (Django, FastAPI, DRF)', 'OpenAI APIs', 'LangGraph (Multi-Agent)', 'Vector Databases', 'MongoDB'],
-
-  // Frontend
-  'React.js': ['JavaScript (ES6+)', 'Tailwind CSS', 'Git / GitHub', 'RESTful APIs'],
-  'Tailwind CSS': ['React.js', 'JavaScript (ES6+)'],
-  'JavaScript (ES6+)': ['React.js', 'Tailwind CSS', 'Node.js (Express)'],
-
-  // General concepts
-  'RESTful APIs': ['PHP (Laravel, Restler)', 'Python (Django, FastAPI, DRF)', 'Node.js (Express)', 'React.js', 'System Architecture'],
-  'System Architecture': ['PHP (Laravel, Restler)', 'Python (Django, FastAPI, DRF)', 'Microservices', 'Event-Driven Systems', 'Cloud & Infrastructure'],
-  'Microservices': ['PHP (Laravel, Restler)', 'Python (Django, FastAPI, DRF)', 'Azure Functions', 'Azure Service Bus', 'System Architecture', 'Docker'],
-  'Event-Driven Systems': ['PHP (Laravel, Restler)', 'Python (Django, FastAPI, DRF)', 'Azure Service Bus', 'System Architecture', 'Microservices'],
-  'Docker': ['AWS (EC2, S3, RDS)', 'CI/CD Pipelines', 'Python (Django, FastAPI, DRF)', 'Node.js (Express)'],
-  'CI/CD Pipelines': ['Docker', 'AWS (EC2, S3, RDS)', 'Git / GitHub'],
-  'Git / GitHub': ['CI/CD Pipelines', 'React.js']
+  'OpenAI APIs': ['Python (Django, DRF)', 'LangGraph (Multi-Agent)', 'RAG Pipelines', 'Vector Databases', 'MongoDB'],
+  'LangGraph (Multi-Agent)': ['Python (Django, DRF)', 'OpenAI APIs', 'RAG Pipelines', 'Vector Databases'],
+  'RAG Pipelines': ['Python (Django, DRF)', 'OpenAI APIs', 'LangGraph (Multi-Agent)', 'Vector Databases', 'MongoDB'],
+  'Scikit-learn': ['FastAPI', 'Python (Django, DRF)', 'SHAP (Explainable AI)'],
+  'SHAP (Explainable AI)': ['Scikit-learn', 'FastAPI', 'Python (Django, DRF)'],
+  'OpenCV (Computer Vision)': ['Python (Django, DRF)']
 };
 
 export default function Skills() {

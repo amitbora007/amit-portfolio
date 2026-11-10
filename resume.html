@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Amit Bora - Senior Backend Engineer Resume</title>
+  <title>Amit Bora - Fullstack Engineer Resume</title>
   <style>
     @page {
       size: A4;
-      margin: 10.5mm 13mm 10.5mm 13mm;
+      margin: 8mm 12mm 8mm 12mm;
     }
 
     * {
@@ -17,9 +17,9 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 9.1pt;
-      line-height: 1.37;
-      color: #1f2937;
+      font-size: 8.75pt;
+      line-height: 1.39;
+      color: #1e293b;
       background: #ffffff;
       -webkit-font-smoothing: antialiased;
     }
@@ -37,93 +37,106 @@
     /* Header */
     header {
       border-bottom: 2px solid #0f766e;
-      padding-bottom: 6px;
-      margin-bottom: 9px;
+      padding-bottom: 5px;
+      margin-bottom: 7px;
       text-align: center;
     }
 
     h1 {
-      font-size: 21pt;
+      font-size: 19.5pt;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      color: #111827;
+      letter-spacing: -0.4px;
+      color: #0f172a;
       text-transform: uppercase;
-      margin-bottom: 2px;
+      margin-bottom: 1.5px;
     }
 
     .title {
-      font-size: 10.5pt;
+      font-size: 9.8pt;
       font-weight: 700;
       color: #0f766e;
-      margin-bottom: 4px;
-      letter-spacing: 0.4px;
+      margin-bottom: 3.5px;
+      letter-spacing: 0.3px;
     }
 
     .contact-info {
-      font-size: 8.3pt;
-      color: #4b5563;
+      font-size: 8.1pt;
+      color: #475569;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5px;
+    }
+
+    .contact-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .contact-info span {
+    .contact-row span {
       display: inline-flex;
       align-items: center;
     }
 
-    .contact-info span:not(:last-child)::after {
+    .contact-row span:not(:last-child)::after {
       content: "•";
-      margin-left: 8px;
-      color: #9ca3af;
+      margin-left: 6px;
+      color: #94a3b8;
     }
 
     /* Section Headings */
     section {
-      margin-bottom: 9px;
+      margin-bottom: 6px;
     }
 
     .section-title {
-      font-size: 9.6pt;
+      font-size: 9.2pt;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.7px;
+      letter-spacing: 0.6px;
       color: #0f766e;
-      border-bottom: 1px solid #d1d5db;
-      padding-bottom: 1.5px;
-      margin-bottom: 5px;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 1px;
+      margin-bottom: 4px;
     }
 
     /* Summary */
     .summary-text {
-      font-size: 8.9pt;
-      color: #374151;
+      font-size: 8.65pt;
+      color: #334155;
       text-align: justify;
       line-height: 1.4;
     }
 
-    /* Skills Grid */
+    /* Skills Grid - Perfect 2-column alignment */
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5px;
+    }
+
     .skills-group {
-      margin-bottom: 3px;
-      font-size: 8.7pt;
-      line-height: 1.35;
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      column-gap: 8px;
+      font-size: 8.55pt;
+      line-height: 1.37;
     }
 
     .skills-category {
       font-weight: 700;
-      color: #111827;
-      min-width: 148px;
-      display: inline-block;
+      color: #0f172a;
     }
 
     .skills-list {
-      color: #374151;
+      color: #334155;
     }
 
     /* Work Experience & Projects */
     .entry {
-      margin-bottom: 7px;
+      margin-bottom: 5.5px;
       break-inside: avoid;
       page-break-inside: avoid;
     }
@@ -132,13 +145,14 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      gap: 8px;
       margin-bottom: 1px;
     }
 
     .entry-title {
-      font-size: 9.4pt;
+      font-size: 9.1pt;
       font-weight: 700;
-      color: #111827;
+      color: #0f172a;
     }
 
     .entry-company {
@@ -147,77 +161,175 @@
     }
 
     .entry-dates {
-      font-size: 8.3pt;
+      font-size: 8.1pt;
       font-weight: 600;
-      color: #4b5563;
+      color: #475569;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .entry-location {
-      font-size: 8.3pt;
+      font-size: 8pt;
       font-style: italic;
-      color: #6b7280;
+      color: #64748b;
     }
 
     .entry-subhead {
       display: flex;
       justify-content: space-between;
-      font-size: 8.4pt;
-      margin-bottom: 2px;
+      align-items: baseline;
+      font-size: 8.1pt;
+      margin-bottom: 1.5px;
+      gap: 8px;
     }
 
     .entry-tech {
-      font-size: 8pt;
+      font-size: 7.9pt;
       font-style: italic;
-      color: #4b5563;
-      margin-bottom: 2px;
+      color: #475569;
+      text-align: right;
     }
 
     .entry-tech strong {
       font-style: normal;
-      color: #111827;
+      color: #0f172a;
     }
 
     ul.bullets {
       list-style-type: disc;
-      margin-left: 15px;
+      margin-left: 14px;
       margin-top: 1px;
     }
 
     ul.bullets li {
-      font-size: 8.8pt;
-      color: #374151;
-      margin-bottom: 1.8px;
-      line-height: 1.34;
+      font-size: 8.55pt;
+      color: #334155;
+      margin-bottom: 1.5px;
+      line-height: 1.36;
       text-align: justify;
     }
 
     ul.bullets li strong {
-      color: #111827;
+      color: #0f172a;
+      font-weight: 600;
     }
 
-    /* Publications, Certs, Education */
-    .compact-grid {
+    /* Projects styling */
+    .project-entry {
+      margin-bottom: 4px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 1px;
+    }
+
+    .project-title {
+      font-size: 8.85pt;
+      font-weight: 700;
+      color: #0f172a;
+      flex: 1;
+    }
+
+    .project-tech {
+      font-size: 7.8pt;
+      font-style: italic;
+      color: #475569;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* Certifications Grid (2 columns for clean balance) */
+    .cert-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 3.5px;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 14px;
+      row-gap: 2.5px;
+    }
+
+    .cert-item {
+      font-size: 8.2pt;
+      line-height: 1.32;
+      color: #334155;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .cert-title {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .cert-meta {
+      color: #64748b;
+      font-size: 7.8pt;
+    }
+
+    /* Achievements list */
+    .achieve-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5px;
+    }
+
+    .achieve-item {
+      font-size: 8.35pt;
+      line-height: 1.34;
+      color: #334155;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .achieve-title {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .achieve-org {
+      font-weight: 600;
+      color: #0f766e;
+    }
+
+    .achieve-date {
+      color: #64748b;
+      font-weight: 600;
+      font-size: 7.9pt;
+    }
+
+    /* Publications & Education */
+    .compact-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5px;
     }
 
     .compact-item {
-      font-size: 8.7pt;
+      font-size: 8.35pt;
       line-height: 1.32;
+      color: #334155;
       break-inside: avoid;
       page-break-inside: avoid;
     }
 
     .compact-item .item-title {
       font-weight: 700;
-      color: #111827;
+      color: #0f172a;
     }
 
     .compact-item .item-meta {
-      font-size: 8.2pt;
-      color: #4b5563;
+      font-size: 7.9pt;
+      color: #64748b;
+    }
+
+    /* Explicit Page Break */
+    .page-break {
+      page-break-before: always;
+      break-before: page;
     }
 
     /* Print settings */
@@ -239,24 +351,34 @@
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
+      .page-break {
+        page-break-before: always !important;
+        break-before: page !important;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     
+    <!-- ==================== PAGE 1 ==================== -->
+    
     <!-- HEADER -->
     <header>
       <h1>Amit Bora</h1>
-      <div class="title">Senior Backend Engineer | Cloud-Native Microservices | Payment Systems | Practical AI</div>
+      <div class="title">Fullstack Engineer | Cloud-Native Microservices | Payment Systems | Practical AI</div>
       <div class="contact-info">
-        <span>New Delhi, India</span>
-        <span><a href="tel:+918527520048">+91 8527520048</a></span>
-        <span><a href="mailto:amitbora007@gmail.com">amitbora007@gmail.com</a></span>
-        <span><a href="https://amitbora.vercel.app">Portfolio: amitbora.vercel.app</a></span>
-        <span><a href="https://www.linkedin.com/in/amitbora2">LinkedIn: in/amitbora2</a></span>
-        <span><a href="https://github.com/amitbora007">GitHub: amitbora007</a></span>
-        <span><a href="https://www.credly.com/users/amit.bora">Credly: amit.bora</a></span>
+        <div class="contact-row">
+          <span>New Delhi, India</span>
+          <span><a href="tel:+918527520048">+91 8527520048</a></span>
+          <span><a href="mailto:amitbora007@gmail.com">amitbora007@gmail.com</a></span>
+          <span><a href="https://amitbora.vercel.app">Portfolio: amitbora.vercel.app</a></span>
+        </div>
+        <div class="contact-row">
+          <span><a href="https://www.linkedin.com/in/amitbora2">LinkedIn: in/amitbora2</a></span>
+          <span><a href="https://github.com/amitbora007">GitHub: amitbora007</a></span>
+          <span><a href="https://www.credly.com/users/amit.bora">Credly: amit.bora</a></span>
+        </div>
       </div>
     </header>
 
@@ -264,40 +386,46 @@
     <section>
       <h2 class="section-title">Professional Summary</h2>
       <p class="summary-text">
-        Senior Backend Engineer with <strong>7+ years of experience</strong> architecting, scaling, and securing enterprise microservices, high-throughput payment gateways, and production Generative AI integrations. Proven track record leading backend engineering at Successive Digital, optimizing API performance by <strong>33%–40%</strong>, sustaining <strong>200+ TPS</strong> workloads, and lowering MTTR by 40% on Azure and AWS cloud infrastructures. Certified AWS Developer and MongoDB Associate Developer with 3 published IEEE research papers in machine learning and computer vision. Strong proponent of clean architecture, transactional idempotency, and resilient distributed systems.
+        Fullstack Engineer with <strong>7+ years of experience</strong> building high-craft web applications, scalable cloud microservices, high-throughput payment gateways, and production Generative AI integrations. Proven track record engineering fullstack systems at Successive Digital, pairing reactive React.js frontends and modern UI architectures with distributed backends, optimizing API performance by <strong>33%–40%</strong>, sustaining <strong>200+ TPS</strong> transactional workloads, and cutting MTTR by 40% across Azure and AWS. Certified AWS Developer, MongoDB Associate Developer &amp; GraphQL Developer with 3 published IEEE research papers. Passionate about end-to-end system design, type-safe contracts, transactional idempotency, and responsive user experiences.
       </p>
     </section>
 
     <!-- TECHNICAL SKILLS -->
     <section>
       <h2 class="section-title">Technical Skills</h2>
-      <div class="skills-group">
-        <span class="skills-category">Backend &amp; Languages:</span>
-        <span class="skills-list">Python (3.x), PHP (7/8), JavaScript (ES6+), TypeScript, SQL, Bash, Object-Oriented Programming (OOP)</span>
-      </div>
-      <div class="skills-group">
-        <span class="skills-category">Frameworks &amp; APIs:</span>
-        <span class="skills-list">FastAPI, Django, Django REST Framework (DRF), Laravel, Restler, Node.js (Express), RESTful API Design</span>
-      </div>
-      <div class="skills-group">
-        <span class="skills-category">Cloud &amp; Infrastructure:</span>
-        <span class="skills-list">Azure (Functions, Service Bus Queues, Key Vault, Azure AD / Entra ID, App Insights), AWS (EC2, S3, RDS, Lambda), Docker</span>
-      </div>
-      <div class="skills-group">
-        <span class="skills-category">Databases &amp; Caching:</span>
-        <span class="skills-list">Microsoft SQL Server, MySQL, PostgreSQL, MongoDB, Redis (In-Memory Caching &amp; Idempotency), Vector DBs</span>
-      </div>
-      <div class="skills-group">
-        <span class="skills-category">AI &amp; Machine Learning:</span>
-        <span class="skills-list">LangGraph (Multi-Agent State Graphs), OpenAI APIs, RAG Pipelines, Scikit-learn, OpenCV, SHAP (Explainable AI)</span>
-      </div>
-      <div class="skills-group">
-        <span class="skills-category">Architecture &amp; Practices:</span>
-        <span class="skills-list">Microservices, Event-Driven Architecture, Asynchronous Messaging, ACID Compliance, RBAC / OAuth2, CI/CD, Agile/Scrum</span>
+      <div class="skills-container">
+        <div class="skills-group">
+          <span class="skills-category">Languages:</span>
+          <span class="skills-list">JavaScript (ES6+), TypeScript, Python (3.x), PHP (7/8), SQL, HTML5/CSS3</span>
+        </div>
+        <div class="skills-group">
+          <span class="skills-category">Frontend:</span>
+          <span class="skills-list">React.js, Tailwind CSS, Bootstrap, Material-UI (MUI), State Management, Responsive Web Design</span>
+        </div>
+        <div class="skills-group">
+          <span class="skills-category">Backend &amp; APIs:</span>
+          <span class="skills-list">FastAPI, Node.js (Express), Django / DRF, Laravel, Restler, RESTful APIs, GraphQL</span>
+        </div>
+        <div class="skills-group">
+          <span class="skills-category">Cloud &amp; Infrastructure:</span>
+          <span class="skills-list">Azure (Functions, Service Bus Queues, Key Vault, Azure AD / Entra ID, App Insights), AWS (EC2, S3, RDS, Lambda), Docker, CI/CD</span>
+        </div>
+        <div class="skills-group">
+          <span class="skills-category">Databases &amp; Caching:</span>
+          <span class="skills-list">Microsoft SQL Server, MySQL, PostgreSQL, MongoDB, Redis (In-Memory Caching &amp; Idempotency)</span>
+        </div>
+        <div class="skills-group">
+          <span class="skills-category">AI &amp; Intelligent Systems:</span>
+          <span class="skills-list">LangGraph, OpenAI APIs, RAG Pipelines, Vector Search, Scikit-learn, OpenCV, SHAP</span>
+        </div>
+        <div class="skills-group">
+          <span class="skills-category">Architecture &amp; Practices:</span>
+          <span class="skills-list">Fullstack Systems Architecture, Microservices, Event-Driven Design, ACID Compliance, RBAC / OAuth2, Agile/Scrum</span>
+        </div>
       </div>
     </section>
 
-    <!-- PROFESSIONAL EXPERIENCE -->
+    <!-- WORK EXPERIENCE (PART 1) -->
     <section>
       <h2 class="section-title">Work Experience</h2>
 
@@ -311,19 +439,19 @@
         </div>
         <div class="entry-subhead">
           <span class="entry-location">Noida, India</span>
-          <span class="entry-tech"><strong>Core Tech:</strong> Python, PHP, Azure Functions, Azure Service Bus, Key Vault, LangGraph, OpenAI APIs, SQL Server</span>
+          <span class="entry-tech"><strong>Core Tech:</strong> Python, React.js, Azure Functions, Azure Service Bus, Key Vault, LangGraph, OpenAI APIs, SQL Server</span>
         </div>
         <ul class="bullets">
-          <li><strong>Cloud Microservices Architecture:</strong> Architected serverless, event-driven payment processing pipelines across Azure Functions, Service Bus Queues, and Key Vault, ensuring 99.95% operational availability and secure token handling.</li>
-          <li><strong>Generative AI Integration:</strong> Spearheaded integration of multi-agent GenAI customer service agents (LangGraph, OpenAI APIs, MongoDB Vector Search), autonomously resolving <strong>70%+ of support queries</strong> and reducing average response times by 10 minutes.</li>
-          <li><strong>Partner Onboarding Acceleration:</strong> Streamlined external partner integration APIs and developer onboarding contracts, increasing third-party onboarding throughput by <strong>40%</strong> and elevating client satisfaction scores to 80%.</li>
-          <li><strong>Predictive Failure Analytics:</strong> Built a proactive machine learning diagnostic service using FastAPI and Scikit-learn to analyze historical telemetry signals, predicting and flagging <strong>92% of configuration and pipeline failures</strong> before execution.</li>
-          <li><strong>Technical Leadership &amp; Governance:</strong> Spearhead technical architecture reviews, API security hardening, code reviews, and structured documentation across cross-functional engineering pods.</li>
+          <li><strong>Cloud Microservices Architecture:</strong> Architected serverless, event-driven payment processing pipelines and administrative dashboard interfaces across Azure Functions, Service Bus Queues, and Key Vault, ensuring 99.95% operational availability and secure token handling.</li>
+          <li><strong>Generative AI Integration:</strong> Spearheaded integration of multi-agent GenAI customer service agents (LangGraph, OpenAI APIs, MongoDB Vector Search) with reactive web chat interfaces, autonomously resolving <strong>70%+ of support queries</strong> and reducing average response times by 10 minutes.</li>
+          <li><strong>Partner Onboarding Acceleration:</strong> Streamlined external partner integration APIs and developer onboarding portals, increasing third-party onboarding throughput by <strong>40%</strong> and elevating client satisfaction scores to 80%.</li>
+          <li><strong>Predictive Failure Analytics:</strong> Built a proactive machine learning diagnostic service and telemetry views using FastAPI and Scikit-learn to analyze historical signals, predicting and flagging <strong>92% of configuration and pipeline failures</strong> before execution.</li>
+          <li><strong>Technical Leadership &amp; Governance:</strong> Spearhead technical architecture reviews, API security hardening, frontend/backend code reviews, and structured documentation across cross-functional engineering pods.</li>
         </ul>
       </div>
 
       <!-- Successive Digital: Senior Associate Engineer -->
-      <div class="entry">
+      <div class="entry" style="margin-bottom: 0;">
         <div class="entry-header">
           <div>
             <span class="entry-title">Senior Associate Engineer</span> — <span class="entry-company">Successive Digital</span>
@@ -332,15 +460,23 @@
         </div>
         <div class="entry-subhead">
           <span class="entry-location">Noida, India</span>
-          <span class="entry-tech"><strong>Core Tech:</strong> PHP (Laravel, Restler), SQL Server, Redis, Azure Active Directory, Application Insights, Git</span>
+          <span class="entry-tech"><strong>Core Tech:</strong> PHP (Laravel, Restler), JavaScript, SQL Server, Redis, Azure Active Directory, Application Insights, Git</span>
         </div>
         <ul class="bullets">
-          <li><strong>Payment Gateway Optimization:</strong> Engineered secure RESTful APIs for EFT and ACH transactional processing with Redis caching and SQL Server, achieving <strong>200+ TPS throughput</strong> with strict double-entry ledger ACID integrity.</li>
+          <li><strong>Payment Gateway Optimization:</strong> Engineered secure RESTful APIs and merchant portal integrations for EFT and ACH transactional processing with Redis caching and SQL Server, achieving <strong>200+ TPS throughput</strong> with strict double-entry ledger ACID integrity.</li>
           <li><strong>Latency &amp; Cache Tuning:</strong> Refined SQL execution plans, database indexes, and Redis key idempotency structures, driving a <strong>33%–40% latency reduction</strong> on critical high-traffic transaction endpoints.</li>
           <li><strong>Observability &amp; Incident Reduction:</strong> Automated telemetry logging and alert routing via Azure Application Insights and dead-letter queues, cutting Mean Time to Resolution (MTTR) by <strong>40%</strong> and saving 14 operational hours per week.</li>
           <li><strong>Enterprise Identity:</strong> Integrated tokenized Azure Active Directory (Azure AD) enterprise authentication, eliminating credential vulnerabilities and reducing authentication failures by 50%.</li>
         </ul>
       </div>
+    </section>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="page-break"></div>
+
+    <!-- WORK EXPERIENCE (PART 2) -->
+    <section style="margin-top: 2px;">
+      <h2 class="section-title">Work Experience (Continued)</h2>
 
       <!-- Successive Digital: Associate Engineer -->
       <div class="entry">
@@ -352,11 +488,11 @@
         </div>
         <div class="entry-subhead">
           <span class="entry-location">Noida, India</span>
-          <span class="entry-tech"><strong>Core Tech:</strong> PHP, JavaScript, MySQL, REST APIs, Git</span>
+          <span class="entry-tech"><strong>Core Tech:</strong> JavaScript, PHP, MySQL, REST APIs, Git</span>
         </div>
         <ul class="bullets">
-          <li>Engineered backend business logic modules and reusable RESTful endpoints using PHP and MySQL for high-availability web applications.</li>
-          <li>Investigated and resolved priority production tickets, implemented unit tests, and improved core system stability under peak user loads.</li>
+          <li><strong>Fullstack Web Engineering:</strong> Engineered fullstack web modules, responsive UI components, and reusable RESTful endpoints using JavaScript, PHP, and MySQL for high-availability applications.</li>
+          <li><strong>Production Stability:</strong> Investigated and resolved priority production tickets, implemented unit tests, and improved core system stability under peak user loads.</li>
         </ul>
       </div>
 
@@ -364,86 +500,127 @@
       <div class="entry">
         <div class="entry-header">
           <div>
-            <span class="entry-title">Analyst (Backend &amp; Security Systems)</span> — <span class="entry-company">Cyborg Cyber Forensics and Information Security (CCFIS)</span>
+            <span class="entry-title">Analyst (Fullstack &amp; Security Systems)</span> — <span class="entry-company">Cyborg Cyber Forensics (CCFIS)</span>
           </div>
           <span class="entry-dates">Feb 2019 – Dec 2020</span>
         </div>
         <div class="entry-subhead">
           <span class="entry-location">Noida, India</span>
-          <span class="entry-tech"><strong>Core Tech:</strong> Python (Django, DRF), MySQL, Azure AD, OpenCV, Moodle, Bootstrap</span>
+          <span class="entry-tech"><strong>Core Tech:</strong> Python (Django, DRF), Bootstrap, MySQL, Azure AD, OpenCV, Moodle</span>
         </div>
         <ul class="bullets">
-          <li><strong>Internal Systems &amp; Inventory:</strong> Developed Django REST Framework (DRF) backend services and RBAC dashboards for internal operations, inventory audits, and helpdesk management, reducing manual intervention by <strong>50%</strong>.</li>
+          <li><strong>Internal Systems &amp; Inventory:</strong> Developed Django REST Framework (DRF) backend services and responsive Bootstrap / RBAC portals for internal operations, inventory audits, and helpdesk management, reducing manual intervention by <strong>50%</strong>.</li>
           <li><strong>Enterprise LMS Architecture:</strong> Built and scaled an enterprise-wide Learning Management System (LMS) using Moodle and Azure AD authentication, supporting <strong>200,000+ concurrent learners</strong> with zero downtime.</li>
           <li><strong>Computer Vision Proof of Concept:</strong> Researched and prototyped a facial recognition attendance verification POC using Python, OpenCV, and dlib, improving identification throughput by 40%.</li>
+          <li><strong>Security &amp; Compliance:</strong> Enforced strict field-level role-based access control (RBAC) and compliance audit logging for sensitive cyber forensics datasets.</li>
         </ul>
       </div>
     </section>
 
-    <!-- KEY PROJECTS -->
+    <!-- KEY ENGINEERING PROJECTS -->
     <section>
       <h2 class="section-title">Key Engineering Projects</h2>
 
-      <div class="entry">
-        <div class="entry-header">
-          <span class="entry-title">Enterprise AI Analytics — Operational Intelligence Platform</span>
-          <span class="entry-dates">FastAPI, Python, Scikit-learn, SHAP, PostgreSQL, Docker</span>
+      <div class="project-entry">
+        <div class="project-header">
+          <span class="project-title">Enterprise AI Analytics — Operational Intelligence Platform</span>
+          <span class="project-tech">FastAPI, Python, React, Scikit-learn, SHAP, PostgreSQL, Docker</span>
         </div>
         <ul class="bullets">
-          <li>Co-developed a predictive machine learning service that flags <strong>92% of preventable pipeline execution and scheduling failures</strong> prior to run. Integrated SHAP explainability parser to output diagnostic logs and risk tips for platform operators.</li>
+          <li>Built a predictive ML service and telemetry dashboard that flags <strong>92% of preventable pipeline execution and scheduling failures</strong> prior to run; integrated SHAP explainability parser to output diagnostic logs and risk tips.</li>
         </ul>
       </div>
 
-      <div class="entry">
-        <div class="entry-header">
-          <span class="entry-title">Spire — High-Throughput Payment Processing Engine</span>
-          <span class="entry-dates">PHP, Laravel, Redis, SQL Server, Azure AD, REST APIs</span>
+      <div class="project-entry">
+        <div class="project-header">
+          <span class="project-title">Spire — High-Throughput Payment Processing Engine</span>
+          <span class="project-tech">PHP, Laravel, React/Blade, Redis, SQL Server, Azure AD, REST APIs</span>
         </div>
         <ul class="bullets">
-          <li>Designed transactional EFT/ACH payment gateway handling <strong>200+ TPS</strong>. Implemented Redis idempotency checks and SQL connection pooling, reducing transaction read latency from 280ms to 45ms (84% reduction) with strict ACID guarantees.</li>
+          <li>Designed transactional EFT/ACH payment gateway and merchant administration console handling <strong>200+ TPS</strong>; implemented Redis idempotency checks and SQL connection pooling, reducing transaction read latency from 280ms to 45ms (84% reduction) with strict ACID guarantees.</li>
         </ul>
       </div>
 
-      <div class="entry">
-        <div class="entry-header">
-          <span class="entry-title">GenAI Customer Support &amp; Semantic Caching System (KagenAI)</span>
-          <span class="entry-dates">Python, LangGraph, OpenAI APIs, MongoDB Vector Search</span>
+      <div class="project-entry">
+        <div class="project-header">
+          <span class="project-title">Microservices-Based Payment Integration Pipeline</span>
+          <span class="project-tech">Azure Functions, Azure Service Bus, Key Vault, App Insights</span>
         </div>
         <ul class="bullets">
-          <li>Architected multi-agent state graph pipeline with semantic vector query caching. Automated <strong>70%+ of customer support volume</strong> and saved 97% on token expenses via semantic matching on historical resolutions.</li>
+          <li>Architected serverless integration pipelines for decoupled third-party payment settlement; automated error recovery via dead-letter queues, saving 14 operational hours/week.</li>
+        </ul>
+      </div>
+
+      <div class="project-entry">
+        <div class="project-header">
+          <span class="project-title">GenAI Customer Support &amp; Semantic Caching (KagenAI)</span>
+          <span class="project-tech">Python, React, LangGraph, OpenAI APIs, MongoDB Vector Search</span>
+        </div>
+        <ul class="bullets">
+          <li>Architected multi-agent state graph pipeline with reactive chat interface and semantic vector query caching; automated <strong>70%+ of customer support volume</strong> and saved 97% on token expenses via semantic matching on historical resolutions.</li>
         </ul>
       </div>
     </section>
 
-    <!-- CERTIFICATIONS & HONORS -->
+    <!-- CERTIFICATIONS -->
     <section>
-      <h2 class="section-title">Certifications &amp; Honors</h2>
-      <div class="compact-grid">
-        <div class="compact-item">
-          • <span class="item-title">AWS Certified Developer – Associate</span> — Amazon Web Services (AWS) | Oct 2023 – Oct 2026 (License: 71JSNNK2XBBE1MK6)
+      <h2 class="section-title">Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert-item">
+          • <span class="cert-title">AWS Certified Developer – Associate</span><br>
+          <span class="cert-meta">Amazon Web Services | Oct 2023 – Oct 2026 (License: 71JSNNK2XBBE1MK6)</span>
         </div>
-        <div class="compact-item">
-          • <span class="item-title">MongoDB Certified Developer, Associate</span> — MongoDB | Jan 2023 (License: MDBrvz2rvo387)
+        <div class="cert-item">
+          • <span class="cert-title">MongoDB Certified Developer, Associate</span><br>
+          <span class="cert-meta">MongoDB | Jan 2023 (License: MDBrvz2rvo387)</span>
         </div>
-        <div class="compact-item">
-          • <span class="item-title">CTS: AI in Action</span> — Google Cloud (GC) | 2026
+        <div class="cert-item">
+          • <span class="cert-title">GraphQL Certified Developer</span><br>
+          <span class="cert-meta">Apollo / GraphQL Foundation | 2024</span>
         </div>
-        <div class="compact-item">
-          • <span class="item-title">Building AI Apps with MongoDB on AWS</span> — MongoDB + AWS | 2025
+        <div class="cert-item">
+          • <span class="cert-title">CTS: AI in Action</span><br>
+          <span class="cert-meta">Google Cloud (GC) | 2026 (Credential: 8cd4cbaa)</span>
         </div>
-        <div class="compact-item">
-          • <span class="item-title">Certified Agile Leadership Essentials (CAL-E)</span> — Scrum Alliance | 2023
+        <div class="cert-item">
+          • <span class="cert-title">Building AI Apps with MongoDB on AWS</span><br>
+          <span class="cert-meta">MongoDB + AWS | 2025 (Credential: 7f8ed941)</span>
         </div>
-        <div class="compact-item">
-          • <span class="item-title">Machine Learning with Python</span> — IBM | 2023
+        <div class="cert-item">
+          • <span class="cert-title">Certified Agile Leadership Essentials (CAL-E)</span><br>
+          <span class="cert-meta">Scrum Alliance | 2023</span>
         </div>
-        <div class="compact-item">
-          • <span class="item-title">Quarterly Star Performer Award (Q3 2024)</span> &amp; <span class="item-title">Outstanding Performance Award (Q2 2024)</span> — Successive Digital
+        <div class="cert-item">
+          • <span class="cert-title">Machine Learning with Python</span><br>
+          <span class="cert-meta">IBM | 2023 (Credential: 99301c5c)</span>
+        </div>
+        <div class="cert-item">
+          • <span class="cert-title">Docker Essentials</span><br>
+          <span class="cert-meta">IBM | 2023 (License: b2c28cd9)</span>
         </div>
       </div>
     </section>
 
-    <!-- PUBLICATIONS -->
+    <!-- HONORS & ACHIEVEMENTS -->
+    <section>
+      <h2 class="section-title">Honors &amp; Achievements</h2>
+      <div class="achieve-list">
+        <div class="achieve-item">
+          • <span class="achieve-title">Quarterly Star Performer Award</span> — <span class="achieve-org">Successive Digital</span> <span class="achieve-date">(Q3 2024)</span>:
+          Awarded for outstanding technical excellence, high ownership, and critical backend delivery under challenging deadlines.
+        </div>
+        <div class="achieve-item">
+          • <span class="achieve-title">Outstanding Performance Award</span> — <span class="achieve-org">Successive Digital</span> <span class="achieve-date">(Q2 2024)</span>:
+          Recognized for excellent engineering contributions, database optimization (40% latency reduction), and peer mentorship.
+        </div>
+        <div class="achieve-item">
+          • <span class="achieve-title">Special Recognition Award</span> — <span class="achieve-org">Successive Digital</span> <span class="achieve-date">(Q4 2023)</span>:
+          Honored for building innovative AI automated support workflows and robust microservice telemetry monitoring pipelines.
+        </div>
+      </div>
+    </section>
+
+    <!-- IEEE PUBLICATIONS -->
     <section>
       <h2 class="section-title">IEEE Conference Publications</h2>
       <div class="compact-grid">
@@ -470,9 +647,9 @@
             </div>
             <span class="entry-dates">2017 – 2019</span>
           </div>
-          <div class="item-meta">Focus: Video Summarization, Computer Vision &amp; Machine Learning | Corporate Resource Centre Member | Noida, India</div>
+          <div class="item-meta">Focus: Video Summarization, Computer Vision &amp; Machine Learning | Noida, India</div>
         </div>
-        <div class="compact-item" style="margin-top: 3px;">
+        <div class="compact-item" style="margin-top: 1.5px;">
           <div class="entry-header">
             <div>
               <span class="item-title">Bachelor of Technology (B.Tech) in Computer Science &amp; Engineering</span> — Echelon Institute of Technology (MDU)

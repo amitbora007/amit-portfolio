@@ -30,7 +30,7 @@ export default function Footer() {
             AMIT BORA
           </a>
           <span className="block text-xs text-slate-400 dark:text-slate-500 mt-1">
-            Senior Backend Engineer • New Delhi, India
+            Fullstack Engineer • New Delhi, India
           </span>
         </div>
 

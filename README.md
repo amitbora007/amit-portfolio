@@ -1,6 +1,6 @@
-# Amit Bora — Systems Engineering Portfolio & Contact API
+# Amit Bora — Fullstack Engineering Portfolio & Contact API
 
-A high-fidelity, production-grade personal portfolio website showcasing **Amit Bora (Senior Backend/Systems Engineer)**. The project features a responsive React SPA styled with **Tailwind CSS v4** and animated with **Framer Motion**, backed by a secure **Vercel Serverless / Express** mail delivery API.
+A high-fidelity, production-grade personal portfolio website showcasing **Amit Bora (Fullstack Engineer & Systems Architect)**. The project features a responsive React SPA styled with **Tailwind CSS v4** and animated with **Framer Motion**, backed by a secure **Vercel Serverless / Express** mail delivery API.
 
 ---
 

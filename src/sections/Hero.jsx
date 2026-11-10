@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Server } from 'lucide-react';
+import { ArrowRight, Mail, Layers } from 'lucide-react';
 import AnimatedGrid from '../components/AnimatedGrid';
 import TrustCard from '../components/TrustCard';
 import { portfolioData } from '../data/portfolioData';
@@ -35,8 +35,8 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="mb-6 flex items-center gap-2 bg-brand-500/10 dark:bg-brand-500/5 border border-brand-500/20 dark:border-brand-500/10 text-brand-700 dark:text-brand-400 px-4.5 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase"
         >
-          <Server className="h-3.5 w-3.5" />
-          Senior Systems Architect
+          <Layers className="h-3.5 w-3.5" />
+          Fullstack Systems Engineer
         </motion.div>
 
         {/* Display Headline */}
@@ -46,11 +46,11 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-slate-800 dark:text-slate-100 tracking-tight leading-[1.08] max-w-4xl mb-6"
         >
-          I build secure, scalable{' '}
+          I architect and build scalable{' '}
           <span className="text-brand-600 dark:text-brand-400 font-extrabold">
-            backend systems
-          </span>{' '}
-          for payments and AI-enabled workflows.
+            fullstack systems
+          </span>{', '}
+          payment gateways, and practical AI solutions.
         </motion.h1>
 
         {/* Supporting Paragraph */}

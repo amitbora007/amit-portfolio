@@ -9,7 +9,7 @@ web
 ## Users
 
 - **Primary**: Technical recruiters, engineering hiring managers, Staff/Principal Engineers, and VP/CTOs at high-growth tech companies and enterprise engineering orgs.
-- **Situation**: Evaluating candidates for Senior Backend Engineer, Tech Lead, Distributed Systems, and Systems Architect roles under time constraints (typically a 30-to-90 second initial scan, followed by a deeper 5-to-10 minute architectural inspection).
+- **Situation**: Evaluating candidates for Fullstack Engineer, Tech Lead, Distributed Systems, and Systems Architect roles under time constraints (typically a 30-to-90 second initial scan, followed by a deeper 5-to-10 minute architectural inspection).
 - **Job to be Done**: Verify that Amit Bora has true engineering depth—resilient transactional architectures, cloud microservices, database tuning, practical AI systems, and technical leadership—and establish rapid, low-friction contact.
 
 ## Product Purpose

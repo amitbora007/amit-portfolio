@@ -11,9 +11,9 @@ const chatSchema = z.object({
 const SYSTEM_PROMPT = `You are the AI Systems Assistant embedded in Amit Bora's portfolio website. Your job is to answer questions from recruiters, hiring managers, and engineers about Amit Bora's career, technical skills, projects/case studies, certifications, and availability professionally, accurately, and thoroughly.
 
 ABOUT AMIT BORA:
-- Senior Backend Engineer & Systems Architect with 8+ years of experience building secure, high-throughput backend applications, payment gateways, microservices, and AI-driven platforms.
-- Core Stack: PHP (Laravel, Restler), Python (Django, FastAPI, DRF), Node.js (Express), RESTful APIs, Microservices, Event-Driven Systems.
-- Cloud & Datastores: AWS (EC2, S3, RDS), Azure Functions, Azure Service Bus, Azure Key Vault, Azure Active Directory, Docker, SQL Server, MySQL, PostgreSQL, Redis Caching, MongoDB Vector DB.
+- Fullstack Engineer & Systems Architect with 7+ years of experience building responsive, product-focused web frontends, resilient microservices, high-throughput payment gateways, and practical AI applications.
+- Core Stack: React.js, Tailwind CSS, JavaScript (ES6+), TypeScript, Python (Django, FastAPI, DRF), PHP (Laravel, Restler), Node.js (Express), RESTful & GraphQL APIs, Microservices, Event-Driven Systems.
+- Cloud & Datastores: AWS (EC2, S3, RDS, Lambda), Azure Functions, Azure Service Bus, Azure Key Vault, Azure Active Directory, Docker, SQL Server, MySQL, PostgreSQL, Redis Caching, MongoDB Vector DB, GCP.
 - AI Capabilities: OpenAI APIs, LangGraph Multi-Agent RAG Pipelines, Scikit-learn, OpenCV, SHAP Explainability.
 
 DETAILED CASE STUDIES & PROJECTS (ALWAYS PROVIDE DETAILED BREAKDOWNS WHEN ASKED ABOUT PROJECTS OR CASE STUDIES):
@@ -265,7 +265,7 @@ function generateFallbackReply(msg) {
   }
 
   if (m.includes('skill') || m.includes('stack') || m.includes('technology') || m.includes('language')) {
-    return "Amit's core technical stack includes:\n• Backend: PHP (Laravel, Restler), Python (Django, FastAPI), Node.js (Express)\n• Datastores: SQL Server, MySQL, PostgreSQL, Redis Caching, MongoDB Vector DB\n• Cloud & Infra: AWS (EC2, S3, RDS), Azure Functions, Azure Service Bus, Docker\n• AI: OpenAI APIs, LangGraph multi-agent RAG, Scikit-learn, SHAP";
+    return "Amit's core fullstack technical stack includes:\n• Frontend: React.js, JavaScript (ES6+), TypeScript, Tailwind CSS, Bootstrap, MUI\n• Backend & APIs: FastAPI, Python (Django, DRF), PHP (Laravel, Restler), Node.js (Express), GraphQL & REST APIs\n• Datastores: PostgreSQL, SQL Server, MySQL, MongoDB, Redis Caching & Idempotency\n• Cloud & Infra: AWS (EC2, S3, RDS, Lambda), Azure (Functions, Service Bus, Key Vault), Docker, CI/CD\n• AI: OpenAI APIs, LangGraph multi-agent RAG, Scikit-learn, SHAP";
   }
 
   if (m.includes('experience') || m.includes('work') || m.includes('company') || m.includes('job') || m.includes('role')) {
