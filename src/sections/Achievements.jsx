@@ -256,6 +256,9 @@ export default function Achievements() {
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 md:backdrop-blur-sm cursor-zoom-out"
           >
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="achievement-modal-title"
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
@@ -269,7 +272,7 @@ export default function Achievements() {
                   <span className="text-[10px] font-mono tracking-widest text-brand-400 font-bold uppercase">
                     {selectedImg.organization} • {selectedImg.date}
                   </span>
-                  <h3 className="text-sm font-bold truncate pr-6">{selectedImg.title}</h3>
+                  <h3 id="achievement-modal-title" className="text-sm font-bold truncate pr-6">{selectedImg.title}</h3>
                 </div>
                 <button
                   onClick={() => setSelectedImg(null)}

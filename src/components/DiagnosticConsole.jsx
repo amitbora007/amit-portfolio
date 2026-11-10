@@ -129,9 +129,13 @@ export default function DiagnosticConsole() {
     return () => window.removeEventListener('open-console', handleOpen);
   }, []);
 
-  // Listen for global backtick keypress to toggle console
+  // Listen for global backtick keypress to toggle console and Escape to close
   useEffect(() => {
     const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+        return;
+      }
       const isInputActive = ['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName) || document.activeElement?.isContentEditable;
       if ((e.ctrlKey && e.key === '`') || (e.key === '`' && !isInputActive)) {
         e.preventDefault();
@@ -140,7 +144,7 @@ export default function DiagnosticConsole() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [isOpen]);
 
   const handleAiQuery = async (queryText, currentHistory) => {
     setIsAiLoading(true);
@@ -370,6 +374,8 @@ export default function DiagnosticConsole() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            role="region"
+            aria-label="AI Systems Terminal Console"
             initial={{ opacity: 0, scale: 0.9, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 50 }}
