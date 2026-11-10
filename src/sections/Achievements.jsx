@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Trophy, Calendar, Sparkles, X, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -10,6 +10,7 @@ export default function Achievements() {
   const [selectedImg, setSelectedImg] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const autoslideTimer = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
 
   // Autoslide effect
   useEffect(() => {
@@ -46,28 +47,42 @@ export default function Achievements() {
     setActiveSlide((prev) => (prev - 1 + achievements.length) % achievements.length);
   };
 
-  // Framer Motion variant for slide animations
+  // Framer Motion variant for 3D cinematic slide animations
   const slideVariants = {
-    enter: (dir) => ({
-      x: dir > 0 ? '100%' : '-100%',
-      opacity: 0,
-    }),
+    enter: (dir) =>
+      shouldReduceMotion
+        ? { opacity: 0 }
+        : {
+            x: dir > 0 ? '50%' : '-50%',
+            rotateY: dir > 0 ? 15 : -15,
+            z: -40,
+            opacity: 0,
+          },
     center: {
       x: 0,
+      rotateY: 0,
+      z: 0,
       opacity: 1,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
-        opacity: { duration: 0.3 },
+        x: { type: 'spring', stiffness: 260, damping: 28 },
+        rotateY: { type: 'spring', stiffness: 260, damping: 28 },
+        opacity: { duration: 0.35, ease: 'easeOut' },
       },
     },
-    exit: (dir) => ({
-      x: dir > 0 ? '-100%' : '100%',
-      opacity: 0,
-      transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
-        opacity: { duration: 0.3 },
-      },
-    }),
+    exit: (dir) =>
+      shouldReduceMotion
+        ? { opacity: 0 }
+        : {
+            x: dir > 0 ? '-50%' : '50%',
+            rotateY: dir > 0 ? -15 : 15,
+            z: -40,
+            opacity: 0,
+            transition: {
+              x: { duration: 0.3, ease: 'easeIn' },
+              rotateY: { duration: 0.3, ease: 'easeIn' },
+              opacity: { duration: 0.25 },
+            },
+          },
   };
 
   if (!achievements || achievements.length === 0) {
@@ -114,7 +129,10 @@ export default function Achievements() {
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Main Slider Panel */}
-        <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl overflow-hidden relative shadow-sm min-h-[440px] sm:min-h-[380px] md:min-h-[340px] lg:min-h-[330px]">
+        <div
+          className="bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl overflow-hidden relative shadow-sm min-h-[440px] sm:min-h-[380px] md:min-h-[340px] lg:min-h-[330px]"
+          style={{ perspective: 1200 }}
+        >
           {/* Left Side Accent Line */}
           <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-brand-500 dark:bg-brand-400 z-20" />
 
@@ -126,10 +144,11 @@ export default function Achievements() {
               initial="enter"
               animate="center"
               exit="exit"
+              style={{ transformStyle: 'preserve-3d' }}
               className="w-full h-full p-6 sm:p-7 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center absolute inset-0"
             >
               {/* Text Metadata (Columns 1-7) */}
-              <div className="sm:col-span-7 space-y-4">
+              <div className="sm:col-span-7 space-y-4" style={{ transform: 'translateZ(14px)' }}>
                 {/* Meta details */}
                 <div className="flex items-center justify-between text-[9px] text-slate-400 dark:text-slate-500 font-mono border-b border-slate-200 dark:border-slate-800/50 pb-2.5">
                   <span className="font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">
@@ -158,7 +177,7 @@ export default function Achievements() {
               </div>
 
               {/* Certificate Image Frame (Columns 8-12) */}
-              <div className="sm:col-span-5 flex justify-center">
+              <div className="sm:col-span-5 flex justify-center" style={{ transform: 'translateZ(20px)' }}>
                 <div
                   onClick={() => setSelectedImg(currentItem)}
                   className="w-full max-w-[180px] aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 cursor-pointer bg-slate-900 group/thumb relative shadow-sm"

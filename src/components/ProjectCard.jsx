@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Layers, CheckCircle2, Cpu, Database } from 'lucide-react';
+import TiltCard from './TiltCard';
 
 export default function ProjectCard({ project, index }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,9 +11,9 @@ export default function ProjectCard({ project, index }) {
   const renderSystemVisual = (title) => {
     if (title.includes('Spire — Payment') || title.includes('Payment Processing')) {
       return (
-        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4">
-          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono">SYS_ARCH: EFT/ACH GATEWAY</div>
-          <div className="flex items-center gap-2 sm:gap-4 text-xs font-mono text-slate-300">
+        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono" style={{ transform: 'translateZ(10px)' }}>SYS_ARCH: EFT/ACH GATEWAY</div>
+          <div className="flex items-center gap-2 sm:gap-4 text-xs font-mono text-slate-300" style={{ transform: 'translateZ(22px)', transformStyle: 'preserve-3d' }}>
             
             {/* Client API Node */}
             <div 
@@ -105,9 +106,9 @@ export default function ProjectCard({ project, index }) {
       );
     } else if (title.includes('Microservices Payment') || title.includes('Microservices Based')) {
       return (
-        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4">
-          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono">SYS_ARCH: ASYNC QUEUE PIPELINE</div>
-          <div className="flex flex-col gap-3 items-center text-xs font-mono text-slate-300 w-full px-4 sm:px-8">
+        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono" style={{ transform: 'translateZ(10px)' }}>SYS_ARCH: ASYNC QUEUE PIPELINE</div>
+          <div className="flex flex-col gap-3 items-center text-xs font-mono text-slate-300 w-full px-4 sm:px-8" style={{ transform: 'translateZ(22px)', transformStyle: 'preserve-3d' }}>
             
             <div className="flex justify-between w-full">
               
@@ -189,9 +190,9 @@ export default function ProjectCard({ project, index }) {
       );
     } else if (title.includes('GenAI Customer') || title.includes('GenAI Based')) {
       return (
-        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4">
-          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono">SYS_ARCH: MULTI-AGENT STATE GRAPH</div>
-          <div className="flex items-center gap-1.5 sm:gap-2 text-xs font-mono text-slate-300">
+        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono" style={{ transform: 'translateZ(10px)' }}>SYS_ARCH: MULTI-AGENT STATE GRAPH</div>
+          <div className="flex items-center gap-1.5 sm:gap-2 text-xs font-mono text-slate-300" style={{ transform: 'translateZ(22px)', transformStyle: 'preserve-3d' }}>
             
             {/* Query Router Node */}
             <div 
@@ -300,9 +301,9 @@ export default function ProjectCard({ project, index }) {
       );
     } else if (title.includes('Inventory Management')) {
       return (
-        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4">
-          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono">SYS_ARCH: SECURE INVENTORY API</div>
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs font-mono text-slate-300">
+        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono" style={{ transform: 'translateZ(10px)' }}>SYS_ARCH: SECURE INVENTORY API</div>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs font-mono text-slate-300" style={{ transform: 'translateZ(22px)', transformStyle: 'preserve-3d' }}>
             
             {/* Client View */}
             <div 
@@ -395,9 +396,9 @@ export default function ProjectCard({ project, index }) {
       );
     } else if (title.includes('Learning Management')) {
       return (
-        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4">
-          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono">SYS_ARCH: SSO LMS PORTAL</div>
-          <div className="flex flex-col gap-2 items-center text-[10px] font-mono text-slate-300 w-full px-2 sm:px-6">
+        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono" style={{ transform: 'translateZ(10px)' }}>SYS_ARCH: SSO LMS PORTAL</div>
+          <div className="flex flex-col gap-2 items-center text-[10px] font-mono text-slate-300 w-full px-2 sm:px-6" style={{ transform: 'translateZ(22px)', transformStyle: 'preserve-3d' }}>
             
             <div className="flex justify-between w-full items-center">
               {/* Student Client */}
@@ -522,9 +523,9 @@ export default function ProjectCard({ project, index }) {
       );
     } else if (title.includes('Enterprise AI Analytics')) {
       return (
-        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4">
-          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono">SYS_ARCH: OPERATIONAL INTELLIGENCE</div>
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs font-mono text-slate-300">
+        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono" style={{ transform: 'translateZ(10px)' }}>SYS_ARCH: OPERATIONAL INTELLIGENCE</div>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs font-mono text-slate-300" style={{ transform: 'translateZ(22px)', transformStyle: 'preserve-3d' }}>
             
             {/* Config UI */}
             <div 
@@ -617,9 +618,9 @@ export default function ProjectCard({ project, index }) {
       );
     } else {
       return (
-        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative">
-          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono">SYSTEM BLOCK DIAGRAM</div>
-          <div className="flex items-center gap-3 text-xs font-mono text-slate-300">
+        <div className="h-full w-full flex items-center justify-center bg-slate-950 blueprint-grid relative p-4" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="absolute top-2 left-2 text-[9px] text-slate-500 font-mono" style={{ transform: 'translateZ(10px)' }}>SYSTEM BLOCK DIAGRAM</div>
+          <div className="flex items-center gap-3 text-xs font-mono text-slate-300" style={{ transform: 'translateZ(22px)', transformStyle: 'preserve-3d' }}>
             <div className="px-2 py-1 border border-slate-700 rounded bg-slate-950">Client View</div>
             <div className="p-1.5 border border-brand-500 rounded-full bg-slate-950">
               <Database className="h-4 w-4 text-brand-400" />
@@ -636,60 +637,72 @@ export default function ProjectCard({ project, index }) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      whileHover={{ y: -6, scale: 1.008, rotateX: 0.5, rotateY: -0.5 }}
       transition={{ duration: 0.4, ease: 'easeOut', delay: index * 0.05 }}
-      className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md dark:shadow-none hover:border-slate-300 dark:hover:border-slate-800 transition-all duration-300 flex flex-col md:flex-row h-full"
-      style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
+      className="h-full"
     >
-      {/* Visual System Column */}
-      <div className="w-full md:w-[35%] h-48 md:h-auto min-h-[160px] border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 overflow-hidden relative">
-        {renderSystemVisual(project.title)}
-      </div>
-
-      {/* Case Study Details Column */}
-      <div className="w-full md:w-[65%] p-6 flex flex-col justify-between">
-        <div>
-          {/* Header */}
-          <div className="flex flex-col gap-2 mb-3">
-            <h3 className="font-display font-bold text-xl text-slate-800 dark:text-slate-100 tracking-tight">
-              {project.title}
-            </h3>
-            <p className="text-sm font-medium text-brand-700 dark:text-brand-400 italic">
-              Challenge: {project.context}
-            </p>
-          </div>
-
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {(project.stack || []).map((tech) => (
-              <span
-                key={tech}
-                className="text-[11px] font-mono font-medium tracking-wide bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-800/80 rounded px-2.5 py-0.5"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* Description */}
-          <div className="space-y-2 mb-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-4 w-4 text-brand-600 dark:text-brand-500 mt-0.5 shrink-0" />
-              <span>
-                <strong className="text-slate-800 dark:text-slate-200 font-medium">Core Delivery:</strong> {project.whatIBuilt}
-              </span>
-            </div>
-            <div className="flex items-start gap-2">
-              <Cpu className="h-4 w-4 text-brand-600 dark:text-brand-500 mt-0.5 shrink-0" />
-              <span>
-                <strong className="text-slate-800 dark:text-slate-200 font-medium">Outcome Metric:</strong> <span className="text-teal-600 dark:text-teal-400 font-bold">{project.metrics}</span>
-              </span>
-            </div>
-          </div>
+      <TiltCard
+        maxTilt={4}
+        scale={1.01}
+        perspective={1200}
+        glare={true}
+        glareOpacity={0.06}
+        className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm hover:shadow-xl dark:shadow-none hover:border-brand-500/30 transition-all duration-300 flex flex-col md:flex-row h-full group"
+      >
+        {/* Visual System Column */}
+        <div
+          className="w-full md:w-[35%] h-48 md:h-auto min-h-[160px] border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 rounded-t-xl md:rounded-tr-none md:rounded-l-xl overflow-hidden relative flex items-center justify-center"
+          style={{ transformStyle: 'preserve-3d' }}
+        >
+          {renderSystemVisual(project.title)}
         </div>
 
-        {/* Expandable Architecture Notes */}
-        <div className="border-t border-slate-100 dark:border-slate-950 pt-4 mt-2">
+        {/* Case Study Details Column */}
+        <div
+          className="w-full md:w-[65%] p-6 flex flex-col justify-between"
+          style={{ transformStyle: 'preserve-3d' }}
+        >
+          <div>
+            {/* Header */}
+            <div className="flex flex-col gap-2 mb-3" style={{ transform: 'translateZ(16px)' }}>
+              <h3 className="font-display font-bold text-xl text-slate-800 dark:text-slate-100 tracking-tight">
+                {project.title}
+              </h3>
+              <p className="text-sm font-medium text-brand-700 dark:text-brand-400 italic">
+                Challenge: {project.context}
+              </p>
+            </div>
+
+            {/* Tech Stack */}
+            <div className="flex flex-wrap gap-1.5 mb-4" style={{ transform: 'translateZ(12px)' }}>
+              {(project.stack || []).map((tech) => (
+                <span
+                  key={tech}
+                  className="text-[11px] font-mono font-medium tracking-wide bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-800/80 rounded px-2.5 py-0.5"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Description */}
+            <div className="space-y-2 mb-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed" style={{ transform: 'translateZ(14px)' }}>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="h-4 w-4 text-brand-600 dark:text-brand-500 mt-0.5 shrink-0" />
+                <span>
+                  <strong className="text-slate-800 dark:text-slate-200 font-medium">Core Delivery:</strong> {project.whatIBuilt}
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <Cpu className="h-4 w-4 text-brand-600 dark:text-brand-500 mt-0.5 shrink-0" />
+                <span>
+                  <strong className="text-slate-800 dark:text-slate-200 font-medium">Outcome Metric:</strong> <span className="text-teal-600 dark:text-teal-400 font-bold">{project.metrics}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Expandable Architecture Notes */}
+          <div className="border-t border-slate-100 dark:border-slate-950 pt-4 mt-2" style={{ transform: 'translateZ(10px)' }}>
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors uppercase tracking-wider focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded min-h-[36px] py-1.5 px-2 -ml-2"
@@ -908,8 +921,8 @@ export default function ProjectCard({ project, index }) {
             )}
           </AnimatePresence>
         </div>
-
       </div>
+      </TiltCard>
     </motion.div>
   );
 }

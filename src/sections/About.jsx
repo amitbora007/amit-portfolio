@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 import { Shield, CreditCard, CloudLightning, Cpu, Activity, Link, Layers } from 'lucide-react';
+import TiltCard from '../components/TiltCard';
 
 const icons = [Shield, CreditCard, CloudLightning, Cpu];
 
@@ -38,27 +39,36 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 shadow-sm w-full group overflow-hidden"
+              className="w-full"
             >
-              <div className="relative rounded-lg overflow-hidden border border-slate-100 dark:border-slate-950 bg-slate-100 dark:bg-slate-950 aspect-[3/4]">
-                <img
-                  src="/Amit.webp"
-                  alt="Amit Bora"
-                  width={300}
-                  height={400}
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.opacity = '0';
-                  }}
-                  className="w-full h-full object-cover filter grayscale contrast-115 brightness-95 opacity-85 dark:opacity-70 group-hover:filter-none group-hover:opacity-100 transition-all duration-500"
-                />
+              <TiltCard
+                maxTilt={9}
+                scale={1.025}
+                className="relative rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 shadow-sm w-full group"
+              >
+                <div className="relative rounded-lg overflow-hidden border border-slate-100 dark:border-slate-950 bg-slate-100 dark:bg-slate-950 aspect-[3/4]">
+                  <img
+                    src="/Amit.webp"
+                    alt="Amit Bora"
+                    width={300}
+                    height={400}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.opacity = '0';
+                    }}
+                    className="w-full h-full object-cover filter grayscale contrast-115 brightness-95 opacity-85 dark:opacity-70 group-hover:filter-none group-hover:opacity-100 transition-all duration-500"
+                  />
+                </div>
                 
-                {/* Status Indicator Pill */}
-                <div className="absolute bottom-2.5 right-2.5 px-2 py-1 bg-slate-900/90 dark:bg-slate-950/90 border border-slate-800 dark:border-slate-800 rounded font-mono text-[8px] text-slate-300 flex items-center gap-1.5 backdrop-blur-sm select-none z-20">
+                {/* Status Indicator Pill Floating in 3D */}
+                <div
+                  className="absolute bottom-4 right-4 px-2 py-1 bg-slate-900/90 dark:bg-slate-950/90 border border-slate-800 dark:border-slate-800 rounded font-mono text-[8px] text-slate-300 flex items-center gap-1.5 backdrop-blur-sm select-none z-20 shadow-lg pointer-events-none"
+                  style={{ transform: 'translateZ(26px)' }}
+                >
                   <span>[OPERATOR: ONLINE]</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           </div>
 

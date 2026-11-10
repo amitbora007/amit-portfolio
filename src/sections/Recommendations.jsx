@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { MessageSquare, Quote, ShieldCheck, User, ChevronLeft, ChevronRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -9,6 +9,7 @@ export default function Recommendations() {
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
   const [isHovered, setIsHovered] = useState(false);
   const autoslideTimer = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
 
   // Autoslide effect
   useEffect(() => {
@@ -36,28 +37,42 @@ export default function Recommendations() {
     setActiveSlide((prev) => (prev - 1 + recommendations.length) % recommendations.length);
   };
 
-  // Framer Motion variant for slide animations
+  // Framer Motion variant for 3D cinematic slide animations
   const slideVariants = {
-    enter: (dir) => ({
-      x: dir > 0 ? '100%' : '-100%',
-      opacity: 0,
-    }),
+    enter: (dir) =>
+      shouldReduceMotion
+        ? { opacity: 0 }
+        : {
+            x: dir > 0 ? '50%' : '-50%',
+            rotateY: dir > 0 ? 15 : -15,
+            z: -40,
+            opacity: 0,
+          },
     center: {
       x: 0,
+      rotateY: 0,
+      z: 0,
       opacity: 1,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
-        opacity: { duration: 0.3 },
+        x: { type: 'spring', stiffness: 260, damping: 28 },
+        rotateY: { type: 'spring', stiffness: 260, damping: 28 },
+        opacity: { duration: 0.35, ease: 'easeOut' },
       },
     },
-    exit: (dir) => ({
-      x: dir > 0 ? '-100%' : '100%',
-      opacity: 0,
-      transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
-        opacity: { duration: 0.3 },
-      },
-    }),
+    exit: (dir) =>
+      shouldReduceMotion
+        ? { opacity: 0 }
+        : {
+            x: dir > 0 ? '-50%' : '50%',
+            rotateY: dir > 0 ? -15 : 15,
+            z: -40,
+            opacity: 0,
+            transition: {
+              x: { duration: 0.3, ease: 'easeIn' },
+              rotateY: { duration: 0.3, ease: 'easeIn' },
+              opacity: { duration: 0.25 },
+            },
+          },
   };
 
   if (!recommendations || recommendations.length === 0) {
@@ -104,7 +119,10 @@ export default function Recommendations() {
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Main Slider Panel */}
-        <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl overflow-hidden relative shadow-sm min-h-[440px] sm:min-h-[380px] md:min-h-[340px] lg:min-h-[330px]">
+        <div
+          className="bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl overflow-hidden relative shadow-sm min-h-[440px] sm:min-h-[380px] md:min-h-[340px] lg:min-h-[330px]"
+          style={{ perspective: 1200 }}
+        >
           {/* Left Side Accent Line */}
           <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-brand-500 dark:bg-brand-400 z-20" />
 
@@ -119,10 +137,11 @@ export default function Recommendations() {
               initial="enter"
               animate="center"
               exit="exit"
+              style={{ transformStyle: 'preserve-3d' }}
               className="w-full h-full p-6 sm:p-7 flex flex-col justify-between absolute inset-0 z-10"
             >
               {/* Card Content details */}
-              <div className="space-y-4 flex-1 overflow-auto pr-2 custom-scrollbar">
+              <div className="space-y-4 flex-1 overflow-auto pr-2 custom-scrollbar" style={{ transform: 'translateZ(14px)' }}>
                 {/* Meta details */}
                 <div className="flex items-center gap-3">
                   {currentItem.image ? (

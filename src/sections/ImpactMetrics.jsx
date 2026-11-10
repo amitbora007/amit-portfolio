@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
+import TiltCard from '../components/TiltCard';
 
 // Custom CountUp hook/helper
 function CountUp({ value }) {
@@ -68,49 +69,62 @@ export default function ImpactMetrics() {
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden divide-y sm:divide-y-0 lg:divide-x divide-slate-200 dark:divide-slate-800">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {metrics.map((metric, idx) => (
             <motion.div
               key={metric.label}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="p-8 flex flex-col justify-between bg-slate-50/30 dark:bg-slate-900/10 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:z-10 hover:shadow-lg hover:shadow-brand-500/5 transition-all duration-300 h-full group relative overflow-hidden"
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className="h-full"
             >
-              {/* Top Accent Glowing Line Emitter */}
-              <div className="absolute top-0 left-0 right-0 h-[3px] bg-brand-500 dark:bg-brand-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <TiltCard
+                maxTilt={8}
+                scale={1.025}
+                className="p-6 flex flex-col justify-between bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500/40 dark:hover:border-brand-400/30 rounded-xl hover:shadow-lg hover:shadow-brand-500/5 transition-colors duration-300 h-full group relative"
+              >
+                {/* Top Accent Glowing Line Emitter */}
+                <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-brand-500 dark:bg-brand-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-xl" />
 
-              <div className="z-10">
-                {/* Large Numerical Indicator with CountUp */}
-                <div className="font-display font-extrabold text-4xl sm:text-5xl text-brand-700 dark:text-brand-400 mb-3 tracking-tight transition-colors duration-300">
-                  <span className="inline-block group-hover:scale-105 group-hover:text-brand-650 dark:group-hover:text-brand-300 transition-all duration-300 origin-left">
-                    <CountUp value={metric.value} />
-                  </span>
+                <div className="z-10" style={{ transform: 'translateZ(24px)' }}>
+                  {/* Large Numerical Indicator with CountUp */}
+                  <div className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-700 dark:text-brand-400 mb-2.5 tracking-tight transition-colors duration-300">
+                    <span className="inline-block group-hover:scale-105 group-hover:text-brand-650 dark:group-hover:text-brand-300 transition-all duration-300 origin-left">
+                      <CountUp value={metric.value} />
+                    </span>
+                  </div>
+                  <h3 className="font-sans font-bold text-sm text-slate-800 dark:text-slate-200 mb-1 leading-snug">
+                    {metric.label}
+                  </h3>
                 </div>
-                <h3 className="font-sans font-bold text-sm text-slate-800 dark:text-slate-200 mb-2 leading-snug">
-                  {metric.label}
-                </h3>
-              </div>
-              <p className="text-xs text-slate-500 dark:text-slate-500 leading-normal mt-2 z-10">
-                {metric.desc}
-              </p>
 
-              {/* Vector Telemetry Sparkline Background */}
-              <div className="absolute bottom-0 right-0 left-0 h-12 w-full overflow-hidden pointer-events-none opacity-20 dark:opacity-30 group-hover:opacity-75 transition-opacity duration-300">
-                <svg viewBox="0 0 100 50" preserveAspectRatio="none" className="w-full h-full fill-none">
-                  <motion.path
-                    d={sparklinePaths[idx % sparklinePaths.length]}
-                    className="stroke-brand-500/60 dark:stroke-brand-400/60 group-hover:stroke-brand-500 dark:group-hover:stroke-brand-400 transition-all duration-300"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.8, ease: 'easeOut', delay: idx * 0.08 }}
-                  />
-                </svg>
-              </div>
+                <p
+                  className="text-xs text-slate-500 dark:text-slate-400 leading-normal mt-3 z-10"
+                  style={{ transform: 'translateZ(14px)' }}
+                >
+                  {metric.desc}
+                </p>
+
+                {/* Vector Telemetry Sparkline Background */}
+                <div
+                  className="absolute bottom-2 right-2 left-2 h-10 overflow-hidden pointer-events-none opacity-20 dark:opacity-30 group-hover:opacity-80 transition-opacity duration-300"
+                  style={{ transform: 'translateZ(10px)' }}
+                >
+                  <svg viewBox="0 0 100 50" preserveAspectRatio="none" className="w-full h-full fill-none">
+                    <motion.path
+                      d={sparklinePaths[idx % sparklinePaths.length]}
+                      className="stroke-brand-500/60 dark:stroke-brand-400/60 group-hover:stroke-brand-500 dark:group-hover:stroke-brand-400 transition-all duration-300"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0 }}
+                      whileInView={{ pathLength: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.8, ease: 'easeOut', delay: idx * 0.08 }}
+                    />
+                  </svg>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
