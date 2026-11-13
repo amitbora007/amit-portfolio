@@ -5,6 +5,7 @@ import { Activity, Copy, Check } from 'lucide-react';
 const codeSnippets = {
   payment: {
     title: 'PaymentIdempotency.ts',
+    shortTitle: 'Payment.ts',
     lang: 'typescript',
     code: `// Atomically verify & reserve idempotency token
 export async function processEftTransaction(
@@ -37,6 +38,7 @@ export async function processEftTransaction(
   },
   ai: {
     title: 'LangGraphAgent.py',
+    shortTitle: 'Agent.py',
     lang: 'python',
     code: `from langgraph.graph import StateGraph, END
 from langchain_core.messages import SystemMessage, HumanMessage
@@ -62,6 +64,7 @@ def build_support_agent():
   },
   reactive: {
     title: 'useSystemStream.ts',
+    shortTitle: 'Stream.ts',
     lang: 'typescript',
     code: `// High-frequency telemetry stream with auto-reconnect
 export function useSystemStream(endpoint: string) {
@@ -113,24 +116,32 @@ export default function HeroPlayground() {
     <div className="w-full glass-panel rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl overflow-hidden backdrop-blur-xl bg-white/60 dark:bg-slate-950/70 transition-all duration-300">
 
       {/* Top Console Bar */}
-      <div className="px-4 py-3 border-b border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between bg-slate-100/50 dark:bg-slate-900/50 text-xs font-mono">
-        <div className="flex items-center gap-2">
+      <div className="px-3 sm:px-4 py-2.5 sm:py-3 border-b border-slate-200/60 dark:border-slate-800/60 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 bg-slate-100/50 dark:bg-slate-900/50 text-xs font-mono">
+        <div className="flex items-center justify-between sm:justify-start gap-2">
           <div className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 inline-block" />
             <span className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 inline-block" />
             <span className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 inline-block" />
           </div>
-          <span className="ml-2 font-medium text-slate-600 dark:text-slate-400 text-xs hidden sm:inline">
-            SYSTEM CONSOLE // FULLSTACK ENGINE
+          <span className="font-medium text-slate-600 dark:text-slate-400 text-xs">
+            <span className="sm:hidden">SYSTEM CONSOLE</span>
+            <span className="hidden sm:inline">SYSTEM CONSOLE // FULLSTACK ENGINE</span>
+          </span>
+          <span className="sm:hidden text-[10px] text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">
+            LIVE
           </span>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center gap-1 bg-slate-200/60 dark:bg-slate-800/60 p-1 rounded-lg" role="tablist" aria-label="Engine Console Views">
+        <div
+          className="grid grid-cols-3 sm:flex items-center gap-1 bg-slate-200/60 dark:bg-slate-800/60 p-1 rounded-lg w-full sm:w-auto"
+          role="tablist"
+          aria-label="Engine Console Views"
+        >
           {[
-            { id: 'mesh', label: 'Architecture' },
-            { id: 'code', label: 'Code Sandbox' },
-            { id: 'telemetry', label: 'Telemetry' },
+            { id: 'mesh', label: 'Architecture', shortLabel: 'Architecture' },
+            { id: 'code', label: 'Code Sandbox', shortLabel: 'Sandbox' },
+            { id: 'telemetry', label: 'Telemetry', shortLabel: 'Telemetry' },
           ].map((tab, idx, arr) => {
             const isTabActive = activeTab === tab.id;
             return (
@@ -162,13 +173,14 @@ export default function HeroPlayground() {
                     document.getElementById(`engine-tab-${arr[nextIdx].id}`)?.focus();
                   }
                 }}
-                className={`px-2.5 py-1 rounded text-xs font-medium tracking-wider uppercase transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
+                className={`px-1.5 sm:px-2.5 py-1.5 sm:py-1 rounded text-[11px] sm:text-xs font-medium tracking-normal sm:tracking-wider uppercase transition-all text-center whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                   isTabActive
                     ? 'bg-teal-700 text-white dark:bg-teal-950/90 dark:text-teal-300 border border-teal-700 dark:border-teal-500/50 shadow-sm font-semibold'
                     : 'text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white'
                 }`}
               >
-                {tab.label}
+                <span className="sm:hidden">{tab.shortLabel}</span>
+                <span className="hidden sm:inline">{tab.label}</span>
               </button>
             );
           })}
@@ -315,8 +327,8 @@ export default function HeroPlayground() {
         {activeTab === 'code' && (
           <div className="space-y-3 flex flex-col justify-between h-full">
             {/* Snippet Selection Tabs */}
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-              <div className="flex gap-2" role="tablist" aria-label="Code Snippet Selection">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2 gap-2">
+              <div className="flex gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 flex-1 min-w-0" role="tablist" aria-label="Code Snippet Selection">
                 {Object.keys(codeSnippets).map((key, idx, arr) => {
                   const isSnippetActive = activeSnippetKey === key;
                   return (
@@ -350,13 +362,14 @@ export default function HeroPlayground() {
                           document.getElementById(`snippet-tab-${targetKey}`)?.focus();
                         }
                       }}
-                      className={`text-xs font-mono px-2 py-1 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
+                      className={`text-xs font-mono px-2 py-1 rounded transition-colors shrink-0 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                         isSnippetActive
                           ? 'bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold border border-brand-500/30'
                           : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
                       }`}
                     >
-                      {codeSnippets[key].title}
+                      <span className="sm:hidden">{codeSnippets[key].shortTitle || codeSnippets[key].title}</span>
+                      <span className="hidden sm:inline">{codeSnippets[key].title}</span>
                     </button>
                   );
                 })}
@@ -364,7 +377,7 @@ export default function HeroPlayground() {
               <button
                 type="button"
                 onClick={handleCopy}
-                className="flex items-center gap-1 text-xs font-mono text-slate-500 hover:text-brand-500 transition-colors p-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                className="flex items-center gap-1 text-xs font-mono text-slate-500 hover:text-brand-500 transition-colors p-1 rounded shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                 title="Copy snippet"
                 aria-label={copied ? 'Code snippet copied' : 'Copy code snippet'}
               >
@@ -445,7 +458,7 @@ export default function HeroPlayground() {
               </div>
             </div>
 
-            <div className="pt-2 border-t border-slate-200/60 dark:border-slate-800/60 text-slate-500 dark:text-slate-400 text-xs flex items-center justify-between">
+            <div className="pt-2 border-t border-slate-200/60 dark:border-slate-800/60 text-slate-500 dark:text-slate-400 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-1">
               <span>REGIONS: Azure East US • AWS ap-south-1</span>
               <span className="text-teal-600 dark:text-teal-400 font-bold">UPTIME: 99.98%</span>
             </div>
