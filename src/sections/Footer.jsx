@@ -31,7 +31,7 @@ export default function Footer() {
 
         {/* Copyright Middle & Telemetry */}
         <div className="text-xs text-slate-500 dark:text-slate-400 text-center font-mono flex flex-col items-center gap-1">
-          <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 font-medium">
+          <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 font-medium animate-pulse">
             © {currentYear} Amit Bora. All rights reserved.
           </span>
         </div>

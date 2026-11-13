@@ -22,12 +22,15 @@
     "framer-motion": "^12.40.0",
     "helmet": "^8.2.0",
     "lucide-react": "^0.475.0",
-    "nodemailer": "^8.0.10",
+    "nodemailer": "^10.5.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-email": "^6.5.0",
     "react-hook-form": "^7.77.0",
     "zod": "^4.4.3"
+  },
+  "overrides": {
+    "minimatch": "^11.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
