@@ -198,11 +198,17 @@ export default function HeroPlayground() {
               <div className="flex flex-col gap-4">
                 {/* Layer 1: Client to Gateway */}
                 <div className="grid grid-cols-2 gap-3">
-                  <div className={`p-3 transition-all duration-300 font-mono text-xs border-l-2 ${
-                    simStep === 0
-                      ? 'border-l-teal-500 bg-teal-950/20 text-slate-200'
-                      : 'border-l-slate-800 bg-slate-900/30 text-slate-400'
-                  }`}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSimStep(0)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSimStep(0); }}
+                    className={`p-3 transition-all duration-300 font-mono text-xs border-l-2 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 ${
+                      simStep === 0
+                        ? 'border-l-teal-500 bg-teal-950/20 text-slate-200'
+                        : 'border-l-slate-800 bg-slate-900/30 text-slate-400 hover:border-l-teal-500/40'
+                    }`}
+                  >
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-semibold text-xs text-teal-400">01. React Client UI</span>
                       <span className={`w-1.5 h-1.5 rounded-full ${simStep === 0 ? 'bg-teal-400' : 'bg-slate-700'}`} />
@@ -212,11 +218,17 @@ export default function HeroPlayground() {
                     </p>
                   </div>
 
-                  <div className={`p-3 transition-all duration-300 font-mono text-xs border-l-2 ${
-                    simStep === 1
-                      ? 'border-l-teal-500 bg-teal-950/20 text-slate-200'
-                      : 'border-l-slate-800 bg-slate-900/30 text-slate-400'
-                  }`}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSimStep(1)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSimStep(1); }}
+                    className={`p-3 transition-all duration-300 font-mono text-xs border-l-2 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 ${
+                      simStep === 1
+                        ? 'border-l-teal-500 bg-teal-950/20 text-slate-200'
+                        : 'border-l-slate-800 bg-slate-900/30 text-slate-400 hover:border-l-teal-500/40'
+                    }`}
+                  >
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-semibold text-xs text-teal-400">02. API Gateway</span>
                       <span className={`w-1.5 h-1.5 rounded-full ${simStep === 1 ? 'bg-teal-400' : 'bg-slate-700'}`} />
@@ -227,7 +239,7 @@ export default function HeroPlayground() {
                   </div>
                 </div>
 
-                {/* Quiet Packet Trail Indicator */}
+                {/* Packet Trail Indicator */}
                 <div className="h-1 w-full bg-slate-900 rounded-full overflow-hidden relative">
                   <motion.div
                     className="h-full w-24 bg-gradient-to-r from-transparent via-teal-500/50 to-transparent"
@@ -238,11 +250,17 @@ export default function HeroPlayground() {
 
                 {/* Layer 2: Microservices & Data Layer */}
                 <div className="grid grid-cols-2 gap-3">
-                  <div className={`p-3 transition-all duration-300 font-mono text-xs border-l-2 ${
-                    simStep === 2
-                      ? 'border-l-teal-500 bg-teal-950/20 text-slate-200'
-                      : 'border-l-slate-800 bg-slate-900/30 text-slate-400'
-                  }`}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSimStep(2)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSimStep(2); }}
+                    className={`p-3 transition-all duration-300 font-mono text-xs border-l-2 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 ${
+                      simStep === 2
+                        ? 'border-l-teal-500 bg-teal-950/20 text-slate-200'
+                        : 'border-l-slate-800 bg-slate-900/30 text-slate-400 hover:border-l-teal-500/40'
+                    }`}
+                  >
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-semibold text-xs text-teal-400">03. Event Bus & Cache</span>
                       <span className={`w-1.5 h-1.5 rounded-full ${simStep === 2 ? 'bg-teal-400' : 'bg-slate-700'}`} />
@@ -252,11 +270,17 @@ export default function HeroPlayground() {
                     </p>
                   </div>
 
-                  <div className={`p-3 transition-all duration-300 font-mono text-xs border-l-2 ${
-                    simStep === 3
-                      ? 'border-l-teal-500 bg-teal-950/20 text-slate-200'
-                      : 'border-l-slate-800 bg-slate-900/30 text-slate-400'
-                  }`}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSimStep(3)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSimStep(3); }}
+                    className={`p-3 transition-all duration-300 font-mono text-xs border-l-2 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 ${
+                      simStep === 3
+                        ? 'border-l-teal-500 bg-teal-950/20 text-slate-200'
+                        : 'border-l-slate-800 bg-slate-900/30 text-slate-400 hover:border-l-teal-500/40'
+                    }`}
+                  >
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-semibold text-xs text-teal-400">04. Ledger & AI Core</span>
                       <span className={`w-1.5 h-1.5 rounded-full ${simStep === 3 ? 'bg-teal-400' : 'bg-slate-700'}`} />

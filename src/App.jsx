@@ -42,7 +42,7 @@ function CursorSpotlight() {
       rafId = requestAnimationFrame(() => {
         rafId = null;
         if (spotlightRef.current) {
-          spotlightRef.current.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(20, 184, 166, 0.015), transparent 75%)`;
+          spotlightRef.current.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(20, 184, 166, 0.045), transparent 75%)`;
         }
       });
     };

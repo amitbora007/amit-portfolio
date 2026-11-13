@@ -13,15 +13,18 @@ export default function Achievements() {
   const shouldReduceMotion = useReducedMotion();
   const triggerRef = useRef(null);
   const closeBtnRef = useRef(null);
+  const wasModalOpenRef = useRef(false);
 
-  // Focus management: focus modal close button on open, restore focus to trigger on close
+  // Focus management: focus modal close button on open, restore focus to trigger only after modal was closed
   useEffect(() => {
     if (selectedImg) {
+      wasModalOpenRef.current = true;
       requestAnimationFrame(() => {
         closeBtnRef.current?.focus();
       });
-    } else if (triggerRef.current) {
-      triggerRef.current.focus();
+    } else if (wasModalOpenRef.current) {
+      wasModalOpenRef.current = false;
+      triggerRef.current?.focus();
     }
   }, [selectedImg]);
 
