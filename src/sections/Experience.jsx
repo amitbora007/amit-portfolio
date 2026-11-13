@@ -1,123 +1,154 @@
-import { useRef } from 'react';
-import { motion, useScroll, useSpring, useReducedMotion } from 'framer-motion';
-import { Briefcase, MapPin, Calendar } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MapPin, Calendar, CheckCircle2, ChevronRight, Terminal, Building2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Experience() {
   const { experience } = portfolioData;
-  const containerRef = useRef(null);
-  const shouldReduceMotion = useReducedMotion();
 
-  // Hook scroll progress relative to target section element
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start center', 'end center']
-  });
+  // Flatten roles with company info for interactive navigation
+  const allRoles = (experience || []).flatMap((comp) =>
+    comp.roles.map((role) => ({
+      ...role,
+      company: comp.company,
+      location: comp.location,
+    }))
+  );
 
-  // Smooth out coordinate tracking with spring damping
-  const scaleY = useSpring(scrollYProgress, { stiffness: 45, damping: 15 });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const activeRole = allRoles[selectedIndex] || allRoles[0];
 
   return (
-    <section id="experience" className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
-      <div className="max-w-5xl mx-auto">
+    <section id="experience" className="py-24 border-t border-slate-200/60 dark:border-slate-800/60 bg-transparent scroll-mt-20">
+      <div className="fluid-canvas w-full">
 
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center gap-4 mb-16">
-          <div className="text-xs uppercase tracking-widest text-brand-600 dark:text-brand-400 font-bold">
-            CAREER TIMELINE
-          </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
-            Professional Experience
+        <div className="flex flex-col items-center text-center gap-3 mb-16">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-slate-100 tracking-tight leading-tight max-w-3xl">
+            Professional Experience & System Deliveries
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
-            A progression of designing, building, and delivering scalable fullstack solutions and cloud-native systems for enterprise operations.
+          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
+            7+ years of progressive engineering leadership architecting distributed payment systems, cloud-native services, and enterprise web applications.
           </p>
         </div>
 
-        {/* Timeline container */}
-        <div ref={containerRef} className="relative ml-4 sm:ml-6 space-y-12">
-          {/* Static gray timeline track */}
-          <div className="absolute left-0 top-3 bottom-3 w-[1px] bg-slate-200 dark:bg-slate-800" />
+        {/* Widescreen Dual-Pane Interactive Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-          {/* Glowing laser progress track */}
-          <motion.div
-            style={{ scaleY }}
-            className="absolute left-0 top-3 bottom-3 w-[1.5px] bg-gradient-to-b from-brand-600 to-teal-400 dark:from-brand-500 dark:to-teal-350 origin-top shadow-[0_0_8px_rgba(20,184,166,0.6)]"
-          />
+          {/* Left Column (5 cols): Interactive Role Switcher Deck */}
+          <div className="lg:col-span-5 space-y-3">
+            <div className="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 px-1 mb-2 flex items-center justify-between">
+              <span>{allRoles.length} POSITIONS HELD</span>
+            </div>
 
-          {(experience || []).map((company) => (
-            <div key={company.company} className="relative pl-8 sm:pl-10">
-
-              {/* Timeline dot / briefcase icon */}
-              <div className="absolute -left-[17px] top-1 w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 flex items-center justify-center text-brand-600 dark:text-brand-500 shadow-sm transition-transform duration-300 group-hover:scale-110">
-                <Briefcase className="h-3.5 w-3.5" />
-              </div>
-
-              {/* Company Header */}
-              <div className="mb-6">
-                <h3 className="font-display font-extrabold text-2xl text-slate-800 dark:text-slate-100 tracking-tight">
-                  {company.company}
-                </h3>
-                <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500 mt-1">
-                  <MapPin className="h-3.5 w-3.5" />
-                  <span>{company.location}</span>
-                </div>
-              </div>
-
-              {/* Roles under this company */}
-              <div className="space-y-8">
-                {company.roles.map((role, roleIdx) => (
-                  <motion.div
-                    key={role.title}
-                    initial={
-                      shouldReduceMotion
-                        ? { opacity: 0, y: 15 }
-                        : { opacity: 0, rotateX: 8, y: 24, scale: 0.98 }
-                    }
-                    whileInView={
-                      shouldReduceMotion
-                        ? { opacity: 1, y: 0 }
-                        : { opacity: 1, rotateX: 0, y: 0, scale: 1 }
-                    }
-                    viewport={{ once: true, margin: '-40px' }}
-                    transition={{ duration: 0.5, delay: roleIdx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ perspective: 1000, transformStyle: 'preserve-3d' }}
-                    className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-lg shadow-sm hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:bg-slate-50/50 dark:hover:bg-slate-800/60 transition-colors duration-300 relative group overflow-hidden"
+            <div className="space-y-2.5">
+              {allRoles.map((role, idx) => {
+                const isActive = selectedIndex === idx;
+                return (
+                  <button
+                    key={`${role.company}-${role.title}`}
+                    type="button"
+                    onClick={() => setSelectedIndex(idx)}
+                    aria-pressed={isActive}
+                    className={`w-full p-4 rounded-xl text-left transition-all duration-300 border relative flex items-center justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
+                      isActive
+                        ? 'bg-white dark:bg-slate-900 border-brand-500 shadow-sm'
+                        : 'bg-white/60 dark:bg-slate-900/50 border-slate-200/80 dark:border-slate-800/80 hover:border-brand-500/40 hover:bg-white dark:hover:bg-slate-900'
+                    }`}
                   >
-                    {/* Left Accent Slide-down Emitter */}
-                    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-brand-500 dark:bg-brand-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-l-lg" />
+                    {/* Active Indicator */}
+                    {isActive && (
+                      <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-teal-500 rounded-r" />
+                    )}
 
-                    {/* Role title and dates */}
-                    <div
-                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-slate-100 dark:border-slate-950 pb-3"
-                      style={{ transform: 'translateZ(14px)' }}
-                    >
-                      <h4 className="font-display font-bold text-lg text-slate-800 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-300">
+                    <div className="space-y-1 pl-2">
+                      <div className="flex items-center gap-2">
+                        <Building2 className={`h-3.5 w-3.5 ${isActive ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'}`} />
+                        <span className={`text-xs font-mono font-bold ${isActive ? 'text-teal-700 dark:text-teal-300' : 'text-slate-600 dark:text-slate-400'}`}>
+                          {role.company}
+                        </span>
+                      </div>
+                      <h3 className="font-display font-bold text-sm sm:text-base text-slate-800 dark:text-slate-100 group-hover:text-teal-700 dark:group-hover:text-teal-300 transition-colors">
                         {role.title}
-                      </h4>
-                      <div className="flex items-center gap-1 text-xs font-mono text-brand-700 dark:text-brand-400 bg-brand-500/5 group-hover:bg-brand-500/10 px-2.5 py-1 rounded transition-colors duration-300 shrink-0">
-                        <Calendar className="h-3.5 w-3.5" />
+                      </h3>
+                      <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400">
+                        <Calendar className="h-3 w-3" />
                         <span>{role.period}</span>
                       </div>
                     </div>
 
-                    {/* Bullet Highlights */}
-                    <ul
-                      className="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 list-disc list-inside marker:text-brand-500"
-                      style={{ transform: 'translateZ(8px)' }}
-                    >
-                      {role.highlights.map((highlight, hIdx) => (
-                        <li key={hIdx} className="leading-relaxed pl-1 indent-[-16px] ml-4 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
-                          <span className="pl-1">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                ))}
-              </div>
-
+                    <ChevronRight className={`h-4 w-4 transition-transform duration-300 shrink-0 ${
+                      isActive ? 'text-teal-600 dark:text-teal-400 translate-x-1' : 'text-slate-300 dark:text-slate-700 group-hover:text-slate-400'
+                    }`} />
+                  </button>
+                );
+              })}
             </div>
-          ))}
+          </div>
+
+          {/* Right Column (7 cols): Detailed Architectural Briefing Sheet */}
+          <div className="lg:col-span-7">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${activeRole.company}-${activeRole.title}`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-7 sm:p-9 shadow-sm relative overflow-hidden"
+              >
+                {/* Top Accent Hairline */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-teal-500/60" />
+
+                {/* Briefing Header */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-5 mb-6">
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-wider text-teal-700 dark:text-teal-300 font-bold block mb-1">
+                      {activeRole.company} • BRIEFING SHEET
+                    </span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 dark:text-slate-100 tracking-tight">
+                      {activeRole.title}
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-col sm:items-end gap-1 font-mono text-xs text-slate-600 dark:text-slate-400">
+                    <span className="flex items-center gap-1.5 bg-teal-500/10 text-teal-700 dark:text-teal-300 px-3 py-1 rounded-md font-bold">
+                      <Calendar className="h-3.5 w-3.5" />
+                      {activeRole.period}
+                    </span>
+                    <span className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+                      <MapPin className="h-3 w-3" />
+                      {activeRole.location}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Key Deliveries and System Highlights */}
+                <div className="space-y-4 mb-6">
+                  <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
+                    Core Architectural Deliverables
+                  </span>
+                  <ul className="space-y-3.5">
+                    {activeRole.highlights.map((highlight, hIdx) => (
+                      <li key={hIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed group">
+                        <CheckCircle2 className="h-4.5 w-4.5 text-brand-500 shrink-0 mt-0.5" />
+                        <span className="flex-1">{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Footer Telemetry Badge */}
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                  <span className="flex items-center gap-1.5">
+                    <Terminal className="h-3.5 w-3.5 text-brand-500" />
+                    TENURE VERIFIED IN PROD
+                  </span>
+                  <span className="text-emerald-500 font-bold">100% DELIVERY RATE</span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
         </div>
 

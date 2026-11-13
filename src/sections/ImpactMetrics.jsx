@@ -52,24 +52,21 @@ export default function ImpactMetrics() {
   const { metrics } = portfolioData;
 
   return (
-    <section id="metrics" className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
-      <div className="max-w-7xl mx-auto">
+    <section id="metrics" className="py-24 border-t border-slate-200/60 dark:border-slate-800/60 bg-transparent scroll-mt-20">
+      <div className="fluid-canvas w-full">
 
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center gap-4 mb-16">
-          <div className="text-xs uppercase tracking-widest text-brand-600 dark:text-brand-400 font-bold">
-            MEASURED IMPACT
-          </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-800 dark:text-slate-100 tracking-tight max-w-2xl leading-tight">
-            Performance metrics from production systems.
+        <div className="flex flex-col items-center text-center gap-3 mb-16">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-slate-100 tracking-tight leading-tight max-w-2xl text-balance">
+            Production Performance & Measured Outcomes
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
-            Quantitative outcomes reflecting optimized API speeds, transaction volume support, and cloud-native architecture implementations.
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed text-balance">
+            Real-world metrics demonstrating latency reduction, transactional capacity, and operational efficiency across distributed production systems.
           </p>
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {metrics.map((metric, idx) => (
             <motion.div
               key={metric.label}
@@ -80,31 +77,30 @@ export default function ImpactMetrics() {
               className="h-full"
             >
               <TiltCard
-                maxTilt={8}
-                scale={1.025}
-                className="p-6 flex flex-col justify-between bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500/40 dark:hover:border-brand-400/30 rounded-xl hover:shadow-lg hover:shadow-brand-500/5 transition-colors duration-300 h-full group relative"
+                maxTilt={0}
+                scale={1}
+                className="p-6 flex flex-col justify-between bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-teal-500/40 dark:hover:border-teal-400/30 rounded-xl transition-colors duration-300 h-full group relative"
               >
-                {/* Top Accent Glowing Line Emitter */}
-                <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-brand-500 dark:bg-brand-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-xl" />
+                {/* Top Accent Hairline */}
+                <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-teal-600/70 dark:bg-teal-400/60 rounded-t-xl" />
 
-                <div className="z-10" style={{ transform: 'translateZ(24px)' }}>
+                <div className="z-10 flex flex-col justify-start h-full">
                   {/* Large Numerical Indicator with CountUp */}
-                  <div className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-700 dark:text-brand-400 mb-2.5 tracking-tight transition-colors duration-300">
-                    <span className="inline-block group-hover:scale-105 group-hover:text-brand-650 dark:group-hover:text-brand-300 transition-all duration-300 origin-left">
+                  <div className="font-display font-bold text-3xl sm:text-4xl text-teal-700 dark:text-teal-400 mb-2 tracking-tight transition-colors duration-300">
+                    <span className="inline-block transition-colors duration-300">
                       <CountUp value={metric.value} />
                     </span>
                   </div>
-                  <h3 className="font-sans font-bold text-sm text-slate-800 dark:text-slate-200 mb-1 leading-snug">
+                  <h3 className="font-sans font-bold text-base text-slate-900 dark:text-slate-100 leading-snug mt-2 mb-1.5">
                     {metric.label}
                   </h3>
+                  <p
+                    className="text-xs sm:text-sm text-slate-650 dark:text-slate-400 leading-relaxed z-10"
+                    style={{ transform: 'translateZ(14px)' }}
+                  >
+                    {metric.desc}
+                  </p>
                 </div>
-
-                <p
-                  className="text-xs text-slate-500 dark:text-slate-400 leading-normal mt-3 z-10"
-                  style={{ transform: 'translateZ(14px)' }}
-                >
-                  {metric.desc}
-                </p>
 
                 {/* Vector Telemetry Sparkline Background */}
                 <div

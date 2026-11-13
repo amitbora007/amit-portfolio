@@ -49,7 +49,7 @@ export const validateContact = (req, res, next) => {
 
     // 2. Perform Zod validation
     const parsedData = contactSchema.parse(sanitizedBody);
-    
+
     // 3. Set validated data back to req.body
     req.body = parsedData;
     next();
@@ -60,14 +60,14 @@ export const validateContact = (req, res, next) => {
         acc[curr.path[0]] = curr.message;
         return acc;
       }, {});
-      
+
       return res.status(400).json({
         success: false,
         error: 'Validation failed.',
         details: errorMap,
       });
     }
-    
+
     return res.status(500).json({
       success: false,
       error: 'An internal error occurred during input validation.',

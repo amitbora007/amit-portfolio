@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Trophy, Calendar, Sparkles, X, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Trophy, Calendar, X, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Achievements() {
@@ -11,22 +11,48 @@ export default function Achievements() {
   const [isHovered, setIsHovered] = useState(false);
   const autoslideTimer = useRef(null);
   const shouldReduceMotion = useReducedMotion();
+  const triggerRef = useRef(null);
+  const closeBtnRef = useRef(null);
 
-  // Autoslide effect
+  // Focus management: focus modal close button on open, restore focus to trigger on close
   useEffect(() => {
-    if (isHovered || selectedImg) {
-      if (autoslideTimer.current) clearInterval(autoslideTimer.current);
-    } else {
-      autoslideTimer.current = setInterval(() => {
-        setDirection(1);
-        setActiveSlide((prev) => (prev + 1) % achievements.length);
-      }, 5000);
+    if (selectedImg) {
+      requestAnimationFrame(() => {
+        closeBtnRef.current?.focus();
+      });
+    } else if (triggerRef.current) {
+      triggerRef.current.focus();
     }
+  }, [selectedImg]);
 
+  // Autoslide effect (pauses on hover, modal open, or background tab)
+  useEffect(() => {
+    const startTimer = () => {
+      if (autoslideTimer.current) clearInterval(autoslideTimer.current);
+      if (!isHovered && !selectedImg && !document.hidden) {
+        autoslideTimer.current = setInterval(() => {
+          setDirection(1);
+          setActiveSlide((prev) => (prev + 1) % achievements.length);
+        }, 5000);
+      }
+    };
+
+    startTimer();
+    const handleVisibility = () => {
+      if (document.hidden) {
+        if (autoslideTimer.current) clearInterval(autoslideTimer.current);
+      } else {
+        startTimer();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibility);
     return () => {
       if (autoslideTimer.current) clearInterval(autoslideTimer.current);
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
   }, [isHovered, selectedImg, achievements.length]);
+
 
   // Close modal on ESC key
   useEffect(() => {
@@ -47,40 +73,32 @@ export default function Achievements() {
     setActiveSlide((prev) => (prev - 1 + achievements.length) % achievements.length);
   };
 
-  // Framer Motion variant for 3D cinematic slide animations
+  // Framer Motion variant for calm slide transitions
   const slideVariants = {
     enter: (dir) =>
       shouldReduceMotion
         ? { opacity: 0 }
         : {
-            x: dir > 0 ? '50%' : '-50%',
-            rotateY: dir > 0 ? 15 : -15,
-            z: -40,
+            x: dir > 0 ? '20%' : '-20%',
             opacity: 0,
           },
     center: {
       x: 0,
-      rotateY: 0,
-      z: 0,
       opacity: 1,
       transition: {
-        x: { type: 'spring', stiffness: 260, damping: 28 },
-        rotateY: { type: 'spring', stiffness: 260, damping: 28 },
-        opacity: { duration: 0.35, ease: 'easeOut' },
+        x: { type: 'spring', stiffness: 300, damping: 30 },
+        opacity: { duration: 0.25, ease: 'easeOut' },
       },
     },
     exit: (dir) =>
       shouldReduceMotion
         ? { opacity: 0 }
         : {
-            x: dir > 0 ? '-50%' : '50%',
-            rotateY: dir > 0 ? -15 : 15,
-            z: -40,
+            x: dir > 0 ? '-20%' : '20%',
             opacity: 0,
             transition: {
-              x: { duration: 0.3, ease: 'easeIn' },
-              rotateY: { duration: 0.3, ease: 'easeIn' },
-              opacity: { duration: 0.25 },
+              x: { duration: 0.2, ease: 'easeIn' },
+              opacity: { duration: 0.2 },
             },
           },
   };
@@ -89,11 +107,7 @@ export default function Achievements() {
     return (
       <div className="w-full space-y-8">
         <div className="flex flex-col gap-2">
-          <div className="text-[10px] uppercase tracking-widest text-brand-600 dark:text-brand-400 font-extrabold flex items-center gap-1">
-            <Sparkles className="h-3 w-3 animate-pulse" />
-            ACCOLADES
-          </div>
-          <h3 className="font-display font-extrabold text-2xl text-slate-800 dark:text-slate-100 tracking-tight">
+          <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-800 dark:text-slate-100 tracking-tight text-balance">
             Recognition & Awards
           </h3>
         </div>
@@ -110,14 +124,10 @@ export default function Achievements() {
     <div className="w-full space-y-8">
       {/* Section Column Header */}
       <div className="flex flex-col gap-2">
-        <div className="text-[10px] uppercase tracking-widest text-brand-600 dark:text-brand-400 font-extrabold flex items-center gap-1">
-          <Sparkles className="h-3 w-3 animate-pulse" />
-          ACCOLADES
-        </div>
-        <h3 className="font-display font-extrabold text-2xl text-slate-800 dark:text-slate-100 tracking-tight">
+        <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-800 dark:text-slate-100 tracking-tight text-balance">
           Recognition & Awards
         </h3>
-        <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal max-w-md">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-md">
           Milestones and awards received for technical leadership, operational impact, and system design quality.
         </p>
       </div>
@@ -130,12 +140,9 @@ export default function Achievements() {
       >
         {/* Main Slider Panel */}
         <div
-          className="bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl overflow-hidden relative shadow-sm min-h-[440px] sm:min-h-[380px] md:min-h-[340px] lg:min-h-[330px]"
+          className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden relative shadow-sm min-h-[440px] sm:min-h-[380px] md:min-h-[340px] lg:min-h-[330px]"
           style={{ perspective: 1200 }}
         >
-          {/* Left Side Accent Line */}
-          <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-brand-500 dark:bg-brand-400 z-20" />
-
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={activeSlide}
@@ -150,27 +157,25 @@ export default function Achievements() {
               {/* Text Metadata (Columns 1-7) */}
               <div className="sm:col-span-7 space-y-4" style={{ transform: 'translateZ(14px)' }}>
                 {/* Meta details */}
-                <div className="flex items-center justify-between text-[9px] text-slate-400 dark:text-slate-500 font-mono border-b border-slate-200 dark:border-slate-800/50 pb-2.5">
-                  <span className="font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">
+                <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono border-b border-slate-200 dark:border-slate-800/50 pb-2.5">
+                  <span className="font-bold text-teal-700 dark:text-teal-300 uppercase tracking-wider">
                     {currentItem.organization}
                   </span>
                   <span className="flex items-center gap-1">
-                    <Calendar className="h-3 w-3" />
+                    <Calendar className="h-3.5 w-3.5" />
                     {currentItem.date}
                   </span>
                 </div>
 
-                {/* Trophy Icon */}
-                <div className="text-brand-600 dark:text-brand-400 bg-brand-500/5 dark:bg-brand-400/5 w-9 h-9 rounded-lg flex items-center justify-center">
-                  <Trophy className="h-4.5 w-4.5" />
-                </div>
-
                 {/* Title and Description */}
-                <div className="space-y-2">
-                  <h4 className="font-sans font-bold text-base text-slate-800 dark:text-slate-100 leading-tight">
-                    {currentItem.title}
-                  </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                <div className="space-y-2.5 pt-1">
+                  <div className="flex items-center gap-2">
+                    <Trophy className="h-5 w-5 text-teal-600 dark:text-teal-400 shrink-0" />
+                    <h4 className="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-slate-100 leading-snug">
+                      {currentItem.title}
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-650 dark:text-slate-300 leading-relaxed">
                     {currentItem.description}
                   </p>
                 </div>
@@ -178,9 +183,12 @@ export default function Achievements() {
 
               {/* Certificate Image Frame (Columns 8-12) */}
               <div className="sm:col-span-5 flex justify-center" style={{ transform: 'translateZ(20px)' }}>
-                <div
+                <button
+                  type="button"
+                  ref={triggerRef}
                   onClick={() => setSelectedImg(currentItem)}
-                  className="w-full max-w-[180px] aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 cursor-pointer bg-slate-900 group/thumb relative shadow-sm"
+                  className="w-full max-w-[220px] aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 cursor-pointer bg-slate-900 group/thumb relative shadow-sm text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                  aria-label={`View full certificate: ${currentItem.title}`}
                 >
                   <img
                     src={currentItem.image}
@@ -192,11 +200,11 @@ export default function Achievements() {
                     }}
                   />
                   {/* Hover Zoom Overlay */}
-                  <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1 text-white text-[9px] font-mono">
+                  <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1 text-white text-xs font-mono font-medium">
                     <Eye className="h-3.5 w-3.5" />
                     <span>ZOOM_IMAGE</span>
                   </div>
-                </div>
+                </button>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -204,6 +212,7 @@ export default function Achievements() {
 
         {/* Navigation Arrows */}
         <button
+          type="button"
           onClick={handlePrev}
           className="absolute left-[-15px] sm:left-[-18px] top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 dark:hover:text-slate-950 flex items-center justify-center text-slate-500 dark:text-slate-400 shadow-md transition-all duration-300 z-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           aria-label="Previous slide"
@@ -211,6 +220,7 @@ export default function Achievements() {
           <ChevronLeft className="h-5 w-5" />
         </button>
         <button
+          type="button"
           onClick={handleNext}
           className="absolute right-[-15px] sm:right-[-18px] top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 dark:hover:text-slate-950 flex items-center justify-center text-slate-500 dark:text-slate-400 shadow-md transition-all duration-300 z-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           aria-label="Next slide"
@@ -269,12 +279,14 @@ export default function Achievements() {
               {/* Modal Header */}
               <div className="flex items-center justify-between px-3 py-2 border-b border-slate-800 text-slate-300">
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-mono tracking-widest text-brand-400 font-bold uppercase">
+                  <span className="text-xs font-mono tracking-wider text-teal-400 font-bold uppercase">
                     {selectedImg.organization} • {selectedImg.date}
                   </span>
                   <h3 id="achievement-modal-title" className="text-sm font-bold truncate pr-6">{selectedImg.title}</h3>
                 </div>
                 <button
+                  type="button"
+                  ref={closeBtnRef}
                   onClick={() => setSelectedImg(null)}
                   className="min-w-[36px] min-h-[36px] rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                   aria-label="Close image viewer"

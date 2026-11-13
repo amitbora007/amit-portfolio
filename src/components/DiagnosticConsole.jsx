@@ -107,6 +107,7 @@ export default function DiagnosticConsole() {
   const [isAiLoading, setIsAiLoading] = useState(false);
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
+  const wasOpenRef = useRef(false);
 
   // Auto scroll to bottom when history changes
   useEffect(() => {
@@ -115,11 +116,16 @@ export default function DiagnosticConsole() {
     }
   }, [history, isOpen, isAiLoading]);
 
-  // Focus input automatically
+  // Focus input automatically when opened; return focus to trigger bubble when closed
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+    if (isOpen) {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    } else if (wasOpenRef.current) {
+      document.getElementById('sys-console-bubble')?.focus();
     }
+    wasOpenRef.current = isOpen;
   }, [isOpen]);
 
   // Listen for custom 'open-console' event
@@ -147,6 +153,21 @@ export default function DiagnosticConsole() {
   }, [isOpen]);
 
   const handleAiQuery = async (queryText, currentHistory) => {
+    // Immediate fallback if client is offline
+    if (typeof navigator !== 'undefined' && !navigator.onLine) {
+      const kbAnswer = queryKnowledgeBase(queryText);
+      const offlineMsg = kbAnswer
+        || `[OFFLINE_MODE] Network disconnected. Amit specializes in Fullstack Engineering, distributed microservices, and AI automation.`;
+      setHistory(prev => [
+        ...prev.filter(line => !line.isThinking),
+        ...offlineMsg.split('\n').map(line => ({
+          text: line,
+          type: line.startsWith('[KNOWLEDGE_BASE_HIT]') ? 'sys' : 'ai'
+        }))
+      ]);
+      return;
+    }
+
     setIsAiLoading(true);
 
     const controller = new AbortController();
@@ -355,17 +376,18 @@ export default function DiagnosticConsole() {
       {/* Floating Trigger Bubble */}
       <div className="fixed bottom-6 right-6 z-50">
         <motion.button
+          type="button"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
-          className="w-12 h-12 rounded-full bg-brand-600 hover:bg-brand-500 text-white flex items-center justify-center shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-500 border border-brand-500/20 relative"
+          className="w-12 h-12 rounded-full bg-brand-600 hover:bg-brand-500 text-white flex items-center justify-center shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 border border-brand-500/20 relative"
           aria-label="Toggle AI Systems Console"
+          aria-expanded={isOpen}
           id="sys-console-bubble"
         >
           <Terminal className="h-5 w-5" />
-          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-slate-950"></span>
+          <span className="absolute -top-0.5 -right-0.5 flex h-3 w-3">
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border-2 border-slate-950"></span>
           </span>
         </motion.button>
       </div>
@@ -388,13 +410,14 @@ export default function DiagnosticConsole() {
           >
             {/* Console Window Header Bar */}
             <div className="bg-slate-900 border-b border-slate-800 px-3 sm:px-4 py-2 flex items-center justify-between select-none">
-              <div className="flex items-center gap-2 text-slate-400 font-bold text-[10px] tracking-wide">
+              <div className="flex items-center gap-2 text-slate-400 font-bold text-xs tracking-wide">
                 <Bot className="h-3.5 w-3.5 text-brand-400" />
                 <span>AI_PORTFOLIO_AGENT: chat.sh</span>
-                <span className="px-1.5 py-0.5 rounded text-[8px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-sans">AI ACTIVE</span>
+                <span className="px-1.5 py-0.5 rounded text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-sans font-semibold">AI ACTIVE</span>
               </div>
               <div className="flex items-center gap-1 cursor-pointer">
                 <button
+                  type="button"
                   onClick={() => setIsOpen(false)}
                   className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center hover:bg-slate-800 rounded text-slate-400 hover:text-slate-200 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-500"
                   aria-label="Minimize Console"
@@ -402,6 +425,7 @@ export default function DiagnosticConsole() {
                   <Minimize2 className="h-3.5 w-3.5" />
                 </button>
                 <button
+                  type="button"
                   onClick={() => setIsOpen(false)}
                   className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center hover:bg-red-500/10 hover:text-red-400 rounded text-slate-400 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-500"
                   aria-label="Close Console"
@@ -434,7 +458,7 @@ export default function DiagnosticConsole() {
                   <div key={idx} className={colorClass}>
                     {line.type === 'error' && <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-rose-500" />}
                     {line.type === 'ai' && (
-                      <div className="text-[10px] font-mono text-brand-400 font-bold mb-1 flex items-center gap-1">
+                      <div className="text-xs font-mono text-brand-400 font-bold mb-1 flex items-center gap-1">
                         <Sparkles className="h-3 w-3" /> AMIT'S AI ASSISTANT:
                       </div>
                     )}
@@ -444,7 +468,7 @@ export default function DiagnosticConsole() {
               })}
 
               {isAiLoading && (
-                <div className="text-brand-400 font-bold flex items-center gap-2 animate-pulse py-1">
+                <div className="text-teal-400 font-bold flex items-center gap-2 py-1">
                   <Sparkles className="h-3.5 w-3.5 animate-spin" />
                   <span>[AI_AGENT] Generating response...</span>
                 </div>

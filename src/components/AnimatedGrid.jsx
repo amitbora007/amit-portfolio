@@ -60,13 +60,13 @@ export default function AnimatedGrid() {
       {/* CSS-based Grid Overlay with subtle parallax */}
       <motion.div
         style={{ x: bgX, y: bgY }}
-        className="absolute inset-0 technical-grid opacity-[0.2] dark:opacity-[0.35]"
+        className="absolute inset-0 technical-grid opacity-[0.1] dark:opacity-[0.18]"
       />
 
       {/* SVG System Node Connections with faster parallax */}
       <motion.svg
         style={{ x: springX, y: springY }}
-        className="absolute inset-0 w-full h-full opacity-30 dark:opacity-60"
+        className="absolute inset-0 w-full h-full opacity-20 dark:opacity-25"
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* Connection Lines */}

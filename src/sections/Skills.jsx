@@ -4,24 +4,24 @@ import { portfolioData } from '../data/portfolioData';
 
 const colorStyles = {
   'Frontend Engineering': {
-    cardBorder: 'border-l-[5px] border-l-sky-500 dark:border-l-sky-400',
-    headerDot: 'bg-sky-500',
+    cardBorder: 'border-slate-200 dark:border-slate-800 hover:border-teal-500/30',
+    headerDot: 'bg-teal-500/80',
   },
   'Backend & APIs': {
-    cardBorder: 'border-l-[5px] border-l-brand-600 dark:border-l-brand-500',
-    headerDot: 'bg-brand-500',
+    cardBorder: 'border-slate-200 dark:border-slate-800 hover:border-teal-500/30',
+    headerDot: 'bg-teal-500/80',
   },
   'Cloud & Infrastructure': {
-    cardBorder: 'border-l-[5px] border-l-amber-500 dark:border-l-amber-500',
-    headerDot: 'bg-amber-500',
+    cardBorder: 'border-slate-200 dark:border-slate-800 hover:border-teal-500/30',
+    headerDot: 'bg-teal-500/80',
   },
   'Databases & Caching': {
-    cardBorder: 'border-l-[5px] border-l-emerald-500 dark:border-l-emerald-500',
-    headerDot: 'bg-emerald-500',
+    cardBorder: 'border-slate-200 dark:border-slate-800 hover:border-teal-500/30',
+    headerDot: 'bg-teal-500/80',
   },
   'AI & Intelligent Systems': {
-    cardBorder: 'border-l-[5px] border-l-indigo-500 dark:border-l-indigo-500',
-    headerDot: 'bg-indigo-500',
+    cardBorder: 'border-slate-200 dark:border-slate-800 hover:border-teal-500/30',
+    headerDot: 'bg-teal-500/80',
   }
 };
 
@@ -78,28 +78,63 @@ const skillConnections = {
 export default function Skills() {
   const { skills } = portfolioData;
   const [hoveredSkill, setHoveredSkill] = useState(null);
+  const activeConnections = hoveredSkill ? skillConnections[hoveredSkill] || [] : [];
 
   return (
-    <section id="skills" className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="py-24 border-t border-slate-200/60 dark:border-slate-800/60 bg-transparent scroll-mt-20">
+      <div className="fluid-canvas w-full">
 
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center gap-4 mb-16">
-          <div className="text-xs uppercase tracking-widest text-brand-600 dark:text-brand-400 font-bold">
-            TECHNICAL MATRIX
-          </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
-            Skills & Connected Stack
+        <div className="flex flex-col items-center text-center gap-3 mb-12">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-slate-100 tracking-tight leading-tight max-w-3xl">
+            Fullstack Architecture Dependency Matrix
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
-            Hover over any core framework or language to instantly visualize its corresponding database, service queue, and cloud environment dependencies.
+          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
+            Hover or tap any framework or language below to illuminate its real-time fullstack dependency pipeline across frontend, backend, databases, and cloud infrastructure.
           </p>
         </div>
 
-        {/* Skills Matrix Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Fullstack Flow Signal Trace HUD */}
+        <div className="mb-10 p-4 rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-mono text-xs shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <span className={`w-2.5 h-2.5 rounded-full ${hoveredSkill ? 'bg-teal-500' : 'bg-slate-400'}`} />
+            <span className="text-slate-600 dark:text-slate-400 font-bold">SIGNAL TRACE:</span>
+            {hoveredSkill ? (
+              <span className="font-bold text-teal-700 dark:text-teal-400 text-sm">
+                [{hoveredSkill}]
+              </span>
+            ) : (
+              <span className="text-slate-600 dark:text-slate-400 italic">
+                Hover or select any node to trace architecture dependencies
+              </span>
+            )}
+          </div>
+
+          {hoveredSkill && (
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold">
+                {activeConnections.length} Connected Nodes:
+              </span>
+              <div className="flex flex-wrap gap-1">
+                {activeConnections.slice(0, 5).map((conn) => (
+                  <span key={conn} className="text-xs px-2 py-0.5 rounded bg-brand-500/10 text-teal-800 dark:text-teal-300 border border-brand-500/30 font-bold">
+                    {conn}
+                  </span>
+                ))}
+                {activeConnections.length > 5 && (
+                  <span className="text-xs text-slate-500 dark:text-slate-400 font-bold">
+                    +{activeConnections.length - 5} more
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Panoramic 5-Column Skills Matrix Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
           {skills.map((category, idx) => {
-            const styles = colorStyles[category.category] || colorStyles['Frontend & Integrations'];
+            const styles = colorStyles[category.category] || colorStyles['Frontend Engineering'];
 
             return (
               <motion.div
@@ -108,11 +143,12 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className={`bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-xl shadow-sm hover:border-slate-300 dark:hover:border-slate-800 transition-colors ${styles.cardBorder}`}
+                className={`bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm hover:border-brand-500/30 transition-all duration-300 flex flex-col justify-between ${styles.cardBorder}`}
               >
-                {/* Category Title */}
-                <h3 className="font-display font-bold text-base text-slate-800 dark:text-slate-100 border-b border-slate-100 dark:border-slate-950 pb-3 mb-4 flex items-center gap-2.5">
-                  <span className={`w-2 h-2 rounded-full shrink-0 ${styles.headerDot}`} />
+                <div>
+                  {/* Category Title */}
+                  <h3 className="font-display font-bold text-sm text-slate-800 dark:text-slate-100 border-b border-slate-100 dark:border-slate-800/60 pb-3 mb-4 flex items-center gap-2.5">
+                    <span className={`w-2 h-2 rounded-full shrink-0 ${styles.headerDot}`} />
                   {category.category}
                 </h3>
 
@@ -127,11 +163,11 @@ export default function Skills() {
                     let tagClass = 'border-slate-200/55 dark:border-slate-800/60 bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400';
 
                     if (isActive) {
-                      tagClass = 'bg-brand-500 text-white border-brand-500 scale-105 shadow-sm shadow-brand-500/25 dark:shadow-brand-500/10 font-bold';
+                      tagClass = 'bg-teal-800 text-white border-teal-800 dark:bg-teal-950/90 dark:text-teal-300 dark:border-teal-500/60 font-semibold shadow-sm';
                     } else if (isRelated) {
-                      tagClass = 'bg-brand-50/60 dark:bg-brand-950/45 text-brand-700 dark:text-brand-400 border-brand-500/50 dark:border-brand-500/35 scale-[1.02]';
+                      tagClass = 'bg-teal-50 dark:bg-teal-950/60 text-teal-800 dark:text-teal-300 border-teal-500/40 dark:border-teal-500/30 font-medium';
                     } else if (isAnyHovered) {
-                      tagClass = 'opacity-25 scale-95 border-slate-100 dark:border-slate-950 bg-slate-50/10 dark:bg-slate-950/10 text-slate-400 dark:text-slate-600 blur-[0.2px]';
+                      tagClass = 'opacity-35 border-slate-100 dark:border-slate-900 bg-slate-50/10 dark:bg-slate-950/10 text-slate-400 dark:text-slate-500';
                     }
 
                     return (
@@ -150,6 +186,7 @@ export default function Skills() {
                       </button>
                     );
                   })}
+                </div>
                 </div>
               </motion.div>
             );

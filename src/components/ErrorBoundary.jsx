@@ -32,7 +32,7 @@ export default class ErrorBoundary extends React.Component {
         <div className="my-8 p-6 bg-slate-900/95 border border-rose-900/60 rounded-xl shadow-xl font-mono text-xs text-slate-300 max-w-2xl mx-auto backdrop-blur-sm select-text">
           <div className="flex items-center gap-2.5 text-rose-400 font-bold mb-3 border-b border-rose-900/40 pb-2">
             <AlertTriangle className="h-4 w-4 shrink-0 text-rose-500" />
-            <span className="tracking-wide text-[11px] uppercase">
+            <span className="tracking-wide text-xs uppercase font-bold">
               [SYSTEM_ALERT: EXECUTION_HALTED]
             </span>
           </div>
@@ -44,13 +44,14 @@ export default class ErrorBoundary extends React.Component {
           </p>
 
           {this.state.error && (
-            <div className="bg-slate-950 p-3 rounded border border-slate-800 text-[11px] text-rose-300/80 mb-4 overflow-x-auto whitespace-pre-wrap font-mono">
+            <div className="bg-slate-950 p-3 rounded border border-slate-800 text-xs text-rose-300/80 mb-4 overflow-x-auto whitespace-pre-wrap font-mono">
               {this.state.error.message || String(this.state.error)}
             </div>
           )}
 
           <div className="flex flex-wrap items-center gap-3 pt-1">
             <button
+              type="button"
               onClick={this.handleReset}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-sans text-xs font-semibold tracking-wide transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 min-h-[36px]"
             >
@@ -58,6 +59,7 @@ export default class ErrorBoundary extends React.Component {
               Retry Module Execution
             </button>
             <button
+              type="button"
               onClick={() => window.location.reload()}
               className="px-3.5 py-2 rounded-lg border border-slate-700 hover:bg-slate-800 text-slate-300 font-sans text-xs font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 min-h-[36px]"
             >

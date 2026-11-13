@@ -9,34 +9,10 @@ export const portfolioData = {
     summary: 'Fullstack Engineer with 7+ years of experience architecting end-to-end web applications, resilient cloud-native microservices, high-throughput payment gateways, and practical GenAI integrations. Experienced in delivering responsive, accessible frontends using React and modern JavaScript/TypeScript while anchoring high-availability backends across AWS and Azure. Passionate about clean architecture, performance tuning, and solving complex product challenges.'
   },
 
-  trustIndicators: [
-    { label: 'Experience', value: '7+ Years' },
-    { label: 'Fullstack Stack', value: 'React & Microservices' },
-    { label: 'Cloud & APIs', value: 'AWS, Azure & Payment APIs' },
-    { label: 'AI Integration', value: 'Practical GenAI' }
-  ],
-
   about: {
     narrative: 'I am a senior fullstack engineer specializing in building responsive, product-focused web interfaces backed by resilient payment gateways, distributed microservices, and AI-enabled software systems. My career is defined by transforming complex business requirements into high-throughput, low-latency architectures with intuitive, accessible user experiences. I focus heavily on systems thinking: modular interface design, type-safe API contracts, auditing security protocols, and ensuring rapid Mean Time to Resolution (MTTR).',
-    focusPoints: [
-      {
-        title: 'Fullstack Web Applications',
-        description: 'Crafting responsive, accessible user interfaces using React.js, Tailwind CSS, Bootstrap, MUI, and JavaScript/TypeScript with clean state management and type-safe API bindings.'
-      },
-      {
-        title: 'Scalable Backend & APIs',
-        description: 'Designing modular, high-throughput REST and GraphQL APIs using Python (FastAPI, Django) and PHP (Laravel). Heavy emphasis on query optimization, caching strategies, and clean code.'
-      },
-      {
-        title: 'Payment Infrastructure',
-        description: 'Building secure EFT and ACH payment platforms. Integrating compliance standards, tokenized authentication, and handling multi-tenant transactional workflows with transaction integrity.'
-      },
-      {
-        title: 'AI-Enabled Applications',
-        description: 'Developing practical AI agents and automation systems using LangGraph, OpenAI APIs, and MongoDB Vector Databases to solve customer workflows with strict latency limits.'
-      }
-    ]
   },
+
 
   metrics: [
     { value: '40%', label: 'Partner Integration Efficiency', desc: 'Accelerated third-party onboarding pipelines through structured API designs.' },

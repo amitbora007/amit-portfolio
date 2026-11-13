@@ -39,23 +39,23 @@ export default function Contact() {
     if (!nameVal) {
       return (
         <>
-          <span className="text-slate-500 font-bold shrink-0">[WAIT]</span>
-          <span className="text-slate-500">name: awaiting user input...</span>
+          <span className="text-slate-400 font-bold shrink-0">[WAIT]</span>
+          <span className="text-slate-400">name: awaiting user input...</span>
         </>
       );
     }
     if (errors.name) {
       return (
         <>
-          <span className="text-amber-500 font-bold shrink-0">[WARN]</span>
-          <span className="text-amber-500/90">name: length must be &gt;= 2 chars (current: {nameVal.length})</span>
+          <span className="text-amber-400 font-bold shrink-0">[WARN]</span>
+          <span className="text-amber-300">name: length must be &gt;= 2 chars (current: {nameVal.length})</span>
         </>
       );
     }
     return (
       <>
-        <span className="text-emerald-500 font-bold shrink-0">[OK]</span>
-        <span className="text-emerald-500/90">name: parsed schema check (length: {nameVal.length})</span>
+        <span className="text-emerald-400 font-bold shrink-0">[OK]</span>
+        <span className="text-emerald-300">name: parsed schema check (length: {nameVal.length})</span>
       </>
     );
   };
@@ -64,23 +64,23 @@ export default function Contact() {
     if (!emailVal) {
       return (
         <>
-          <span className="text-slate-500 font-bold shrink-0">[WAIT]</span>
-          <span className="text-slate-500">email: awaiting user input...</span>
+          <span className="text-slate-400 font-bold shrink-0">[WAIT]</span>
+          <span className="text-slate-400">email: awaiting user input...</span>
         </>
       );
     }
     if (errors.email) {
       return (
         <>
-          <span className="text-amber-500 font-bold shrink-0">[WARN]</span>
-          <span className="text-amber-500/90">email: malformed address syntax</span>
+          <span className="text-amber-400 font-bold shrink-0">[WARN]</span>
+          <span className="text-amber-300">email: malformed address syntax</span>
         </>
       );
     }
     return (
       <>
-        <span className="text-emerald-500 font-bold shrink-0">[OK]</span>
-        <span className="text-emerald-500/90">email: regex matches syntax validation</span>
+        <span className="text-emerald-400 font-bold shrink-0">[OK]</span>
+        <span className="text-emerald-300">email: regex matches syntax validation</span>
       </>
     );
   };
@@ -89,23 +89,23 @@ export default function Contact() {
     if (!subjectVal) {
       return (
         <>
-          <span className="text-slate-500 font-bold shrink-0">[WAIT]</span>
-          <span className="text-slate-500">subject: awaiting user input...</span>
+          <span className="text-slate-400 font-bold shrink-0">[WAIT]</span>
+          <span className="text-slate-400">subject: awaiting user input...</span>
         </>
       );
     }
     if (errors.subject) {
       return (
         <>
-          <span className="text-amber-500 font-bold shrink-0">[WARN]</span>
-          <span className="text-amber-500/90">subject: length must be &gt;= 3 chars (current: {subjectVal.length})</span>
+          <span className="text-amber-400 font-bold shrink-0">[WARN]</span>
+          <span className="text-amber-300">subject: length must be &gt;= 3 chars (current: {subjectVal.length})</span>
         </>
       );
     }
     return (
       <>
-        <span className="text-emerald-500 font-bold shrink-0">[OK]</span>
-        <span className="text-emerald-500/90">subject: verified string contract (length: {subjectVal.length})</span>
+        <span className="text-emerald-400 font-bold shrink-0">[OK]</span>
+        <span className="text-emerald-300">subject: verified string contract (length: {subjectVal.length})</span>
       </>
     );
   };
@@ -114,35 +114,35 @@ export default function Contact() {
     if (!messageVal) {
       return (
         <>
-          <span className="text-slate-500 font-bold shrink-0">[WAIT]</span>
-          <span className="text-slate-500 font-medium">message: awaiting buffer payload (10 chars min)</span>
+          <span className="text-slate-400 font-bold shrink-0">[WAIT]</span>
+          <span className="text-slate-400 font-medium">message: awaiting buffer payload (10 chars min)</span>
         </>
       );
     }
     if (errors.message) {
       return (
         <>
-          <span className="text-amber-500 font-bold shrink-0">[WARN]</span>
-          <span className="text-amber-500">message: payload buffer underflow (current: {messageVal.length}/10 chars)</span>
+          <span className="text-amber-400 font-bold shrink-0">[WARN]</span>
+          <span className="text-amber-300">message: payload buffer underflow (current: {messageVal.length}/10 chars)</span>
         </>
       );
     }
     return (
       <>
-        <span className="text-emerald-500 font-bold shrink-0">[OK]</span>
-        <span className="text-emerald-500/90">message: payload buffer configured (length: {messageVal.length} chars)</span>
+        <span className="text-emerald-400 font-bold shrink-0">[OK]</span>
+        <span className="text-emerald-300">message: payload buffer configured (length: {messageVal.length} chars)</span>
       </>
     );
   };
 
   const getSystemStatus = () => {
     if (!nameVal || !emailVal || !subjectVal || !messageVal) {
-      return <span className="text-slate-500 animate-pulse">PENDING_USER_INPUT</span>;
+      return <span className="text-slate-400 font-medium">PENDING_USER_INPUT</span>;
     }
     if (isValid) {
-      return <span className="text-emerald-500 font-black animate-pulse">READY_FOR_TRANSMISSION</span>;
+      return <span className="text-emerald-400 font-bold">READY_FOR_TRANSMISSION</span>;
     }
-    return <span className="text-amber-500 font-bold">INVALID_SCHEMA_BINDINGS</span>;
+    return <span className="text-amber-400 font-bold">INVALID_SCHEMA_BINDINGS</span>;
   };
 
   const handleCopyEmail = async () => {
@@ -219,29 +219,26 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="py-24 border-t border-slate-200/60 dark:border-slate-800/60 bg-transparent scroll-mt-20">
+      <div className="fluid-canvas w-full">
 
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center gap-4 mb-16">
-          <div className="text-xs uppercase tracking-widest text-brand-600 dark:text-brand-400 font-bold">
-            GET IN TOUCH
-          </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
-            Connect & Collaborate
+        <div className="flex flex-col items-center text-center gap-3 mb-16">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-slate-100 tracking-tight leading-tight max-w-2xl">
+            Inquiries & Connect
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
-            Interested in building modern fullstack applications, scaling cloud services, or integrating practical AI pipelines? Let's discuss.
+          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed">
+            Interested in building high-throughput fullstack systems, scaling cloud microservices, or deploying production AI agents? Dispatch a message below or contact directly.
           </p>
         </div>
 
         {/* Contact Form Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
           {/* Info Card Column */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 p-8 rounded-xl shadow-sm">
-              <h3 className="font-display font-extrabold text-xl text-slate-800 dark:text-slate-100 mb-4 tracking-tight">
+              <h3 className="font-display font-bold text-lg sm:text-xl text-slate-800 dark:text-slate-100 mb-4 tracking-tight">
                 Outreach & Inquiries
               </h3>
               <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
@@ -260,6 +257,7 @@ export default function Contact() {
                     </span>
                   </div>
                   <button
+                    type="button"
                     onClick={handleCopyEmail}
                     className="min-w-[36px] min-h-[36px] flex items-center justify-center p-2 hover:bg-slate-200 dark:hover:bg-slate-900 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                     title="Copy Email"
@@ -269,18 +267,18 @@ export default function Contact() {
                   </button>
                 </div>
 
-                {/* Live Availability Status Card */}
-                <div className="p-3 bg-slate-50 dark:bg-slate-950 rounded border border-slate-200/50 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-100/30 dark:hover:bg-slate-800/30 transition-all duration-300 text-xs space-y-2.5">
+                {/* Live Availability Status */}
+                <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60 text-xs space-y-2.5">
                   <div className="flex items-start gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mt-1 shrink-0" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 mt-1 shrink-0" />
                     <div>
                       <span className="font-sans font-bold text-slate-700 dark:text-slate-300">Live Availability Status</span>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed mt-0.5">
+                      <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-0.5">
                         Open to select Fullstack Engineer roles, payment integrations, and system scaling contracts.
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 font-mono border-t border-slate-100 dark:border-slate-900 pt-2">
+                  <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono pt-1">
                     <span className="flex items-center gap-1">⚡ Response: &lt; 24 Hours</span>
                     <span>📍New Delhi</span>
                   </div>
@@ -293,7 +291,7 @@ export default function Contact() {
                   href={personalInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-650 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors focus:outline-none"
+                  className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-650 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded py-1 px-1.5 -ml-1"
                 >
                   <Linkedin className="h-4 w-4" />
                   LinkedIn
@@ -303,7 +301,7 @@ export default function Contact() {
                   href={personalInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-650 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors focus:outline-none"
+                  className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-650 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded py-1 px-1.5"
                 >
                   <Github className="h-4 w-4" />
                   GitHub
@@ -328,8 +326,9 @@ export default function Contact() {
                   Thank you for reaching out. I have received your message and will review it shortly.
                 </p>
                 <button
+                  type="button"
                   onClick={() => setSubmitStatus('idle')}
-                  className="mt-6 text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-900 px-5 py-2.5 rounded hover:bg-brand-500/5 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500"
+                  className="mt-6 text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-900 px-5 py-2.5 rounded hover:bg-brand-500/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                 >
                   Send another message
                 </button>
@@ -349,7 +348,7 @@ export default function Contact() {
 
                 {/* Name */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="name" className="text-xs uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500">
+                  <label htmlFor="name" className="text-xs uppercase tracking-wider font-semibold text-slate-600 dark:text-slate-400">
                     Full Name
                   </label>
                   <input
@@ -361,18 +360,18 @@ export default function Contact() {
                     maxLength={100}
                     aria-invalid={errors.name ? 'true' : 'false'}
                     aria-describedby={errors.name ? 'name-error' : undefined}
-                    className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:shadow-[0_0_12px_rgba(20,184,166,0.15)] transition-all dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-700 ${
+                    className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 ${
                       errors.name ? 'border-rose-450 dark:border-rose-900' : 'border-slate-200 dark:border-slate-800'
                     }`}
                   />
                   {errors.name && (
-                    <span id="name-error" className="text-[11px] text-rose-500 font-medium">{errors.name.message}</span>
+                    <span id="name-error" className="text-xs text-rose-500 font-medium">{errors.name.message}</span>
                   )}
                 </div>
 
                 {/* Email */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="email" className="text-xs uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500">
+                  <label htmlFor="email" className="text-xs uppercase tracking-wider font-semibold text-slate-600 dark:text-slate-400">
                     Email Address
                   </label>
                   <input
@@ -384,18 +383,18 @@ export default function Contact() {
                     maxLength={100}
                     aria-invalid={errors.email ? 'true' : 'false'}
                     aria-describedby={errors.email ? 'email-error' : undefined}
-                    className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:shadow-[0_0_12px_rgba(20,184,166,0.15)] transition-all dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-700 ${
+                    className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 ${
                       errors.email ? 'border-rose-450 dark:border-rose-900' : 'border-slate-200 dark:border-slate-800'
                     }`}
                   />
                   {errors.email && (
-                    <span id="email-error" className="text-[11px] text-rose-500 font-medium">{errors.email.message}</span>
+                    <span id="email-error" className="text-xs text-rose-500 font-medium">{errors.email.message}</span>
                   )}
                 </div>
 
                 {/* Subject */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="subject" className="text-xs uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500">
+                  <label htmlFor="subject" className="text-xs uppercase tracking-wider font-semibold text-slate-600 dark:text-slate-400">
                     Subject
                   </label>
                   <input
@@ -407,18 +406,18 @@ export default function Contact() {
                     maxLength={150}
                     aria-invalid={errors.subject ? 'true' : 'false'}
                     aria-describedby={errors.subject ? 'subject-error' : undefined}
-                    className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:shadow-[0_0_12px_rgba(20,184,166,0.15)] transition-all dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-700 ${
+                    className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 ${
                       errors.subject ? 'border-rose-450 dark:border-rose-900' : 'border-slate-200 dark:border-slate-800'
                     }`}
                   />
                   {errors.subject && (
-                    <span id="subject-error" className="text-[11px] text-rose-500 font-medium">{errors.subject.message}</span>
+                    <span id="subject-error" className="text-xs text-rose-500 font-medium">{errors.subject.message}</span>
                   )}
                 </div>
 
                 {/* Message */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="message" className="text-xs uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500">
+                  <label htmlFor="message" className="text-xs uppercase tracking-wider font-semibold text-slate-600 dark:text-slate-400">
                     Message Body
                   </label>
                   <textarea
@@ -430,12 +429,12 @@ export default function Contact() {
                     maxLength={2000}
                     aria-invalid={errors.message ? 'true' : 'false'}
                     aria-describedby={errors.message ? 'message-error' : undefined}
-                    className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:shadow-[0_0_12px_rgba(20,184,166,0.15)] transition-all dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-700 resize-none ${
+                    className={`w-full px-4 py-3 text-sm bg-slate-50 dark:bg-slate-950 border rounded-lg focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 resize-none ${
                       errors.message ? 'border-rose-450 dark:border-rose-900' : 'border-slate-200 dark:border-slate-800'
                     }`}
                   />
                   {errors.message && (
-                    <span id="message-error" className="text-[11px] text-rose-500 font-medium">{errors.message.message}</span>
+                    <span id="message-error" className="text-xs text-rose-500 font-medium">{errors.message.message}</span>
                   )}
                 </div>
 
@@ -443,7 +442,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitStatus === 'loading'}
-                  className="w-full flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-white bg-brand-700 dark:bg-brand-600 border border-brand-700 dark:border-brand-600 rounded-lg py-3.5 hover:bg-brand-800 dark:hover:bg-brand-500 active:scale-[0.98] transition-all duration-300 focus:ring-2 focus:ring-brand-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-teal-800 hover:bg-teal-900 dark:bg-teal-500 dark:text-slate-950 dark:hover:bg-teal-400 rounded-lg py-3.5 active:scale-[0.99] transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {submitStatus === 'loading' ? (
                     <>
@@ -459,19 +458,19 @@ export default function Contact() {
                 </button>
 
                 {/* Terminal Validation Stream */}
-                <div className="bg-slate-950 border border-slate-800/80 rounded-lg p-4 font-mono text-[10px] space-y-1.5 text-slate-400 mt-5 relative select-none">
-                  <div className="absolute top-2.5 right-3 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
-                    <span className="text-[8px] text-slate-600 tracking-wider uppercase font-bold">LIVE_VAL</span>
+                <div className="border-t border-slate-200 dark:border-slate-800/80 pt-4 font-mono text-xs space-y-1.5 text-slate-400 mt-6 relative select-none">
+                  <div className="absolute top-3.5 right-1 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
+                    <span className="text-xs text-slate-400 tracking-wider uppercase font-bold">LIVE_VAL</span>
                   </div>
 
-                  <div className="text-slate-500 font-bold border-b border-slate-900 pb-1.5 mb-2">
+                  <div className="text-slate-400 font-bold border-b border-slate-900 pb-1.5 mb-2">
                     amit-bora@compiler:~$ validate --schema=contact
                   </div>
 
                   <div className="flex items-start gap-1">
-                    <span className="text-brand-500 font-bold shrink-0">[INIT]</span>
-                    <span className="text-slate-500">loaded zod schema contract bindings</span>
+                    <span className="text-teal-400 font-bold shrink-0">[INIT]</span>
+                    <span className="text-slate-400">loaded zod schema contract bindings</span>
                   </div>
 
                   <div className="flex items-start gap-1">
@@ -490,7 +489,7 @@ export default function Contact() {
                     {getMessageStatus()}
                   </div>
 
-                  <div className="border-t border-slate-900 pt-1.5 mt-2 flex justify-between font-bold text-slate-500">
+                  <div className="border-t border-slate-900 pt-1.5 mt-2 flex justify-between font-bold text-slate-400">
                     <span>[SYSTEM] Status:</span>
                     {getSystemStatus()}
                   </div>

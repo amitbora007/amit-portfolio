@@ -30,7 +30,7 @@ router.post('/', validateContact, async (req, res) => {
     });
   } catch (error) {
     console.error('❌ Mail transport failed to send:', error);
-    
+
     return res.status(502).json({
       success: false,
       error: 'SMTP Gateway Error. Failed to transmit email.',

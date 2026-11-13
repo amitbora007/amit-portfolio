@@ -36,7 +36,7 @@ web
 
 - **Client Runtime**: React 19, Vite 8, Tailwind CSS v4 (`@tailwindcss/vite`), Framer Motion, Lucide React, React Hook Form, Zod.
 - **Backend / API**: Vercel Serverless Functions + Express fallback (`api/contact.js`, `api/chat.js`), Nodemailer for SMTP delivery with mock fallback, Gemini/OpenAI API integrations.
-- **Constraints**: 
+- **Constraints**:
   - Zero external bloat: Keep vendor chunks partitioned via manual code-splitting (`react-core`, `form-validation`).
   - Zero layout shift: Defer off-screen sections using progressive Suspense fallbacks.
   - Authentic data integrity: Do not invent metrics, past roles, or fabricated client projects.

@@ -1,181 +1,267 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
-import { Shield, CreditCard, CloudLightning, Cpu, Activity, Link, Layers } from 'lucide-react';
+import { Activity, Link, Layers, Database, Sparkles } from 'lucide-react';
 import TiltCard from '../components/TiltCard';
 
-const icons = [Shield, CreditCard, CloudLightning, Cpu];
+const engineeringGuarantees = [
+  {
+    code: '[01] FAILURE ISOLATION',
+    title: 'Bulkheads & Queue Decoupling',
+    icon: Layers,
+    color: 'emerald',
+    desc: 'Systems fail. I build with bulkhead patterns, circuit breakers, and asynchronous message pipes so outages in secondary integrations (like third-party bank APIs) do not halt core transaction clearing.'
+  },
+  {
+    code: '[02] EXPLICIT CONTRACTS',
+    title: 'Schema-First Enforcements',
+    icon: Link,
+    color: 'teal',
+    desc: 'Loose boundaries lead to silent schema drifts. I validate transactional payloads using Zod (React/Node) and Django/FastAPI schemas, rejecting runtime deviations immediately at the API gate.'
+  },
+  {
+    code: '[03] TRACE TELEMETRY',
+    title: 'Distributed Log Correlation',
+    icon: Activity,
+    color: 'cyan',
+    desc: 'Debugging distributed servers blindly is costly. I implement correlation Trace IDs across serverless routes and service queues, tracking user journeys to shrink Mean Time to Resolution (MTTR).'
+  },
+  {
+    code: '[04] TRANSACTION INTEGRITY',
+    title: 'Idempotency & ACID Ledgers',
+    icon: Database,
+    color: 'indigo',
+    desc: 'Financial and inventory records require zero tolerance for duplicates. I deploy distributed Redis locks, optimistic locking in SQL Server/Postgres, and double-entry audit ledgers.'
+  }
+];
 
 export default function About() {
   const { about } = portfolioData;
 
   return (
-    <section id="about" className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="py-24 border-t border-slate-200/60 dark:border-slate-800/60 bg-transparent scroll-mt-20">
+      <div className="fluid-canvas w-full">
 
-        {/* Editorial Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center gap-3 mb-16">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-slate-100 tracking-tight leading-tight max-w-3xl">
+            Engineering resilient fullstack applications with an architectural, systems-first approach.
+          </h2>
+          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
+            Bridging pixel-perfect frontend engineering, high-throughput cloud microservices, and practical machine learning automation.
+          </p>
+        </div>
 
-          {/* Headline and Narrative Column */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="text-xs uppercase tracking-widest text-brand-600 dark:text-brand-400 font-bold">
-              ABOUT AMIT BORA
+        {/* Multi-Span Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch mb-12">
+
+          {/* Bento Tile 1 (6 cols): Engineering Manifesto & Narrative */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-7 sm:p-8 rounded-2xl shadow-sm flex flex-col justify-between relative group hover:border-brand-500/30 transition-all duration-300"
+          >
+            <div className="space-y-5">
+              <div className="flex items-center justify-between text-xs font-mono">
+                <span className="text-brand-600 dark:text-brand-400 font-bold tracking-wider uppercase">
+                  Systems Philosophy
+                </span>
+                <span className="text-slate-500 dark:text-slate-400 font-bold">7+ YRS IN PROD</span>
+              </div>
+
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 dark:text-slate-100 leading-snug">
+                Turning complex distributed requirements into intuitive, reliable products.
+              </h3>
+
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                {about.narrative}
+              </p>
+
+              {/* Systems Quote Block */}
+              <div className="p-4 rounded-xl border border-brand-500/20 bg-brand-500/5 text-xs font-mono text-slate-700 dark:text-slate-300 relative overflow-hidden">
+                <span className="text-brand-600 dark:text-brand-400 font-bold block mb-1">
+                  SYSTEMS FOCUS
+                </span>
+                "Complexity is the enemy of reliability. I design fullstack architectures with clear interface boundaries, type-safe contracts, and end-to-end telemetry to assure rapid failure containment."
+              </div>
             </div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
-              Engineering resilient fullstack applications with an architectural, systems-first approach.
-            </h2>
-            <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-              {about.narrative}
-            </p>
-            <div className="p-4 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 text-xs font-mono text-slate-500 dark:text-slate-400">
-              <span className="text-brand-600 dark:text-brand-400 font-bold block mb-1">SYSTEMS FOCUS</span>
-              "Complexity is the enemy of reliability. I design fullstack architectures with clear interface boundaries, type-safe contracts, and end-to-end telemetry to assure rapid failure containment."
-            </div>
-          </div>
 
-          {/* Telemetry Node Headshot Column */}
-          <div className="lg:col-span-3 flex flex-col items-center justify-center w-full">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="w-full"
+            {/* Micro stats inside Tile 1 */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-center font-mono">
+              <div className="p-2 rounded bg-slate-50 dark:bg-slate-950/50">
+                <span className="block text-xs text-slate-500 dark:text-slate-400 uppercase font-semibold">Exp</span>
+                <span className="text-xs font-bold text-slate-800 dark:text-slate-200">7+ Years</span>
+              </div>
+              <div className="p-2 rounded bg-slate-50 dark:bg-slate-950/50">
+                <span className="block text-xs text-slate-500 dark:text-slate-400 uppercase font-semibold">TPS Peak</span>
+                <span className="text-xs font-bold text-teal-700 dark:text-teal-400">200+</span>
+              </div>
+              <div className="p-2 rounded bg-slate-50 dark:bg-slate-950/50">
+                <span className="block text-xs text-slate-500 dark:text-slate-400 uppercase font-semibold">Papers</span>
+                <span className="text-xs font-bold text-cyan-700 dark:text-cyan-400">3 IEEE</span>
+              </div>
+              <div className="p-2 rounded bg-slate-50 dark:bg-slate-950/50">
+                <span className="block text-xs text-slate-500 dark:text-slate-400 uppercase font-semibold">Uptime</span>
+                <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400">99.98%</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Bento Tile 2 (3 cols): 3D Headshot & Telemetry */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-3 flex flex-col items-center justify-between"
+          >
+            <TiltCard
+              maxTilt={0}
+              scale={1}
+              className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 shadow-sm w-full h-full flex flex-col justify-between group"
             >
-              <TiltCard
-                maxTilt={9}
-                scale={1.025}
-                className="relative rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 shadow-sm w-full group"
-              >
-                <div className="relative rounded-lg overflow-hidden border border-slate-100 dark:border-slate-950 bg-slate-100 dark:bg-slate-950 aspect-[3/4]">
-                  <img
-                    src="/Amit.webp"
-                    alt="Amit Bora"
-                    width={300}
-                    height={400}
-                    loading="lazy"
-                    onError={(e) => {
-                      e.currentTarget.style.opacity = '0';
-                    }}
-                    className="w-full h-full object-cover filter grayscale contrast-115 brightness-95 opacity-85 dark:opacity-70 group-hover:filter-none group-hover:opacity-100 transition-all duration-500"
-                  />
-                </div>
-                
-                {/* Status Indicator Pill Floating in 3D */}
+              <div className="relative rounded-xl overflow-hidden border border-slate-100 dark:border-slate-950 bg-slate-100 dark:bg-slate-950 aspect-[3/4] w-full">
+                <img
+                  src="/Amit.webp"
+                  alt="Amit Bora"
+                  width={360}
+                  height={480}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.opacity = '0';
+                  }}
+                  className="w-full h-full object-cover filter grayscale contrast-115 brightness-95 opacity-90 dark:opacity-80 group-hover:filter-none group-hover:opacity-100 transition-all duration-500"
+                />
+
+                {/* Floating Operator Badge */}
                 <div
-                  className="absolute bottom-4 right-4 px-2 py-1 bg-slate-900/90 dark:bg-slate-950/90 border border-slate-800 dark:border-slate-800 rounded font-mono text-[8px] text-slate-300 flex items-center gap-1.5 backdrop-blur-sm select-none z-20 shadow-lg pointer-events-none"
+                  className="absolute bottom-3 right-3 px-2.5 py-1 bg-slate-950/90 border border-slate-800 rounded-md font-mono text-xs text-slate-300 flex items-center gap-1.5 backdrop-blur-sm select-none z-20 shadow-lg pointer-events-none"
                   style={{ transform: 'translateZ(26px)' }}
                 >
-                  <span>[OPERATOR: ONLINE]</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                  <span>OPERATOR: ACTIVE</span>
                 </div>
-              </TiltCard>
-            </motion.div>
-          </div>
+              </div>
 
-          {/* Focus Points Column */}
-          <div className="lg:col-span-4 flex flex-col gap-4">
-            {about.focusPoints.map((point, index) => {
-              const FocusIcon = icons[index % icons.length];
-              return (
-                <motion.div
-                  key={point.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4.5 rounded-xl hover:border-slate-300 dark:hover:border-slate-800 hover:bg-slate-100/10 dark:hover:bg-slate-800/10 transition-all duration-300 shadow-sm dark:shadow-none flex gap-3.5 items-start"
-                >
-                  <div className="w-8.5 h-8.5 rounded-lg bg-brand-500/5 dark:bg-brand-500/10 flex items-center justify-center text-brand-700 dark:text-brand-400 shrink-0 mt-0.5">
-                    <FocusIcon className="h-4.5 w-4.5" />
+              {/* Card Footer Telemetry */}
+              <div className="pt-3 font-mono text-xs text-slate-500 dark:text-slate-400 flex items-center justify-between w-full">
+                <span>📍 New Delhi, India</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold">AVAILABLE</span>
+              </div>
+            </TiltCard>
+          </motion.div>
+
+          {/* Bento Tile 3 (3 cols): Fullstack Convergence Matrix */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:border-brand-500/30 transition-all duration-300"
+          >
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono mb-4">
+                <span className="text-brand-600 dark:text-brand-400 font-bold uppercase tracking-wider">
+                  Convergence Deck
+                </span>
+                <Sparkles className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
+              </div>
+
+              <div className="divide-y divide-slate-100 dark:divide-slate-800 font-mono text-xs">
+                {/* Layer 1: Client */}
+                <div className="py-2.5 first:pt-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-xs text-sky-700 dark:text-sky-300">01. UI & State</span>
+                    <span className="text-xs font-mono text-sky-600 dark:text-sky-400 font-semibold">React • TS</span>
                   </div>
-                  <div>
-                    <h3 className="font-display font-bold text-sm text-slate-800 dark:text-slate-100 mb-1 leading-snug">
-                      {point.title}
-                    </h3>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                      {point.description}
-                    </p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 font-sans leading-relaxed">
+                    Accessible design systems & reactive state stores.
+                  </p>
+                </div>
+
+                {/* Layer 2: API & Gateway */}
+                <div className="py-2.5">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-xs text-teal-700 dark:text-teal-300">02. Services & Bus</span>
+                    <span className="text-xs font-mono text-teal-600 dark:text-teal-400 font-semibold">FastAPI • Azure</span>
                   </div>
-                </motion.div>
-              );
-            })}
-          </div>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 font-sans leading-relaxed">
+                    Asynchronous queues, dead-letter routing & REST/GraphQL.
+                  </p>
+                </div>
+
+                {/* Layer 3: Persistence */}
+                <div className="py-2.5">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-xs text-emerald-700 dark:text-emerald-300">03. Storage & Cache</span>
+                    <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Postgres • Redis</span>
+                  </div>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 font-sans leading-relaxed">
+                    ACID transactions & sub-millisecond memory caching.
+                  </p>
+                </div>
+
+                {/* Layer 4: AI Core */}
+                <div className="py-2.5 last:pb-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-xs text-indigo-700 dark:text-indigo-300">04. Intelligence</span>
+                    <span className="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-semibold">LangGraph • RAG</span>
+                  </div>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 font-sans leading-relaxed">
+                    Vector search caching & predictive ML pipelines.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-mono text-slate-500 dark:text-slate-400 text-center">
+              END-TO-END SYSTEM HARMONY
+            </div>
+          </motion.div>
 
         </div>
 
-        {/* Engineering Principles Section */}
-        <div className="mt-20 pt-16 border-t border-slate-200/60 dark:border-slate-900/60">
-          <div className="flex flex-col items-center text-center gap-3 mb-12">
-            <div className="text-[10px] tracking-widest font-bold text-brand-650 dark:text-brand-400 uppercase font-mono">
-              Core Philosophies
-            </div>
-            <h3 className="font-display font-extrabold text-xl sm:text-2xl text-slate-800 dark:text-slate-100 tracking-tight">
-              Engineering Principles
+        {/* Bento Tile 4 (Full 12 cols): 4 Core Engineering Guarantees */}
+        <div className="mt-8">
+          <div className="text-center mb-8">
+            <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 dark:text-slate-100 text-balance">
+              Four Core Engineering Guarantees
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-500 max-w-md">
-              How I approach architecture, scale, and operational robustness in production environments.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {engineeringGuarantees.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.code}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.08 }}
+                  className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl relative group overflow-hidden transition-all duration-300 hover:border-brand-500/40 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-4 transition-colors duration-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="font-mono text-xs text-teal-700 dark:text-teal-400 mb-1.5 font-bold tracking-wider">
+                      {item.code}
+                    </div>
+                    <h4 className="font-display font-bold text-base text-slate-900 dark:text-slate-100 mb-2">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
 
-            {/* Principle 1: Failure Isolation */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl relative group overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-emerald-500/5 hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
-            >
-              <div className="w-10 h-10 rounded-lg bg-emerald-500/5 dark:bg-emerald-500/10 group-hover:bg-emerald-500/15 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4 group-hover:scale-110 transition-all duration-300">
-                <Layers className="h-5 w-5" />
-              </div>
-              <div className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400 mb-2 font-bold tracking-wider">[01] FAILURE ISOLATION</div>
-              <h4 className="font-display font-bold text-base text-slate-800 dark:text-slate-200 mb-2">Bulkheads & Queue Decoupling</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Systems fail. I build with bulkhead patterns, circuit breakers, and asynchronous message pipes so outages in secondary integrations (like third-party bank APIs) do not halt core transaction clearing.
-              </p>
-              <div className="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-
-            {/* Principle 2: Explicit Contracts */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl relative group overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-teal-500/5 hover:border-teal-500/30 dark:hover:border-teal-500/30"
-            >
-              <div className="w-10 h-10 rounded-lg bg-teal-500/5 dark:bg-teal-500/10 group-hover:bg-teal-500/15 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-4 group-hover:scale-110 transition-all duration-300">
-                <Link className="h-5 w-5" />
-              </div>
-              <div className="font-mono text-[10px] text-teal-600 dark:text-teal-400 mb-2 font-bold tracking-wider">[02] EXPLICIT CONTRACTS</div>
-              <h4 className="font-display font-bold text-base text-slate-800 dark:text-slate-200 mb-2">Schema-First Enforcements</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Loose boundaries lead to silent schema drifts. I validate transactional payloads using Zod (React/Node) and Django/FastAPI schemas, rejecting runtime deviations immediately at the API gate.
-              </p>
-              <div className="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-r from-transparent via-teal-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-
-            {/* Principle 3: Trace Telemetry */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl relative group overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-indigo-500/5 hover:border-indigo-500/30 dark:hover:border-indigo-500/30"
-            >
-              <div className="w-10 h-10 rounded-lg bg-indigo-500/5 dark:bg-indigo-500/10 group-hover:bg-indigo-500/15 flex items-center justify-center text-indigo-650 dark:text-indigo-400 mb-4 group-hover:scale-110 transition-all duration-300">
-                <Activity className="h-5 w-5" />
-              </div>
-              <div className="font-mono text-[10px] text-indigo-650 dark:text-indigo-400 mb-2 font-bold tracking-wider">[03] TRACE TELEMETRY</div>
-              <h4 className="font-display font-bold text-base text-slate-800 dark:text-slate-200 mb-2">Distributed Log Correlation</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Debugging distributed servers blindly is costly. I implement correlation Trace IDs across serverless routes and service queues, tracking user journeys to shrink Mean Time to Resolution (MTTR).
-              </p>
-              <div className="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-
+                  {/* Accent Hairline Bottom Border */}
+                  <div className="absolute inset-x-0 bottom-0 h-[1.5px] bg-teal-500/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 

@@ -58,19 +58,16 @@ export default function Credentials() {
   };
 
   return (
-    <section id="credentials" className="py-24 px-6 border-t border-slate-100 dark:border-slate-900 bg-transparent">
-      <div className="max-w-7xl mx-auto">
+    <section id="credentials" className="py-24 border-t border-slate-200/60 dark:border-slate-800/60 bg-transparent scroll-mt-20">
+      <div className="fluid-canvas w-full">
 
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center gap-4 mb-16">
-          <div className="text-xs uppercase tracking-widest text-brand-600 dark:text-brand-400 font-bold">
-            CREDIBILITY
-          </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
-            Credentials & Research
+        <div className="flex flex-col items-center text-center gap-3 mb-16">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-slate-100 tracking-tight leading-tight max-w-2xl">
+            Industry Certifications & IEEE Publications
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
-            Academic background, professional industry certifications, and peer-reviewed conference publications.
+          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed">
+            Academic degrees, verified cloud & database credentials, and peer-reviewed computer vision and ML publications.
           </p>
         </div>
 
@@ -85,7 +82,7 @@ export default function Credentials() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-900 pb-3 w-full">
                 <div className="flex items-center gap-2.5">
                   <Award className="h-5 w-5 text-brand-600 dark:text-brand-400" />
-                  <h3 className="font-display font-extrabold text-xl text-slate-800 dark:text-slate-100 tracking-tight">
+                  <h3 className="font-display font-bold text-lg sm:text-xl text-slate-800 dark:text-slate-100 tracking-tight">
                     Industry Certifications
                   </h3>
                 </div>
@@ -94,7 +91,7 @@ export default function Credentials() {
                     href={credentials.credlyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-mono font-bold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-mono font-bold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded px-1.5 py-0.5"
                   >
                     Verify on Credly ↗
                   </a>
@@ -107,28 +104,25 @@ export default function Credentials() {
                     key={cert.name}
                     className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-lg flex items-center gap-3.5 hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:-translate-y-1 hover:shadow-md hover:shadow-brand-500/5 transition-all duration-300 h-full relative group overflow-hidden"
                   >
-                    {/* Left Accent Slide-down Emitter */}
-                    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-brand-500 dark:bg-brand-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
-
                     {/* SVG Vector Badge */}
-                    <div className="group-hover:scale-110 transition-transform duration-300 shrink-0">
+                    <div className="transition-transform duration-300 shrink-0">
                       {renderCertBadge(cert.name)}
                     </div>
 
                     {/* Cert Content Details */}
                     <div className="flex-1 min-w-0 flex flex-col justify-between h-full min-h-[76px] z-10">
                       <div>
-                        <span className="text-[9px] font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest font-mono block mb-1">
+                        <span className="text-xs font-bold text-teal-700 dark:text-teal-400 uppercase tracking-wider font-mono block mb-1">
                           {cert.issuer}
                         </span>
-                        <h4 className="font-sans font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug truncate group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-300" title={cert.name}>
+                        <h4 className="font-sans font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug truncate group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors duration-300" title={cert.name}>
                           {cert.name}
                         </h4>
                       </div>
-                      <div className="flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 font-mono mt-3 pt-2 border-t border-slate-200 dark:border-slate-950">
+                      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono mt-3 pt-2 border-t border-slate-200 dark:border-slate-800">
                         <span>Issued: {cert.year}</span>
                         {cert.credentialId && (
-                          <span className="text-[9px] truncate max-w-[80px]" title={cert.credentialId}>ID: {cert.credentialId}</span>
+                          <span className="text-xs truncate max-w-[120px]" title={cert.credentialId}>ID: {cert.credentialId}</span>
                         )}
                       </div>
                     </div>
@@ -141,7 +135,7 @@ export default function Credentials() {
             <div className="space-y-6">
               <div className="flex items-center gap-2.5 border-b border-slate-100 dark:border-slate-900 pb-3">
                 <GraduationCap className="h-5 w-5 text-brand-600 dark:text-brand-400" />
-                <h3 className="font-display font-extrabold text-xl text-slate-800 dark:text-slate-100 tracking-tight">
+                <h3 className="font-display font-bold text-lg sm:text-xl text-slate-800 dark:text-slate-100 tracking-tight">
                   Academic Background
                 </h3>
               </div>
@@ -152,9 +146,6 @@ export default function Credentials() {
                     key={edu.degree}
                     className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:-translate-y-1 hover:shadow-md hover:shadow-brand-500/5 transition-all duration-300 rounded-lg flex flex-col gap-2 relative group overflow-hidden"
                   >
-                    {/* Left Accent Slide-down Emitter */}
-                    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-brand-500 dark:bg-brand-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
-
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 z-10">
                       <h4 className="font-sans font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-300">
                         {edu.degree}
@@ -163,11 +154,11 @@ export default function Credentials() {
                         {edu.period}
                       </span>
                     </div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 font-medium z-10">
+                    <span className="text-xs text-slate-600 dark:text-slate-400 font-medium z-10">
                       {edu.institution}
                     </span>
                     {edu.notes && (
-                      <p className="text-xs text-slate-400 dark:text-slate-500 leading-relaxed border-t border-slate-200 dark:border-slate-950 pt-2 mt-1 z-10 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors duration-300">
+                      <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-2 mt-1 z-10 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
                         {edu.notes}
                       </p>
                     )}
@@ -183,7 +174,7 @@ export default function Credentials() {
 
             <div className="flex items-center gap-2.5 border-b border-slate-100 dark:border-slate-900 pb-3">
               <BookOpen className="h-5 w-5 text-brand-600 dark:text-brand-400" />
-              <h3 className="font-display font-extrabold text-xl text-slate-800 dark:text-slate-100 tracking-tight">
+              <h3 className="font-display font-bold text-lg sm:text-xl text-slate-800 dark:text-slate-100 tracking-tight">
                 IEEE Research Publications
               </h3>
             </div>
@@ -198,12 +189,9 @@ export default function Credentials() {
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
                   className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-lg flex flex-col justify-between hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:-translate-y-1 hover:shadow-md hover:shadow-brand-500/5 transition-all duration-300 relative group overflow-hidden"
                 >
-                  {/* Left Accent Slide-down Emitter */}
-                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-brand-500 dark:bg-brand-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
-
                   <div className="z-10">
                     <div className="flex items-center justify-between gap-4 mb-2">
-                      <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest font-mono">
+                      <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest font-mono">
                         {pub.publisher} • {pub.year}
                       </span>
                       {pub.url && (
@@ -211,7 +199,7 @@ export default function Credentials() {
                           href={pub.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-slate-400 hover:text-brand-650 dark:hover:text-brand-400 transition-colors z-20"
+                          className="min-w-[32px] min-h-[32px] flex items-center justify-center rounded text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-300 transition-colors z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                           aria-label={`Read publication: ${pub.title}`}
                         >
                           <ArrowUpRight className="h-4.5 w-4.5" />
