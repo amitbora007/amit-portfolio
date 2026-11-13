@@ -143,7 +143,7 @@ export default function About() {
               glareOpacity={0.08}
               className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 shadow-sm w-full h-full flex flex-col justify-between group hover:border-brand-500/40 hover:shadow-md transition-all duration-300"
             >
-              <div className="relative rounded-xl overflow-hidden border border-slate-100 dark:border-slate-950 bg-slate-100 dark:bg-slate-950 aspect-[4/5] max-h-[360px] w-full mx-auto">
+              <div className="relative rounded-xl overflow-hidden border border-slate-100 dark:border-slate-950 bg-slate-100 dark:bg-slate-950 w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:flex-1 lg:min-h-[420px]">
                 <img
                   src="/Amit.webp"
                   alt="Amit Bora"
@@ -153,7 +153,7 @@ export default function About() {
                   onError={(e) => {
                     e.currentTarget.style.opacity = '0';
                   }}
-                  className="w-full h-full object-cover filter grayscale contrast-115 brightness-95 opacity-90 dark:opacity-85 group-hover:filter-none group-hover:opacity-100 transition-all duration-500"
+                  className="w-full h-full object-cover object-top filter grayscale contrast-115 brightness-95 opacity-90 dark:opacity-85 group-hover:filter-none group-hover:opacity-100 transition-all duration-500"
                 />
 
                 {/* Floating Operator Badge */}

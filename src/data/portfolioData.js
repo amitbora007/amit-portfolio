@@ -17,7 +17,7 @@ export const portfolioData = {
   metrics: [
     { value: '40%', label: 'Partner Integration Efficiency', desc: 'Accelerated third-party onboarding pipelines through structured API designs.' },
     { value: '33%', label: 'API Latency Reduction', desc: 'Optimized database queries, indexes, and caching strategies for critical endpoints.' },
-    { value: '100+', label: 'TPS Throughput', desc: 'Architected high-throughput payment architectures using Redis caching and SQL Server.' },
+    { value: '200+', label: 'TPS Throughput', desc: 'Architected high-throughput payment architectures using Redis caching and SQL Server.' },
     { value: '70%+', label: 'Support Queries Automated', desc: 'Implemented retrieval-augmented generation and AI agents for agentless resolution.' },
     { value: '50K+', label: 'Concurrent Students', desc: 'Scaled Learning Management System integrated with Azure AD authentication.' }
   ],
