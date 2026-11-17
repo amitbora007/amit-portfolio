@@ -98,7 +98,7 @@ export default function LiveProjects() {
                       width={800}
                       height={500}
                       loading="lazy"
-                      className="w-full h-full object-cover object-top group-hover:brightness-105 transition-all duration-300"
+                      className="w-full h-full object-cover object-top group-hover/card:scale-105 group-hover/card:brightness-105 transition-all duration-500 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
                   </div>
@@ -121,7 +121,7 @@ export default function LiveProjects() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-teal-700 text-white dark:bg-teal-400 dark:text-slate-950 hover:bg-teal-800 dark:hover:bg-teal-300 font-bold text-xs font-mono transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-teal-700 text-white dark:bg-teal-400 dark:text-slate-950 hover:bg-teal-800 dark:hover:bg-teal-300 hover:scale-105 font-bold text-xs font-mono transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                       aria-label={`Open live application for ${project.title}`}
                     >
                       <span>Live Demo</span>
@@ -132,7 +132,7 @@ export default function LiveProjects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-600 text-xs font-mono font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-600 hover:scale-105 text-xs font-mono font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                       aria-label={`View ${project.title} source code on GitHub`}
                     >
                       <Github className="w-3.5 h-3.5" />
@@ -142,7 +142,7 @@ export default function LiveProjects() {
                 </div>
 
                 {/* Project Title & Tagline */}
-                <h3 className="font-display font-bold text-xl text-slate-900 dark:text-slate-100 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors mb-1.5">
+                <h3 className="font-display font-bold text-xl text-slate-900 dark:text-slate-100 group-hover/card:text-teal-700 dark:group-hover/card:text-teal-400 transition-colors mb-1.5">
                   {project.title}
                 </h3>
                 <p className="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium mb-3">

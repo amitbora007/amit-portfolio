@@ -655,7 +655,7 @@ export default function ProjectCard({ project, index }) {
       >
         {/* Visual System Header Panel (Full-Width, Mission-Control Console) */}
         <div
-          className="w-full h-56 sm:h-64 border-b border-slate-200 dark:border-slate-800 relative flex items-center justify-center bg-slate-950 overflow-hidden"
+          className="w-full h-56 sm:h-64 border-b border-slate-200 dark:border-slate-800 relative flex items-center justify-center bg-slate-950 overflow-hidden group-hover/card:border-teal-500/40 transition-colors duration-300"
         >
           {renderSystemVisual(project.title)}
         </div>
@@ -667,7 +667,7 @@ export default function ProjectCard({ project, index }) {
           <div>
             {/* Header */}
             <div className="flex flex-col gap-2 mb-3">
-              <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-800 dark:text-slate-100 tracking-tight leading-snug">
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-800 dark:text-slate-100 group-hover/card:text-teal-700 dark:group-hover/card:text-teal-400 tracking-tight leading-snug transition-colors duration-200">
                 {project.title}
               </h3>
               <p className="text-sm font-medium text-brand-700 dark:text-brand-400 italic">
