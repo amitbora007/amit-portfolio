@@ -5,10 +5,10 @@ import { portfolioData } from '../data/portfolioData';
 import TiltCard from '../components/TiltCard';
 
 const filterCategories = [
-  { id: 'all', label: 'All Projects', icon: Layers },
+  { id: 'fullstack', label: 'Fullstack', icon: Globe },
   { id: 'ai', label: 'AI & Testing', icon: Bot },
-  { id: 'fullstack', label: 'Fullstack & SaaS', icon: Globe },
   { id: 'cloud', label: 'Cloud & Systems', icon: Cpu },
+  { id: 'all', label: 'All Projects', icon: Layers },
 ];
 
 export default function LiveProjects() {
@@ -80,7 +80,13 @@ export default function LiveProjects() {
         {/* Live Projects Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"
+          className={`w-full ${
+            filteredProjects.length === 1
+              ? 'max-w-md mx-auto grid grid-cols-1 gap-6'
+              : filteredProjects.length === 2
+                ? 'max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6'
+                : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch'
+          }`}
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects && filteredProjects.length > 0 ? (

@@ -176,7 +176,7 @@ export const portfolioData = {
       image: '/projects/consulting-platform.webp',
       liveUrl: 'https://consulting-frontend.onrender.com/',
       githubUrl: 'https://github.com/amitbora007/consulting-platform',
-      stack: ['React', 'FastAPI', 'MongoDB Atlas', 'JWT Auth', 'TailwindCSS'],
+      stack: ['React', 'Python', 'FastAPI', 'MongoDB Atlas', 'JWT Auth', 'TailwindCSS'],
       badge: 'LIVE SYSTEM',
       highlights: ['Executive Client Intake', 'JWT Security Model', 'FastAPI Microservice']
     },
@@ -232,9 +232,9 @@ export const portfolioData = {
       image: '/projects/subwords-game.webp',
       liveUrl: 'https://subwords-frontend.onrender.com/',
       githubUrl: 'https://github.com/amitbora007/subwords-game',
-      stack: ['React', 'AI Playback', 'Game Engine', 'TailwindCSS'],
+      stack: ['React', 'Python', 'FastAPI', 'TailwindCSS'],
       badge: 'LIVE GAME',
-      highlights: ['Real-Time AI Moves', 'Compounding Multipliers', 'Dynamic Word Trie']
+      highlights: ['Compounding Multipliers', 'Dynamic Word Trie']
     }
   ],
 
@@ -264,7 +264,7 @@ export const portfolioData = {
   credentials: {
     credlyUrl: 'https://www.credly.com/users/amit.bora',
     certifications: [
-      { name: 'CTS: AI in Action', issuer: 'Google Cloud (GC)', year: '2026', credentialId: '8cd4cbaa-1e9f-40c1-a8a8-25ebe051e0fb' },
+      { name: 'GraphQL Developer', issuer: 'Google Cloud (GC)', year: '2026', credentialId: '8cd4cbaa-1e9f-40c1-a8a8-25ebe051e0fb' },
       { name: 'Building AI Apps with MongoDB on AWS', issuer: 'MongoDB + AWS', year: '2025', credentialId: '7f8ed941-f6f8-417e-a618-3b4d0a52f00a' },
       { name: 'AWS Certified Associate Dev', issuer: 'Amazon Web Services (AWS)', year: '2023', credentialId: '977ddeaa-c281-47b5-bc17-ec2866f44132' },
       { name: 'MongoDB Certified Associate Dev', issuer: 'MongoDB', year: '2023', credentialId: '6d471adb-601a-43f3-93c8-83fabb498d9c' },
