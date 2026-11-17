@@ -178,6 +178,19 @@ export const portfolioData = {
       highlights: ['Executive Client Intake', 'JWT Security Model', 'FastAPI Microservice']
     },
     {
+      id: 'omnilog',
+      title: 'OmniLog Engine',
+      category: 'fullstack',
+      categoryLabel: 'Fullstack & SaaS',
+      tagline: 'High-Performance Engineering Blog & DevLog Platform',
+      description: 'Modern technical publishing platform featuring interactive 3D spatial canvas, stateless JWT authentication, Google OAuth 2.0 SSO, modular syntax highlighting, and lean MongoDB indexing.',
+      liveUrl: 'https://omnilog-one.vercel.app/',
+      githubUrl: 'https://github.com/amitbora007/omnilog',
+      stack: ['React', 'Node.js', 'Express', 'MongoDB Atlas', 'OAuth 2.0', 'TailwindCSS'],
+      badge: 'LIVE PLATFORM',
+      highlights: ['Interactive 3D Spatial Canvas', 'Google OAuth 2.0 & JWT Cookies', 'Modular Syntax Highlighting (87kB)']
+    },
+    {
       id: 'restaurant',
       title: 'FoodHub Suite',
       category: 'fullstack',

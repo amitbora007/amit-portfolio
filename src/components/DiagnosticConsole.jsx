@@ -64,7 +64,7 @@ const queryKnowledgeBase = (query) => {
   }
 
   // 4b. Live Deployments
-  if (q.includes('live') || q.includes('apps') || q.includes('deploy') || q.includes('website') || q.includes('demo') || q.includes('testblind') || q.includes('vigilapi')) {
+  if (q.includes('live') || q.includes('apps') || q.includes('deploy') || q.includes('website') || q.includes('demo') || q.includes('testblind') || q.includes('vigilapi') || q.includes('omnilog')) {
     const list = (portfolioData.liveProjects || []).map(p => `  * ${p.title} (${p.category}): ${p.liveUrl}\n    - ${p.tagline}\n    - Stack: ${p.stack.join(', ')}`).join('\n\n');
     return `[KNOWLEDGE_BASE_HIT] Amit's Live Production Deployments:\n\n${list}`;
   }
@@ -317,9 +317,10 @@ export default function DiagnosticConsole() {
           { text: '  1. TestBlind AI: https://testblind-web.onrender.com (AI Testing & AST Mutation)', type: 'output' },
           { text: '  2. VigilAPI: https://amitbora007.github.io/vigilapi/ (Serverless Edge Health Monitor)', type: 'output' },
           { text: '  3. Executive Consulting: https://consulting-frontend.onrender.com (B2B Multi-tenant SaaS)', type: 'output' },
-          { text: '  4. FoodHub Engine: https://foodhub-frontend-13i1.onrender.com (React 19 & FastAPI)', type: 'output' },
-          { text: '  5. P2P Direct Transfer: https://p2p-file-transfer-rwec.onrender.com (WebRTC & OPFS)', type: 'output' },
-          { text: '  6. Subwords AI Arena: https://subwords-frontend.onrender.com (Competitive Word Engine)', type: 'output' },
+          { text: '  4. OmniLog Engine: https://omnilog-one.vercel.app/ (Engineering DevLog & 3D Canvas)', type: 'output' },
+          { text: '  5. FoodHub Engine: https://foodhub-frontend-13i1.onrender.com (React 19 & FastAPI)', type: 'output' },
+          { text: '  6. P2P Direct Transfer: https://p2p-file-transfer-rwec.onrender.com (WebRTC & OPFS)', type: 'output' },
+          { text: '  7. Subwords AI Arena: https://subwords-frontend.onrender.com (Competitive Word Engine)', type: 'output' },
         ]);
         break;
 
