@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Award, BookOpen, GraduationCap, ArrowUpRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import TiltCard from '../components/TiltCard';
 
 export default function Credentials() {
   const { credentials, education } = portfolioData;
@@ -100,12 +101,12 @@ export default function Credentials() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {(credentials?.certifications || []).map((cert) => (
-                  <div
+                  <TiltCard
                     key={cert.name}
-                    className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-lg flex items-center gap-3.5 hover:border-teal-500/40 dark:hover:border-teal-500/40 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:shadow-md transition-colors duration-200 h-full relative group overflow-hidden"
+                    className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl flex items-center gap-3.5 shadow-sm transition-all duration-300 h-full overflow-hidden"
                   >
                     {/* SVG Vector Badge */}
-                    <div className="transition-transform duration-300 shrink-0">
+                    <div className="group-hover/card:scale-110 group-hover/card:rotate-3 transition-transform duration-300 ease-out shrink-0">
                       {renderCertBadge(cert.name)}
                     </div>
 
@@ -115,7 +116,7 @@ export default function Credentials() {
                         <span className="text-xs font-bold text-teal-700 dark:text-teal-400 uppercase tracking-wider font-mono block mb-1">
                           {cert.issuer}
                         </span>
-                        <h4 className="font-sans font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug truncate group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors duration-300" title={cert.name}>
+                        <h4 className="font-sans font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug truncate group-hover/card:text-teal-700 dark:group-hover/card:text-teal-400 transition-colors duration-300" title={cert.name}>
                           {cert.name}
                         </h4>
                       </div>
@@ -126,7 +127,7 @@ export default function Credentials() {
                         )}
                       </div>
                     </div>
-                  </div>
+                  </TiltCard>
                 ))}
               </div>
             </div>
@@ -142,15 +143,15 @@ export default function Credentials() {
 
               <div className="space-y-4">
                 {(education || []).map((edu) => (
-                  <div
+                  <TiltCard
                     key={edu.degree}
-                    className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 hover:border-teal-500/40 dark:hover:border-teal-500/40 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:shadow-md transition-colors duration-200 rounded-lg flex flex-col gap-2 relative group overflow-hidden"
+                    className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm rounded-xl flex flex-col gap-2 overflow-hidden transition-all duration-300"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 z-10">
-                      <h4 className="font-sans font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-300">
+                      <h4 className="font-sans font-bold text-sm text-slate-800 dark:text-slate-100 group-hover/card:text-teal-700 dark:group-hover/card:text-teal-400 transition-colors duration-300">
                         {edu.degree}
                       </h4>
-                      <span className="text-xs font-mono text-brand-700 dark:text-brand-400 whitespace-nowrap bg-brand-500/5 group-hover:bg-brand-500/10 px-2.5 py-1 rounded transition-colors duration-300">
+                      <span className="text-xs font-mono text-brand-700 dark:text-brand-400 whitespace-nowrap bg-brand-500/5 group-hover/card:bg-brand-500/10 px-2.5 py-1 rounded transition-colors duration-300">
                         {edu.period}
                       </span>
                     </div>
@@ -158,11 +159,11 @@ export default function Credentials() {
                       {edu.institution}
                     </span>
                     {edu.notes && (
-                      <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-2 mt-1 z-10 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
+                      <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-2 mt-1 z-10 group-hover/card:text-slate-700 dark:group-hover/card:text-slate-300 transition-colors duration-300">
                         {edu.notes}
                       </p>
                     )}
-                  </div>
+                  </TiltCard>
                 ))}
               </div>
             </div>
@@ -187,32 +188,36 @@ export default function Credentials() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-lg flex flex-col justify-between hover:border-teal-500/40 dark:hover:border-teal-500/40 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:shadow-md transition-colors duration-200 relative group overflow-hidden"
+                  className="h-full"
                 >
-                  <div className="z-10">
-                    <div className="flex items-center justify-between gap-4 mb-2">
-                      <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest font-mono">
-                        {pub.publisher} • {pub.year}
-                      </span>
-                      {pub.url && (
-                        <a
-                          href={pub.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="min-w-[32px] min-h-[32px] flex items-center justify-center rounded text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-300 transition-colors z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-                          aria-label={`Read publication: ${pub.title}`}
-                        >
-                          <ArrowUpRight className="h-4.5 w-4.5" />
-                        </a>
-                      )}
+                  <TiltCard
+                    className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl flex flex-col justify-between shadow-sm overflow-hidden h-full transition-all duration-300"
+                  >
+                    <div className="z-10">
+                      <div className="flex items-center justify-between gap-4 mb-2">
+                        <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest font-mono">
+                          {pub.publisher} • {pub.year}
+                        </span>
+                        {pub.url && (
+                          <a
+                            href={pub.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="min-w-[32px] min-h-[32px] flex items-center justify-center rounded text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-300 transition-colors z-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                            aria-label={`Read publication: ${pub.title}`}
+                          >
+                            <ArrowUpRight className="h-4.5 w-4.5 group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 group-hover/card:text-teal-600 dark:group-hover/card:text-teal-400 transition-all duration-300 ease-out" />
+                          </a>
+                        )}
+                      </div>
+                      <h4 className="font-sans font-bold text-sm text-slate-800 dark:text-slate-200 leading-snug mb-2 group-hover/card:text-teal-700 dark:group-hover/card:text-teal-400 transition-colors duration-300">
+                        {pub.title}
+                      </h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed group-hover/card:text-slate-700 dark:group-hover/card:text-slate-300 transition-colors duration-300">
+                        {pub.desc}
+                      </p>
                     </div>
-                    <h4 className="font-sans font-bold text-sm text-slate-800 dark:text-slate-200 leading-snug mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-300">
-                      {pub.title}
-                    </h4>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
-                      {pub.desc}
-                    </p>
-                  </div>
+                  </TiltCard>
                 </motion.div>
               ))}
             </div>

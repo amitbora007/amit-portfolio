@@ -31,7 +31,7 @@ export default function LiveProjects() {
             Live Deployments & Open Source
           </h2>
           <p className="text-sm sm:text-base text-slate-650 dark:text-slate-400 max-w-xl leading-relaxed text-pretty">
-            Production applications, intelligent testing suites, and real-time streaming tools running live on cloud infrastructure. Launch the live demo or inspect the source code on GitHub.
+            Live applications, intelligent testing suites, and real-time streaming tools running live on cloud infrastructure. Launch the demo or inspect the source code on GitHub.
           </p>
 
           <a
@@ -124,7 +124,7 @@ export default function LiveProjects() {
                       className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-teal-700 text-white dark:bg-teal-400 dark:text-slate-950 hover:bg-teal-800 dark:hover:bg-teal-300 hover:scale-105 font-bold text-xs font-mono transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                       aria-label={`Open live application for ${project.title}`}
                     >
-                      <span>Live Demo</span>
+                      <span>Demo</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
 
