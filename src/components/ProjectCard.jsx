@@ -651,15 +651,11 @@ export default function ProjectCard({ project, index }) {
       className="h-full"
     >
       <TiltCard
-        maxTilt={4}
-        scale={1.01}
-        perspective={1200}
         className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all duration-300 flex flex-col h-full group overflow-hidden"
       >
         {/* Visual System Header Panel (Full-Width, Mission-Control Console) */}
         <div
           className="w-full h-56 sm:h-64 border-b border-slate-200 dark:border-slate-800 relative flex items-center justify-center bg-slate-950 overflow-hidden"
-          style={{ transformStyle: 'preserve-3d' }}
         >
           {renderSystemVisual(project.title)}
         </div>
@@ -667,11 +663,10 @@ export default function ProjectCard({ project, index }) {
         {/* Case Study Details Panel */}
         <div
           className="w-full p-6 sm:p-7 flex flex-col justify-between flex-1"
-          style={{ transformStyle: 'preserve-3d' }}
         >
           <div>
             {/* Header */}
-            <div className="flex flex-col gap-2 mb-3" style={{ transform: 'translateZ(16px)' }}>
+            <div className="flex flex-col gap-2 mb-3">
               <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-800 dark:text-slate-100 tracking-tight leading-snug">
                 {project.title}
               </h3>
@@ -681,7 +676,7 @@ export default function ProjectCard({ project, index }) {
             </div>
 
             {/* Tech Stack */}
-            <div className="flex flex-wrap gap-1.5 mb-4" style={{ transform: 'translateZ(12px)' }}>
+            <div className="flex flex-wrap gap-1.5 mb-4">
               {(project.stack || []).map((tech) => (
                 <span
                   key={tech}
@@ -693,7 +688,7 @@ export default function ProjectCard({ project, index }) {
             </div>
 
             {/* Description */}
-            <div className="space-y-2.5 mb-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed" style={{ transform: 'translateZ(14px)' }}>
+            <div className="space-y-2.5 mb-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 text-brand-600 dark:text-brand-500 mt-0.5 shrink-0" />
                 <span>
@@ -710,7 +705,7 @@ export default function ProjectCard({ project, index }) {
           </div>
 
           {/* Expandable Architecture Notes */}
-          <div className="border-t border-slate-100 dark:border-slate-800/60 pt-4 mt-2" style={{ transform: 'translateZ(10px)' }}>
+          <div className="border-t border-slate-100 dark:border-slate-800/60 pt-4 mt-2">
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}

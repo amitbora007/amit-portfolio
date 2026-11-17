@@ -101,8 +101,6 @@ export default function LiveProjects() {
                   className="h-full"
                 >
                   <TiltCard
-                    maxTilt={5}
-                    scale={1.015}
                     className="h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm flex flex-col justify-between hover:border-teal-500/40 hover:shadow-xl transition-all duration-300 group"
                   >
                     <div>
@@ -115,7 +113,7 @@ export default function LiveProjects() {
                             width={800}
                             height={500}
                             loading="lazy"
-                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
+                            className="w-full h-full object-cover object-top group-hover:brightness-105 transition-all duration-300"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
                         </div>

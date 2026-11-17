@@ -102,7 +102,7 @@ export default function Credentials() {
                 {(credentials?.certifications || []).map((cert) => (
                   <div
                     key={cert.name}
-                    className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-lg flex items-center gap-3.5 hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:-translate-y-1 hover:shadow-md hover:shadow-brand-500/5 transition-all duration-300 h-full relative group overflow-hidden"
+                    className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-lg flex items-center gap-3.5 hover:border-teal-500/40 dark:hover:border-teal-500/40 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:shadow-md transition-colors duration-200 h-full relative group overflow-hidden"
                   >
                     {/* SVG Vector Badge */}
                     <div className="transition-transform duration-300 shrink-0">
@@ -144,7 +144,7 @@ export default function Credentials() {
                 {(education || []).map((edu) => (
                   <div
                     key={edu.degree}
-                    className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:-translate-y-1 hover:shadow-md hover:shadow-brand-500/5 transition-all duration-300 rounded-lg flex flex-col gap-2 relative group overflow-hidden"
+                    className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 hover:border-teal-500/40 dark:hover:border-teal-500/40 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:shadow-md transition-colors duration-200 rounded-lg flex flex-col gap-2 relative group overflow-hidden"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 z-10">
                       <h4 className="font-sans font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-300">
@@ -187,7 +187,7 @@ export default function Credentials() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-lg flex flex-col justify-between hover:border-brand-500/30 dark:hover:border-brand-500/30 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:-translate-y-1 hover:shadow-md hover:shadow-brand-500/5 transition-all duration-300 relative group overflow-hidden"
+                  className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-lg flex flex-col justify-between hover:border-teal-500/40 dark:hover:border-teal-500/40 hover:bg-slate-100/50 dark:hover:bg-slate-800/40 hover:shadow-md transition-colors duration-200 relative group overflow-hidden"
                 >
                   <div className="z-10">
                     <div className="flex items-center justify-between gap-4 mb-2">

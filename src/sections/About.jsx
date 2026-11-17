@@ -137,8 +137,6 @@ export default function About() {
             className="lg:col-span-3 flex flex-col items-center justify-between"
           >
             <TiltCard
-              maxTilt={6}
-              scale={1.015}
               className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 shadow-sm w-full h-full flex flex-col justify-between group hover:border-brand-500/40 hover:shadow-md transition-all duration-300"
             >
               <div className="relative rounded-xl overflow-hidden border border-slate-100 dark:border-slate-950 bg-slate-100 dark:bg-slate-950 w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:flex-1 lg:min-h-[420px]">
@@ -157,7 +155,6 @@ export default function About() {
                 {/* Floating Operator Badge */}
                 <div
                   className="absolute bottom-3 right-3 px-2.5 py-1 bg-slate-950/90 border border-slate-800 rounded-md font-mono text-xs text-slate-300 flex items-center gap-1.5 backdrop-blur-sm select-none z-20 shadow-lg pointer-events-none"
-                  style={{ transform: 'translateZ(26px)' }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                   <span>OPERATOR: ACTIVE</span>

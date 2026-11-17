@@ -117,7 +117,6 @@ export default function Recommendations() {
         {/* Main Slider Panel */}
         <div
           className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden relative shadow-sm min-h-[440px] sm:min-h-[380px] md:min-h-[340px] lg:min-h-[330px]"
-          style={{ perspective: 1200 }}
         >
           {/* Floating Quote Icon */}
           <Quote className="absolute right-6 top-6 h-10 w-10 text-slate-200 dark:text-slate-800/20 pointer-events-none z-0" />
@@ -130,11 +129,10 @@ export default function Recommendations() {
               initial="enter"
               animate="center"
               exit="exit"
-              style={{ transformStyle: 'preserve-3d' }}
               className="w-full h-full p-6 sm:p-7 flex flex-col justify-between absolute inset-0 z-10"
             >
               {/* Card Content details */}
-              <div className="space-y-4 flex-1 overflow-auto pr-2 custom-scrollbar" style={{ transform: 'translateZ(14px)' }}>
+              <div className="space-y-4 flex-1 overflow-auto pr-2 custom-scrollbar">
                 {/* Meta details */}
                 <div className="flex items-center gap-3">
                   {currentItem.image ? (

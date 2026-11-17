@@ -264,7 +264,7 @@ export const portfolioData = {
   credentials: {
     credlyUrl: 'https://www.credly.com/users/amit.bora',
     certifications: [
-      { name: 'GraphQL Developer', issuer: 'Google Cloud (GC)', year: '2026', credentialId: '8cd4cbaa-1e9f-40c1-a8a8-25ebe051e0fb' },
+      { name: 'GraphQL Developer', issuer: 'Apollo GraphQL', year: '2026', credentialId: 'ID: 5bf6b205-da61-4bb3-b14c-e3e1fdb8c1c2' },
       { name: 'Building AI Apps with MongoDB on AWS', issuer: 'MongoDB + AWS', year: '2025', credentialId: '7f8ed941-f6f8-417e-a618-3b4d0a52f00a' },
       { name: 'AWS Certified Associate Dev', issuer: 'Amazon Web Services (AWS)', year: '2023', credentialId: '977ddeaa-c281-47b5-bc17-ec2866f44132' },
       { name: 'MongoDB Certified Associate Dev', issuer: 'MongoDB', year: '2023', credentialId: '6d471adb-601a-43f3-93c8-83fabb498d9c' },

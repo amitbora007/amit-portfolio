@@ -144,7 +144,6 @@ export default function Achievements() {
         {/* Main Slider Panel */}
         <div
           className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden relative shadow-sm min-h-[440px] sm:min-h-[380px] md:min-h-[340px] lg:min-h-[330px]"
-          style={{ perspective: 1200 }}
         >
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
@@ -154,11 +153,10 @@ export default function Achievements() {
               initial="enter"
               animate="center"
               exit="exit"
-              style={{ transformStyle: 'preserve-3d' }}
               className="w-full h-full p-6 sm:p-7 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center absolute inset-0"
             >
               {/* Text Metadata (Columns 1-7) */}
-              <div className="sm:col-span-7 space-y-4" style={{ transform: 'translateZ(14px)' }}>
+              <div className="sm:col-span-7 space-y-4">
                 {/* Meta details */}
                 <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono border-b border-slate-200 dark:border-slate-800/50 pb-2.5">
                   <span className="font-bold text-teal-700 dark:text-teal-300 uppercase tracking-wider">
@@ -185,7 +183,7 @@ export default function Achievements() {
               </div>
 
               {/* Certificate Image Frame (Columns 8-12) */}
-              <div className="sm:col-span-5 flex justify-center" style={{ transform: 'translateZ(20px)' }}>
+              <div className="sm:col-span-5 flex justify-center">
                 <button
                   type="button"
                   ref={triggerRef}
@@ -196,7 +194,7 @@ export default function Achievements() {
                   <img
                     src={currentItem.image}
                     alt={`${currentItem.title} Certificate`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover/thumb:scale-105 opacity-85 group-hover/thumb:opacity-100"
+                    className="w-full h-full object-cover transition-all duration-300 group-hover/thumb:brightness-105 opacity-85 group-hover/thumb:opacity-100"
                     loading="lazy"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';

@@ -77,8 +77,6 @@ export default function ImpactMetrics() {
               className="h-full"
             >
               <TiltCard
-                maxTilt={5}
-                scale={1.015}
                 className="p-6 flex flex-col justify-between bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-teal-500/50 dark:hover:border-teal-400/40 rounded-xl transition-all duration-300 h-full group relative hover:shadow-lg"
               >
                 {/* Top Accent Hairline */}
@@ -96,7 +94,6 @@ export default function ImpactMetrics() {
                   </h3>
                   <p
                     className="text-xs sm:text-sm text-slate-650 dark:text-slate-400 leading-relaxed z-10"
-                    style={{ transform: 'translateZ(14px)' }}
                   >
                     {metric.desc}
                   </p>
@@ -105,7 +102,6 @@ export default function ImpactMetrics() {
                 {/* Vector Telemetry Sparkline Background */}
                 <div
                   className="absolute bottom-2 right-2 left-2 h-10 overflow-hidden pointer-events-none opacity-20 dark:opacity-30 group-hover:opacity-80 transition-opacity duration-300"
-                  style={{ transform: 'translateZ(10px)' }}
                 >
                   <svg viewBox="0 0 100 50" preserveAspectRatio="none" className="w-full h-full fill-none">
                     <motion.path
