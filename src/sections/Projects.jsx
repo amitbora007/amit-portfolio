@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 import ProjectCard from '../components/ProjectCard';
+import CardSlider from '../components/CardSlider';
 import { Layers, CreditCard, CloudLightning, BrainCircuit } from 'lucide-react';
 
 const filterCategories = [
+  { id: 'all', label: 'All Case Studies', icon: Layers },
   { id: 'payment', label: 'Payment Engines', icon: CreditCard },
   { id: 'cloud', label: 'Cloud Microservices', icon: CloudLightning },
   { id: 'ai', label: 'GenAI & ML Systems', icon: BrainCircuit },
@@ -13,9 +14,10 @@ const filterCategories = [
 
 export default function Projects() {
   const { projects } = portfolioData;
-  const [activeFilter, setActiveFilter] = useState('payment');
+  const [activeFilter, setActiveFilter] = useState('all');
 
   const filteredProjects = (projects || []).filter((project) => {
+    if (activeFilter === 'all') return true;
     const title = project.title.toLowerCase();
     const stack = (project.stack || []).map((s) => s.toLowerCase()).join(' ');
 
@@ -72,24 +74,19 @@ export default function Projects() {
           })}
         </div>
 
-        {/* Widescreen 2-Column Responsive Grid */}
-        <motion.div layout className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-stretch">
-          <AnimatePresence>
-            {filteredProjects && filteredProjects.length > 0 ? (
-              filteredProjects.map((project, idx) => (
-                <ProjectCard
-                  key={project.title}
-                  project={project}
-                  index={idx}
-                />
-              ))
-            ) : (
-              <div className="col-span-full p-12 text-center text-slate-500 font-mono text-xs border border-dashed border-slate-300 dark:border-slate-800 rounded-2xl">
-                NO_PROJECTS_FOUND_FOR_CATEGORY
-              </div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+        {/* Case Studies Showcase (Slider if > 3 items, Centered Grid if <= 3) */}
+        <CardSlider
+          items={filteredProjects}
+          density="double"
+          deckName="CASE STUDIES"
+          keyExtractor={(project) => project.title}
+          renderItem={(project, idx) => (
+            <ProjectCard
+              project={project}
+              index={idx}
+            />
+          )}
+        />
 
       </div>
     </section>

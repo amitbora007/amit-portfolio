@@ -170,7 +170,7 @@ export const portfolioData = {
       id: 'consulting-platform',
       title: 'Consulting Platform',
       category: 'fullstack',
-      categoryLabel: 'Fullstack & SaaS',
+      categoryLabel: 'Fullstack',
       tagline: 'Full-Stack Executive Consulting & Client Portal',
       description: 'A professional, full-stack consulting service platform with executive luxury design, client intake workflows, automated scheduling, and secure account management.',
       image: '/projects/consulting-platform.webp',
@@ -184,7 +184,7 @@ export const portfolioData = {
       id: 'omnilog',
       title: 'OmniLog Engine',
       category: 'fullstack',
-      categoryLabel: 'Fullstack & SaaS',
+      categoryLabel: 'Fullstack',
       tagline: 'High-Performance Engineering Blog & DevLog Platform',
       description: 'Modern technical publishing platform featuring interactive 3D spatial canvas, stateless JWT authentication, Google OAuth 2.0 SSO, modular syntax highlighting, and lean MongoDB indexing.',
       image: '/projects/omnilog.webp',
@@ -198,7 +198,7 @@ export const portfolioData = {
       id: 'restaurant',
       title: 'FoodHub Suite',
       category: 'fullstack',
-      categoryLabel: 'Fullstack & SaaS',
+      categoryLabel: 'Fullstack',
       tagline: 'Cloud Kitchen Portal & Real-Time Order Stream',
       description: 'Modern restaurant ordering portal and kitchen management suite powered by React 19, FastAPI, and MongoDB Atlas with real-time order processing and payment integrations.',
       image: '/projects/restaurant.webp',
@@ -257,7 +257,7 @@ export const portfolioData = {
     },
     {
       category: 'AI & Intelligent Systems',
-      items: ['OpenAI APIs', 'LangGraph (Multi-Agent)', 'RAG Pipelines', 'Scikit-learn', 'OpenCV (Computer Vision)', 'SHAP (Explainable AI)', 'Copilot', 'Antigravity']
+      items: ['OpenAI APIs', 'LangGraph', 'LangChain', 'RAG Pipelines', 'Scikit-learn', 'OpenCV (Computer Vision)', 'SHAP (Explainable AI)', 'Copilot', 'Antigravity']
     }
   ],
 
