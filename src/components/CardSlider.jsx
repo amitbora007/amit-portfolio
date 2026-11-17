@@ -141,7 +141,13 @@ export default function CardSlider({
     }
   };
 
-  // If 3 or fewer items: render centered responsive grid (no carousel overhead)
+  // Card width class for static (<= 3 items) view, perfectly matching slider card dimensions
+  const staticCardWidthClass =
+    density === 'double'
+      ? 'w-full lg:w-[calc(50%-12px)]'
+      : 'w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]';
+
+  // If 3 or fewer items: render centered responsive layout with identical card dimensions
   if (!isSliderActive) {
     if (totalItems === 0) {
       return (
@@ -153,18 +159,13 @@ export default function CardSlider({
 
     return (
       <div
-        className={`w-full ${
-          totalItems === 1
-            ? 'max-w-md mx-auto grid grid-cols-1 gap-6'
-            : totalItems === 2
-              ? 'max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6'
-              : density === 'double'
-                ? 'max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6'
-                : 'max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
-        } items-stretch ${className}`}
+        className={`w-full flex flex-wrap justify-center gap-6 items-stretch ${className}`}
       >
         {items.map((item, idx) => (
-          <div key={keyExtractor(item, idx)} className="h-full">
+          <div
+            key={keyExtractor(item, idx)}
+            className={`${staticCardWidthClass} flex flex-col`}
+          >
             {renderItem(item, idx)}
           </div>
         ))}

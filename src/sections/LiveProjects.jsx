@@ -14,7 +14,7 @@ const filterCategories = [
 
 export default function LiveProjects() {
   const { liveProjects, personalInfo } = portfolioData;
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('fullstack');
 
   const filteredProjects = (liveProjects || []).filter((project) => {
     if (activeFilter === 'all') return true;
@@ -104,14 +104,40 @@ export default function LiveProjects() {
                   </div>
                 )}
 
-                {/* Card Header Metadata */}
-                <div className="flex items-center justify-between text-xs font-mono mb-3.5 gap-2">
+                {/* Card Header: Category & Live Indicator with Action Buttons */}
+                <div className="flex flex-wrap items-center justify-between gap-2.5 mb-3.5 text-xs font-mono">
                   <span className="text-xs font-bold text-teal-700 dark:text-teal-400 uppercase tracking-wider">
                     {project.categoryLabel}
                   </span>
-                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-xs font-bold select-none shrink-0">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    <span>{project.badge}</span>
+
+                  {/* Live Status Pill & Action Buttons */}
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-xs font-bold select-none shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      <span>{project.badge}</span>
+                    </div>
+
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-teal-700 text-white dark:bg-teal-400 dark:text-slate-950 hover:bg-teal-800 dark:hover:bg-teal-300 font-bold text-xs font-mono transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                      aria-label={`Open live application for ${project.title}`}
+                    >
+                      <span>Live Demo</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-600 text-xs font-mono font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                      aria-label={`View ${project.title} source code on GitHub`}
+                    >
+                      <Github className="w-3.5 h-3.5" />
+                      <span>Source</span>
+                    </a>
                   </div>
                 </div>
 
@@ -138,8 +164,8 @@ export default function LiveProjects() {
                   ))}
                 </div>
 
-                {/* Tech Stack Pills */}
-                <div className="flex flex-wrap gap-1.5 mb-6">
+                {/* Tech Stack Pills (Anchored at Card Bottom) */}
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-slate-800 mt-auto">
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
@@ -149,30 +175,6 @@ export default function LiveProjects() {
                     </span>
                   ))}
                 </div>
-              </div>
-
-              {/* Dual Action CTAs */}
-              <div className="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800 mt-auto">
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-teal-700 text-white dark:bg-teal-400 dark:text-slate-950 hover:bg-teal-800 dark:hover:bg-teal-300 font-bold text-xs font-mono transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-                  aria-label={`Open live application for ${project.title}`}
-                >
-                  <span>Live Demo</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-600 text-xs font-mono font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-                  aria-label={`View ${project.title} source code on GitHub`}
-                >
-                  <Github className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Source</span>
-                </a>
               </div>
             </TiltCard>
           )}
