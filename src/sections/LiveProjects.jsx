@@ -102,6 +102,21 @@ export default function LiveProjects() {
                     className="h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm flex flex-col justify-between hover:border-teal-500/40 hover:shadow-xl transition-all duration-300 group"
                   >
                     <div>
+                      {/* Project Image Thumbnail */}
+                      {project.image && (
+                        <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-950">
+                          <img
+                            src={project.image}
+                            alt={`${project.title} live preview`}
+                            width={800}
+                            height={500}
+                            loading="lazy"
+                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+                        </div>
+                      )}
+
                       {/* Card Header Metadata */}
                       <div className="flex items-center justify-between text-xs font-mono mb-3.5 gap-2">
                         <span className="text-xs font-bold text-teal-700 dark:text-teal-400 uppercase tracking-wider">
