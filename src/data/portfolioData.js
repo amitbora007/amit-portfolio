@@ -137,6 +137,87 @@ export const portfolioData = {
     }
   ],
 
+  liveProjects: [
+    {
+      id: 'testblind-ai',
+      title: 'TestBlind AI',
+      category: 'ai',
+      categoryLabel: 'AI & Testing',
+      tagline: 'Autonomous AI Testing & AST Mutation Platform',
+      description: 'AI-powered software testing platform that eliminates test blindspots using AST mutation testing, automated incident-to-regression test synthesis, and dual-state verified execution.',
+      liveUrl: 'https://testblind-web.onrender.com/',
+      githubUrl: 'https://github.com/amitbora007/testblind-ai',
+      stack: ['Python', 'FastAPI', 'TypeScript', 'AST Analysis', 'LLM', 'Mutation Testing'],
+      badge: 'LIVE PLATFORM',
+      highlights: ['Dual-State Verification', 'Incident-to-Regression', 'AST Coverage Graph']
+    },
+    {
+      id: 'vigilapi',
+      title: 'VigilAPI',
+      category: 'cloud',
+      categoryLabel: 'Cloud & DevOps',
+      tagline: 'Production Serverless API Health & Latency Monitor',
+      description: 'Serverless API monitoring and uptime observability platform with real-time health checks, P99 latency tracking, edge probe execution, and automated alerting.',
+      liveUrl: 'https://amitbora007.github.io/vigilapi/',
+      githubUrl: 'https://github.com/amitbora007/vigilapi',
+      stack: ['React', 'TypeScript', 'Supabase', 'Edge Functions', 'pg_cron', 'TailwindCSS'],
+      badge: 'PRODUCTION READY',
+      highlights: ['Edge Probe Monitoring', 'P99 Latency Telemetry', 'Automated Health Alerts']
+    },
+    {
+      id: 'consulting-platform',
+      title: 'Consulting Platform',
+      category: 'fullstack',
+      categoryLabel: 'Fullstack & SaaS',
+      tagline: 'Full-Stack Executive Consulting & Client Portal',
+      description: 'A professional, full-stack consulting service platform with executive luxury design, client intake workflows, automated scheduling, and secure account management.',
+      liveUrl: 'https://consulting-frontend.onrender.com/',
+      githubUrl: 'https://github.com/amitbora007/consulting-platform',
+      stack: ['React', 'FastAPI', 'MongoDB Atlas', 'JWT Auth', 'TailwindCSS'],
+      badge: 'LIVE SYSTEM',
+      highlights: ['Executive Client Intake', 'JWT Security Model', 'FastAPI Microservice']
+    },
+    {
+      id: 'restaurant',
+      title: 'FoodHub Suite',
+      category: 'fullstack',
+      categoryLabel: 'Fullstack & SaaS',
+      tagline: 'Cloud Kitchen Portal & Real-Time Order Stream',
+      description: 'Modern restaurant ordering portal and kitchen management suite powered by React 19, FastAPI, and MongoDB Atlas with real-time order processing and payment integrations.',
+      liveUrl: 'https://foodhub-frontend-13i1.onrender.com',
+      githubUrl: 'https://github.com/amitbora007/restaurant',
+      stack: ['React 19', 'FastAPI', 'MongoDB Atlas', 'Razorpay', 'TailwindCSS'],
+      badge: 'LIVE APP',
+      highlights: ['React 19 Architecture', 'Razorpay Webhooks', 'Live Kitchen Queue']
+    },
+    {
+      id: 'p2p-file-transfer',
+      title: 'WebRTC P2P Transfer',
+      category: 'cloud',
+      categoryLabel: 'Systems & Networking',
+      tagline: 'Zero-Storage Browser-to-Browser File Stream',
+      description: 'Fast, private WebRTC peer-to-peer file transfer with zero server storage. Stream 1–5 GB+ files directly across any network with Origin Private File System (OPFS).',
+      liveUrl: 'https://p2p-file-transfer-rwec.onrender.com',
+      githubUrl: 'https://github.com/amitbora007/p2p-file-transfer',
+      stack: ['TypeScript', 'WebRTC', 'OPFS', 'P2P DataChannels', 'Vite'],
+      badge: 'LIVE TOOL',
+      highlights: ['Zero Server Storage', '1–5GB+ Direct Stream', 'OPFS High-Throughput']
+    },
+    {
+      id: 'subwords-game',
+      title: 'Subwords Arena',
+      category: 'ai',
+      categoryLabel: 'AI & Gaming',
+      tagline: 'Competitive Word Puzzle with Real-Time AI Playback',
+      description: 'Competitive word puzzle arena featuring real-time AI playback, compounding score multipliers, dynamic dictionary validation, and pass-and-play matches.',
+      liveUrl: 'https://subwords-frontend.onrender.com/',
+      githubUrl: 'https://github.com/amitbora007/subwords-game',
+      stack: ['React', 'AI Playback', 'Game Engine', 'TailwindCSS'],
+      badge: 'LIVE GAME',
+      highlights: ['Real-Time AI Moves', 'Compounding Multipliers', 'Dynamic Word Trie']
+    }
+  ],
+
   skills: [
     {
       category: 'Frontend Engineering',

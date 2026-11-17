@@ -9,7 +9,8 @@ const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Impact', href: '#metrics' },
   { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'Case Studies', href: '#projects' },
+  { name: 'Live Apps', href: '#live-projects' },
   { name: 'Skills', href: '#skills' },
   { name: 'Credentials', href: '#credentials' },
   { name: 'Achievements', href: '#achievements' },
@@ -110,8 +111,8 @@ export default function Navigation() {
         </div>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-6 2xl:gap-8">
-          <ul className="flex items-center gap-1 lg:gap-2">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-8">
+          <ul className="flex items-center gap-0.5 xl:gap-1.5">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
               return (
@@ -120,7 +121,7 @@ export default function Navigation() {
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     aria-current={isActive ? 'page' : undefined}
-                    className={`relative z-10 text-xs lg:text-sm font-medium tracking-wide transition-colors py-1.5 px-3 rounded-lg block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
+                    className={`relative z-10 text-xs xl:text-sm font-medium tracking-wide transition-colors py-1.5 px-2.5 xl:px-3 rounded-lg block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                       isActive
                         ? 'text-brand-600 dark:text-brand-400 font-bold'
                         : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100/60 dark:hover:bg-slate-800/40'
@@ -159,7 +160,7 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Nav Toggle */}
-        <div className="md:hidden flex items-center gap-3">
+        <div className="lg:hidden flex items-center gap-3">
           <ThemeToggle />
           <button
             type="button"
@@ -176,7 +177,7 @@ export default function Navigation() {
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <div className="md:hidden glass-nav absolute top-full left-0 w-full py-4 px-6 shadow-xl flex flex-col gap-4 animate-in fade-in slide-in-from-top-5 duration-200 border-b border-slate-200/40 dark:border-slate-800/40">
+        <div className="lg:hidden glass-nav absolute top-full left-0 w-full py-4 px-6 shadow-xl flex flex-col gap-4 animate-in fade-in slide-in-from-top-5 duration-200 border-b border-slate-200/40 dark:border-slate-800/40">
           <ul className="flex flex-col gap-3">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);

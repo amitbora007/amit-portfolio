@@ -63,6 +63,12 @@ const queryKnowledgeBase = (query) => {
     return `[KNOWLEDGE_BASE_HIT] Amit's Featured Case Studies:\n\n${list}`;
   }
 
+  // 4b. Live Deployments
+  if (q.includes('live') || q.includes('apps') || q.includes('deploy') || q.includes('website') || q.includes('demo') || q.includes('testblind') || q.includes('vigilapi')) {
+    const list = (portfolioData.liveProjects || []).map(p => `  * ${p.title} (${p.category}): ${p.liveUrl}\n    - ${p.tagline}\n    - Stack: ${p.stack.join(', ')}`).join('\n\n');
+    return `[KNOWLEDGE_BASE_HIT] Amit's Live Production Deployments:\n\n${list}`;
+  }
+
   // 5. Certifications
   if (q.includes('cert') || q.includes('credentials') || q.includes('aws') || q.includes('mongodb') || q.includes('scrum') || q.includes('associate')) {
     const list = portfolioData.credentials.certifications.map(c => `  * ${c.name} (${c.issuer}, ${c.year})`).join('\n');
@@ -261,6 +267,7 @@ export default function DiagnosticConsole() {
           { text: '  help     - Display operational utility list', type: 'output' },
           { text: '  skills   - Print ASCII tech stack mapping', type: 'output' },
           { text: '  projects - Output payment and AI system summaries', type: 'output' },
+          { text: '  live     - List live production web deployments & links', type: 'output' },
           { text: '  pipeline - Simulate XAI machine learning training loop', type: 'output' },
           { text: '  hack     - Execute system decryption diagnostic test', type: 'output' },
           { text: '  ask <q>  - Query AI assistant about portfolio details', type: 'output' },
@@ -299,6 +306,20 @@ export default function DiagnosticConsole() {
           { text: '  3. AI chatbot: Retrieval-augmented state agent saving 70% support load', type: 'output' },
           { text: '  4. CCFIS Inventory: Custom RBAC secure hardware logging dashboard', type: 'output' },
           { text: '  5. CCFIS Moodle LMS: SSO Active Directory scaled to support 200k concurrents', type: 'output' }
+        ]);
+        break;
+
+      case 'live':
+      case 'apps':
+        setHistory([
+          ...newHistory,
+          { text: 'Live Interactive Deployments (Web & Cloud):', type: 'sys' },
+          { text: '  1. TestBlind AI: https://testblind-web.onrender.com (AI Testing & AST Mutation)', type: 'output' },
+          { text: '  2. VigilAPI: https://amitbora007.github.io/vigilapi/ (Serverless Edge Health Monitor)', type: 'output' },
+          { text: '  3. Executive Consulting: https://consulting-frontend.onrender.com (B2B Multi-tenant SaaS)', type: 'output' },
+          { text: '  4. FoodHub Engine: https://foodhub-frontend-13i1.onrender.com (React 19 & FastAPI)', type: 'output' },
+          { text: '  5. P2P Direct Transfer: https://p2p-file-transfer-rwec.onrender.com (WebRTC & OPFS)', type: 'output' },
+          { text: '  6. Subwords AI Arena: https://subwords-frontend.onrender.com (Competitive Word Engine)', type: 'output' },
         ]);
         break;
 

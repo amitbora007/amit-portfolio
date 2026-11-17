@@ -9,10 +9,11 @@ const sections = [
   { id: 'metrics', label: 'Measured Impact', code: '02' },
   { id: 'experience', label: 'Career Timeline', code: '03' },
   { id: 'projects', label: 'Case Studies', code: '04' },
-  { id: 'skills', label: 'Skill Matrix', code: '05' },
-  { id: 'credentials', label: 'Credentials', code: '06' },
-  { id: 'achievements', label: 'Honors & Reviews', code: '07' },
-  { id: 'contact', label: 'Dispatch Contact', code: '08' },
+  { id: 'live-projects', label: 'Live Projects', code: '05' },
+  { id: 'skills', label: 'Skill Matrix', code: '06' },
+  { id: 'credentials', label: 'Credentials', code: '07' },
+  { id: 'achievements', label: 'Honors & Reviews', code: '08' },
+  { id: 'contact', label: 'Dispatch Contact', code: '09' },
 ];
 
 export default function SectionNavRail() {

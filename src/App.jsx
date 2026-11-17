@@ -15,6 +15,7 @@ const About = lazy(() => import('./sections/About'));
 const ImpactMetrics = lazy(() => import('./sections/ImpactMetrics'));
 const Experience = lazy(() => import('./sections/Experience'));
 const Projects = lazy(() => import('./sections/Projects'));
+const LiveProjects = lazy(() => import('./sections/LiveProjects'));
 const Skills = lazy(() => import('./sections/Skills'));
 const Credentials = lazy(() => import('./sections/Credentials'));
 const Achievements = lazy(() => import('./sections/Achievements'));
@@ -119,7 +120,15 @@ export default function App() {
             </ErrorBoundary>
           </SectionTransition>
 
-          <SectionTransition id="skills" deckNumber="[DECK 05]" deckName="SKILL MATRIX">
+          <SectionTransition id="live-projects" deckNumber="[DECK 05]" deckName="LIVE DEPLOYMENTS">
+            <ErrorBoundary sectionName="Live Projects">
+              <Suspense fallback={<SectionFallback />}>
+                <LiveProjects />
+              </Suspense>
+            </ErrorBoundary>
+          </SectionTransition>
+
+          <SectionTransition id="skills" deckNumber="[DECK 06]" deckName="SKILL MATRIX">
             <ErrorBoundary sectionName="Skills">
               <Suspense fallback={<SectionFallback />}>
                 <Skills />
@@ -127,7 +136,7 @@ export default function App() {
             </ErrorBoundary>
           </SectionTransition>
 
-          <SectionTransition id="credentials" deckNumber="[DECK 06]" deckName="CREDENTIALS & RESEARCH">
+          <SectionTransition id="credentials" deckNumber="[DECK 07]" deckName="CREDENTIALS & RESEARCH">
             <ErrorBoundary sectionName="Credentials">
               <Suspense fallback={<SectionFallback />}>
                 <Credentials />
@@ -135,7 +144,7 @@ export default function App() {
             </ErrorBoundary>
           </SectionTransition>
 
-          <SectionTransition id="achievements" deckNumber="[DECK 07]" deckName="HONORS & RECOMMENDATIONS">
+          <SectionTransition id="achievements" deckNumber="[DECK 08]" deckName="HONORS & RECOMMENDATIONS">
             <section id="achievements" className="py-24 border-t border-slate-200/60 dark:border-slate-800/60 bg-transparent w-full scroll-mt-20">
               <div className="fluid-canvas">
                 {/* Section Header */}
@@ -167,7 +176,7 @@ export default function App() {
             </section>
           </SectionTransition>
 
-          <SectionTransition id="contact" deckNumber="[DECK 08]" deckName="DISPATCH CONTACT">
+          <SectionTransition id="contact" deckNumber="[DECK 09]" deckName="DISPATCH CONTACT">
             <ErrorBoundary sectionName="Contact">
               <Suspense fallback={<SectionFallback />}>
                 <Contact />

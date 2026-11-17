@@ -41,10 +41,10 @@ export default function Projects() {
         {/* Section Header */}
         <div className="flex flex-col items-center text-center gap-3 mb-12">
           <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-slate-100 tracking-tight leading-tight max-w-3xl text-balance">
-            Featured Fullstack Architectures & Systems
+            Case Studies
           </h2>
           <p className="text-sm sm:text-base text-slate-650 dark:text-slate-400 max-w-2xl leading-relaxed text-pretty">
-            Production case studies engineered for transactional safety, ultra-low latency, and intelligent automation. Hover or tap each interactive system diagram to inspect data pipelines.
+            Architectural case studies engineered for transactional safety, ultra-low latency, and intelligent automation. Hover or tap each interactive system diagram to inspect data pipelines.
           </p>
         </div>
 
