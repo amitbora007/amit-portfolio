@@ -139,8 +139,6 @@ export default function About() {
             <TiltCard
               maxTilt={6}
               scale={1.015}
-              glare={true}
-              glareOpacity={0.08}
               className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 shadow-sm w-full h-full flex flex-col justify-between group hover:border-brand-500/40 hover:shadow-md transition-all duration-300"
             >
               <div className="relative rounded-xl overflow-hidden border border-slate-100 dark:border-slate-950 bg-slate-100 dark:bg-slate-950 w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:flex-1 lg:min-h-[420px]">

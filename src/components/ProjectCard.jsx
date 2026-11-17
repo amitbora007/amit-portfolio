@@ -654,8 +654,6 @@ export default function ProjectCard({ project, index }) {
         maxTilt={4}
         scale={1.01}
         perspective={1200}
-        glare={true}
-        glareOpacity={0.06}
         className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all duration-300 flex flex-col h-full group overflow-hidden"
       >
         {/* Visual System Header Panel (Full-Width, Mission-Control Console) */}

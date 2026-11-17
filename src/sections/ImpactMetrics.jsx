@@ -79,8 +79,6 @@ export default function ImpactMetrics() {
               <TiltCard
                 maxTilt={5}
                 scale={1.015}
-                glare={true}
-                glareOpacity={0.08}
                 className="p-6 flex flex-col justify-between bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-teal-500/50 dark:hover:border-teal-400/40 rounded-xl transition-all duration-300 h-full group relative hover:shadow-lg"
               >
                 {/* Top Accent Hairline */}

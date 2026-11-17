@@ -103,8 +103,6 @@ export default function LiveProjects() {
                   <TiltCard
                     maxTilt={5}
                     scale={1.015}
-                    glare={true}
-                    glareOpacity={0.06}
                     className="h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm flex flex-col justify-between hover:border-teal-500/40 hover:shadow-xl transition-all duration-300 group"
                   >
                     <div>

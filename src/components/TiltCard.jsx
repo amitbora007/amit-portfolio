@@ -2,8 +2,8 @@ import { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
 
 /**
- * TiltCard — A GPU-accelerated 3D perspective tilt container with spring physics,
- * multi-plane Z-axis support, and dynamic specular glare reflection.
+ * TiltCard — A GPU-accelerated 3D perspective tilt container with spring physics
+ * and multi-plane Z-axis support.
  */
 export default function TiltCard({
   children,
@@ -11,8 +11,6 @@ export default function TiltCard({
   maxTilt = 7,
   perspective = 1000,
   scale = 1.015,
-  glare = true,
-  glareOpacity = 0.12,
   style = {},
   ...props
 }) {
@@ -32,15 +30,6 @@ export default function TiltCard({
   // Map normalized coordinates to rotation angles (inverting Y for natural tilt)
   const rotateX = useTransform(mouseYSpring, [0, 1], [maxTilt, -maxTilt]);
   const rotateY = useTransform(mouseXSpring, [0, 1], [-maxTilt, maxTilt]);
-
-  // Specular reflection gradient mapping
-  const glareX = useTransform(mouseXSpring, [0, 1], ['10%', '90%']);
-  const glareY = useTransform(mouseYSpring, [0, 1], ['10%', '90%']);
-  const glareBackground = useTransform(
-    [glareX, glareY],
-    ([gx, gy]) =>
-      `radial-gradient(circle at ${gx} ${gy}, rgba(255, 255, 255, 0.45) 0%, rgba(20, 184, 166, 0.15) 35%, transparent 70%)`
-  );
 
   const handleMouseMove = (e) => {
     if (shouldReduceMotion || !cardRef.current) return;
@@ -94,17 +83,6 @@ export default function TiltCard({
       className={`relative ${className}`}
       {...props}
     >
-      {/* Specular Glare Reflection Sheen */}
-      {glare && isHovered && (
-        <motion.div
-          className="pointer-events-none absolute inset-0 rounded-[inherit] z-30 transition-opacity duration-300 overflow-hidden"
-          style={{
-            opacity: isHovered ? glareOpacity : 0,
-            background: glareBackground,
-          }}
-        />
-      )}
-
       {children}
     </motion.div>
   );

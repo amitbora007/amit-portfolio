@@ -1,4 +1,4 @@
-import { lazy, Suspense, useRef, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 
 import Navigation from './components/Navigation';
 import Hero from './sections/Hero';
@@ -30,39 +30,6 @@ const SectionFallback = () => (
   </div>
 );
 
-// Desktop cursor spotlight using direct DOM ref updates via rAF to avoid root re-renders
-function CursorSpotlight() {
-  const spotlightRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || window.innerWidth < 1024) return;
-    let rafId = null;
-
-    const handleMove = (e) => {
-      if (rafId) return;
-      rafId = requestAnimationFrame(() => {
-        rafId = null;
-        if (spotlightRef.current) {
-          spotlightRef.current.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(20, 184, 166, 0.045), transparent 75%)`;
-        }
-      });
-    };
-
-    window.addEventListener('mousemove', handleMove, { passive: true });
-    return () => {
-      window.removeEventListener('mousemove', handleMove);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, []);
-
-  return (
-    <div
-      ref={spotlightRef}
-      className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 hidden lg:block"
-    />
-  );
-}
-
 export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
@@ -72,9 +39,6 @@ export default function App() {
         <div className="absolute top-[40%] right-[-5%] w-[50%] h-[30%] bg-slate-400/5 dark:bg-teal-900/10 rounded-full blur-[160px]" />
         <div className="absolute top-[75%] left-[-5%] w-[45%] h-[25%] bg-teal-500/4 dark:bg-teal-500/5 rounded-full blur-[150px]" />
       </div>
-
-      {/* Subtle Mouse Spotlight Tracker — Desktop only */}
-      <CursorSpotlight />
 
 
       <div className="relative z-10 w-full">
